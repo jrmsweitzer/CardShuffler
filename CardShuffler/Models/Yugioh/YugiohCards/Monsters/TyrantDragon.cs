@@ -5,9 +5,9 @@ using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards.Monsters
 {
-    public class TyerantDragon : EffectMonster
+    public class TyrantDragon : EffectMonster
     {
-        public TyerantDragon(YugiohGame game) : base(game)
+        public TyrantDragon(YugiohGame game) : base(game)
         {
         }
     }

@@ -8,8 +8,12 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
     {
         public Action OnFieldEnter;
         public Action OnFieldLeave;
+        public Action IgnitionEffect;
+
+
         public bool CanBeNormalSummoned { get; set; } = true;
         public bool CanBeSpecialSummoned { get; set; } = true;
+        public bool CanActivateIgnitionEffect { get; set; } = false;
         public bool MustFirstBeSpecialSummoned { get; set; } = false;
         public override string ToString()
         {

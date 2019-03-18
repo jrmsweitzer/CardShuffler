@@ -32,6 +32,13 @@ namespace CardShuffler.Models.Yugioh
         {
             return SpellTrapZones.Any(zone => zone.SpellTrapCard == null);
         }
+        public void SendMonsterToGrave(Monster monster, YugiohGamePlayer player)
+        {
+            var index = MonsterZones.ToList().FindIndex(z => z.Monster == monster);
+            MonsterZones[index] = new MonsterZone();
+            player.DiscardPile.Add(monster);
+            monster.Location = CardLocation.Graveyard;
+        }
         public void SpecialSummonMonster(Monster monster, bool faceUp, bool atkPosition)
         {
             var zIndex = MonsterZones.ToList().FindIndex(z => z.Monster == null);
