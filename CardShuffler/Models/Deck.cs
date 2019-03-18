@@ -1,4 +1,5 @@
 ﻿using CardShuffler.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -48,6 +49,8 @@ namespace CardShuffler.Models
         public Card AddCardToHand(Hand hand, string cardName)
         {
             var cardToAdd = Cards.FirstOrDefault(c => c.Name == cardName);
+            if (cardToAdd == null)
+                throw new Exception("Cannot find card by name " + cardName);
             cardToAdd.Location = Yugioh.CardLocation.HandHidden;
             Cards.Remove(cardToAdd);
             hand.Add(cardToAdd);

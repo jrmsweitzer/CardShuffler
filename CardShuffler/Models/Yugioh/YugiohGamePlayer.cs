@@ -21,7 +21,7 @@ namespace CardShuffler.Models.Yugioh
         public void SetDeck(Deck deck)
         {
             Deck = new Deck();
-            foreach (var card in Deck.Cards)
+            foreach (var card in deck.Cards)
             {
                 card.OriginalOwner = this;
                 Deck.Cards.Add(card);
