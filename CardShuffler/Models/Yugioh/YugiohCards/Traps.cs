@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class Traps
+    public class TrapList
     {
         public static List<YugiohGameCard> GetTraps(YugiohGame game)
         {

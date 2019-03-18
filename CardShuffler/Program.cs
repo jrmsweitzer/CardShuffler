@@ -20,7 +20,7 @@ namespace CardShuffler
             game.P1 = player;
             game.P2 = opponent;
             allCards.AddRange(SpellList.GetSpells(game));
-            allCards.AddRange(Traps.GetTraps(game));
+            allCards.AddRange(TrapList.GetTraps(game));
 
             var deck = new List<Card>()
             {

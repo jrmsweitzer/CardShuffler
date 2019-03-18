@@ -27,7 +27,7 @@ namespace CardSpecificTests
         {
             var cards = MonsterList.GetMonsters(Game);
             cards.AddRange(SpellList.GetSpells(Game));
-            cards.AddRange(Traps.GetTraps(Game));
+            cards.AddRange(TrapList.GetTraps(Game));
             return cards;
         }
 

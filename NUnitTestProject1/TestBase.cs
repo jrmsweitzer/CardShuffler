@@ -34,7 +34,7 @@ namespace Tests
         {
             Game = new YugiohGame();
             var monsters = MonsterList.GetMonsters(Game);
-            var traps = Traps.GetTraps(Game);
+            var traps = TrapList.GetTraps(Game);
             var spells = SpellList.GetSpells(Game);
             AllCardsInGame = new List<Card>();
             AllCardsInGame.AddRange(monsters);
