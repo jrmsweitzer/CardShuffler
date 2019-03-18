@@ -23,7 +23,7 @@ namespace CardShuffler.Models.Yugioh
             Deck = new Deck();
             foreach (var card in deck.Cards)
             {
-                card.OriginalOwner = this;
+                card.Owner = this;
                 Deck.Cards.Add(card);
             }
         }

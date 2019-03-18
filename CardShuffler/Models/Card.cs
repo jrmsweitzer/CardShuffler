@@ -7,6 +7,6 @@ namespace CardShuffler.Models
     {
         public string Name { get; set; }
         public CardLocation Location { get; set; } = CardLocation.DeckFaceDown;
-        public GamePlayer OriginalOwner { get; set; }
+        public GamePlayer Owner { get; set; }
     }
 }

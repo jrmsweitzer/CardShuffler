@@ -8,5 +8,6 @@
         }
         protected YugiohGame Game { get; set; } = null;
         protected YugiohGamePlayer TurnPlayer => (YugiohGamePlayer)Game.TurnPlayer;
+        protected YugiohGamePlayer DefendingPlayer => (YugiohGamePlayer)Game.TurnPlayer;
     }
 }
