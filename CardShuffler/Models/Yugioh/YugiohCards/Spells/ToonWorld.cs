@@ -3,7 +3,7 @@ using System.Linq;
 using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using CardShuffler.Models.Yugioh.Zones;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Spells
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class ToonWorld : ContinuousSpell
     {

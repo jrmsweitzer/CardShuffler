@@ -13,6 +13,7 @@ namespace CardShuffler.Models
         public List<Card> DiscardPile { get; set; } = new List<Card>();
         public List<Card> RemovedFromGame { get; set; } = new List<Card>();
         public Monster LastSuccessfulNormalSummon { get; set; }
+        public GamePlayer Opponent { get; set; }
 
         public void DrawStartingHand(int handSize)
         {

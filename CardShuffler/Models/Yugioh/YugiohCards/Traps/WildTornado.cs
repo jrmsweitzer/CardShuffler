@@ -5,11 +5,11 @@ using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class KunaiWithChain : Trap
+    public class WildTornado : Trap
     {
-        public KunaiWithChain(YugiohGame game) : base(game)
+        public WildTornado(YugiohGame game) : base(game)
         {
-            Name = "Kunai With Chain";
+            Name = "Wild Tornado";
         }
 
         public override bool CanActivate() => throw new NotImplementedException();

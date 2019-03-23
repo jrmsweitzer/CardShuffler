@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Monsters
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class DarkMagician : NormalMonster
     {

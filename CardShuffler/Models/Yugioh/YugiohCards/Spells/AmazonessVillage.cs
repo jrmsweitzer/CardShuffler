@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Spells
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class AmazonessVillage : FieldSpell
     {

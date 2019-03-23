@@ -1,4 +1,4 @@
-﻿using CardShuffler.Models.Yugioh.YugiohCards.Spells;
+﻿using CardShuffler.Models.Yugioh.YugiohCards;
 using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using System.Collections.Generic;
 
@@ -88,9 +88,9 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
                 //    Name = "Stray Lambs"
                 //},
                 // T
-                new TheFluteOfSummoningDragon(game),
+                new TheFluteofSummoningDragon(game),
                 new ToonRollback(game),
-                new ToonTableOfContents(game),
+                new ToonTableofContents(game),
                 new ToonWorld(game),
                 //new NormalSpell(game)
                 //{

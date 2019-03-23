@@ -5,11 +5,14 @@ using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class SevenToolsoftheBandit : CounterTrap
+    public class BattleOx : NormalMonster
     {
-        public SevenToolsoftheBandit(YugiohGame game) : base(game)
+        public BattleOx(YugiohGame game) : base(game)
         {
-            Name = "Sevel Tools of the Bandit";
+            Name = "Battle Ox";
+            ATK = 1700;
+            DEF = 1000;
+            Level = 4;
         }
     }
 }

@@ -2,11 +2,11 @@
 using System.Linq;
 using CardShuffler.Models.Yugioh.YugiohCardTypes;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Spells
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class TheFluteOfSummoningDragon : NormalSpell
+    public class TheFluteofSummoningDragon : NormalSpell
     {
-        public TheFluteOfSummoningDragon(YugiohGame game) : base(game)
+        public TheFluteofSummoningDragon(YugiohGame game) : base(game)
         {
             Name = "The Flute of Summoning Dragon";
         }

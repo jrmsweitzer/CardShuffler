@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Spells
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class ToonTableOfContents : NormalSpell
+    public class ToonTableofContents : NormalSpell
     {
-        public ToonTableOfContents(YugiohGame game) : base(game)
+        public ToonTableofContents(YugiohGame game) : base(game)
         {
             Name = "Toon Table of Contents";
         }

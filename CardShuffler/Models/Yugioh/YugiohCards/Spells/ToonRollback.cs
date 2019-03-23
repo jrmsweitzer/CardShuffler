@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using CardShuffler.Models.Yugioh.YugiohCardTypes;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Spells
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class ToonRollback : NormalSpell
     {

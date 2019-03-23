@@ -10,5 +10,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
         {
             TrapType = TrapType.Normal;
         }
+
+        public override bool CanActivate() => throw new NotImplementedException();
     }
 }

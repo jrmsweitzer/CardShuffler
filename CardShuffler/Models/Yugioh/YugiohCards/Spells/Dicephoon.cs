@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Spells
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class Dicephoon : QuickplaySpell
     {
         public Dicephoon(YugiohGame game) : base(game)
         {
+            Name = "Dicephoon";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

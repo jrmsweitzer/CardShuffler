@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Skills
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class DragonCaller: Skill
     {

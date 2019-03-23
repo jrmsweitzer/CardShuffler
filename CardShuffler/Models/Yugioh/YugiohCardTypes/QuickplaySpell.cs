@@ -10,5 +10,14 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
         {
             SpellType = SpellType.QuickPlay;
         }
+
+        public int TurnSet { get; set; } = -1;
+
+        public override bool CanActivate()
+        {
+            if (TurnSet < Game.Turn)
+                return true;
+            return false;
+        }
     }
 }

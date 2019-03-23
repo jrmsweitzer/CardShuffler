@@ -3,7 +3,7 @@ using CardShuffler.Models.Yugioh.Zones;
 using System;
 using System.Collections.Generic;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Spells
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class HarpiesHuntingGround : FieldSpell
     {

@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Monsters
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class RedEyesBlackDragon : NormalMonster
+    public class RedEyesBDragon : NormalMonster
     {
-        public RedEyesBlackDragon(YugiohGame game) : base(game)
+        public RedEyesBDragon(YugiohGame game) : base(game)
         {
             Name = "Red-Eyes B. Dragon";
             Attribute = MonsterAttribute.Dark;

@@ -5,11 +5,11 @@ using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class AmazonessHeirloom : EquipSpell
+    public class ElegantEgotist : NormalSpell
     {
-        public AmazonessHeirloom(YugiohGame game) : base(game)
+        public ElegantEgotist(YugiohGame game) : base(game)
         {
-            Name = "Amazoness Heirloom";
+            Name = "Elegant Egotist";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

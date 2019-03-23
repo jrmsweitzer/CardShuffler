@@ -243,5 +243,38 @@ namespace CardShuffler.Models.Yugioh.Phases
             _haveAlreadyNormalSummoned = true;
             return true;
         }
+
+        public bool SetTrap(Trap trap)
+        {
+            var player = (YugiohGamePlayer)_game.TurnPlayer;
+            if (player.Field.HasFreeSpellTrapZone() == false)
+                return false;
+
+            trap.TurnSet = _game.Turn;
+            player.Hand.Cards.Remove(trap);
+
+            var zone = player.Field.SpellTrapZones.FirstOrDefault(z => z.SpellTrapCard == null);
+            zone.IsFaceup = false;
+            zone.SpellTrapCard = trap;
+            trap.Location = CardLocation.FieldSpellZoneFaceDown;
+            return true;
+        }
+
+        public bool SetSpell(Spell spell)
+        {
+            var player = (YugiohGamePlayer)_game.TurnPlayer;
+            if (player.Field.HasFreeSpellTrapZone() == false)
+                return false;
+
+            if (spell is QuickplaySpell qpSpell)
+                qpSpell.TurnSet = _game.Turn;
+            player.Hand.Cards.Remove(spell);
+
+            var zone = player.Field.SpellTrapZones.FirstOrDefault(z => z.SpellTrapCard == null);
+            zone.IsFaceup = false;
+            zone.SpellTrapCard = spell;
+            spell.Location = CardLocation.FieldSpellZoneFaceDown;
+            return true;
+        }
     }
 }

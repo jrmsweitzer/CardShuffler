@@ -1,4 +1,4 @@
-﻿using CardShuffler.Models.Yugioh.YugiohCards.Monsters;
+﻿using CardShuffler.Models.Yugioh.YugiohCards;
 using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using System.Collections.Generic;
 

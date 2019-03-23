@@ -2,7 +2,7 @@
 
 namespace CardShuffler.Models.Yugioh.YugiohCardTypes
 {
-    public class Trap: SpellTrap
+    public abstract class Trap: SpellTrap
     {
         public Trap(YugiohGame game) : base(game)
         {
@@ -10,5 +10,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
 
         public TrapType TrapType { get; set; }
         public List<Effect> Effects { get; set; }
+        public int TurnSet { get; set; } = -1;
+        public abstract bool CanActivate();
     }
 }

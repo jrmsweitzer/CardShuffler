@@ -6,5 +6,7 @@
         {
             TrapType = TrapType.Counter;
         }
+
+        public override bool CanActivate() => throw new System.NotImplementedException();
     }
 }

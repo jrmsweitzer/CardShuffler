@@ -14,6 +14,13 @@ namespace CardShuffler.Models.Yugioh
             return MonsterZones.Where(zone => zone.Monster != null)
                 .Select(zone => zone.Monster).ToList();
         }
+        public List<Monster> GetMonstersFaceUp()
+        {
+            return MonsterZones.Where(zone => zone.Monster != null &&
+                (zone.Monster.Location == CardLocation.MonsterZoneFaceUpAttack ||
+                    zone.Monster.Location == CardLocation.MonsterZoneFaceUpDefense))
+                    .Select(zone => zone.Monster).ToList();
+        }
         public List<Monster> GetMonstersInAttackPosition()
         {
             return MonsterZones.Where(zone => zone.Monster != null && zone.AttackPosition == true)

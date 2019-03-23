@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Monsters
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class LordOfD : EffectMonster
+    public class LordofD : EffectMonster
     {
         public TypeTargetProtection DragonProtection = new TypeTargetProtection()
         {
@@ -15,7 +15,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards.Monsters
             ProtectedFromTargetingTraps = true
         };
 
-        public LordOfD(YugiohGame game) : base(game)
+        public LordofD(YugiohGame game) : base(game)
         {
             Name = "Lord of D.";
             Attribute = MonsterAttribute.Dark;

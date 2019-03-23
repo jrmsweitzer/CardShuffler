@@ -1,7 +1,7 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using System;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Monsters
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class HarpieLady1: EffectMonster
     {

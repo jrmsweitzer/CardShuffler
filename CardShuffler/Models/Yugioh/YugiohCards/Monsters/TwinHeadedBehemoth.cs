@@ -1,6 +1,6 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Monsters
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class TwinHeadedBehemoth : EffectMonster
     {
