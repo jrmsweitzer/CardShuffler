@@ -1,0 +1,11 @@
+bin
+obj
+/NUnitTestProject1/bin
+*.suo
+/.vs/CardShuffler/v15/Server/sqlite3/db.lock
+/.vs/CardShuffler/v15/Server/sqlite3/storage.ide
+/.vs/CardShuffler/v15/Server/sqlite3/storage.ide-shm
+/.vs/CardShuffler/v15/Server/sqlite3/storage.ide-wal
+/TestResults/29812b4e-874a-4fce-8b43-bdfc4665fe97/jsweitzer_SP4001937162753 2019-03-18 07_27_29.coverage
+/TestResults/2ed494d5-5fb3-42d8-a60c-4dbfdbf109bf/jsweitzer_SP4001937162753 2019-03-18 07_24_10.coverage
+/TestResults/9f416700-1d79-4a35-9e9a-b72c6323ddc6/jsweitzer_SP4001937162753 2019-03-18 07_18_54.coverage
