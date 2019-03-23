@@ -43,8 +43,23 @@ namespace CardShuffler.Models.Yugioh.Phases
                 return false;
         }
 
-        private void SummonComplete(Monster monster)
+        private void SummonComplete(Monster monster, bool faceup, bool attackPosition)
         {
+            if (faceup)
+            {
+                if (attackPosition)
+                    monster.Position = CardPosition.FaceUpAttack;
+                else
+                    monster.Position = CardPosition.FaceUpDefense;
+            }
+            else
+            {
+                if (attackPosition)
+                    monster.Position = CardPosition.FaceDownAttack;
+                else
+                    monster.Position = CardPosition.FaceDownDefense;
+            }
+            monster.Location = CardLocation.MonsterZone;
             if (monster is EffectMonster effectMonster)
             {
                 effectMonster.OnFieldEnter?.Invoke();
@@ -73,7 +88,7 @@ namespace CardShuffler.Models.Yugioh.Phases
                     player.Hand.Cards.Remove(monster);
                     player.Field.NormalSummon(monster);
                     _haveAlreadyNormalSummoned = true;
-                    SummonComplete(monster);
+                    SummonComplete(monster, true, true);
                     Console.WriteLine($"{player.Name} Normal Summoned {monster.Name}.");
                     return true;
                 }
@@ -100,7 +115,7 @@ namespace CardShuffler.Models.Yugioh.Phases
                 {
                     player.Hand.Cards.Remove(monster);
                     player.Field.NormalSet(monster);
-                    SummonComplete(monster);
+                    SummonComplete(monster, false, false);
                     Console.WriteLine($"{player.Name} Normal Set {monster.Name}.");
                     _haveAlreadyNormalSummoned = true;
                     return true;
@@ -172,12 +187,11 @@ namespace CardShuffler.Models.Yugioh.Phases
 
             var player = (YugiohGamePlayer)_game.TurnPlayer;
             player.DiscardPile.Add(tributeMaterial);
+            tributeMaterial.Location = CardLocation.Graveyard;
             player.Hand.Cards.Remove(monster);
             var zone = player.Field.MonsterZones.First(z => z.Monster == tributeMaterial);
             zone.Monster = monster;
-            zone.AttackPosition = true;
-            zone.FaceUp = true;
-            SummonComplete(monster);
+            SummonComplete(monster, true, true);
             Console.WriteLine($"{player.Name} Tribute Summoned {monster.Name} by tributing {tributeMaterial.Name}.");
             _haveAlreadyNormalSummoned = true;
             return true;
@@ -191,12 +205,11 @@ namespace CardShuffler.Models.Yugioh.Phases
 
             var player = (YugiohGamePlayer)_game.TurnPlayer;
             player.DiscardPile.Add(tributeMaterial);
+            tributeMaterial.Location = CardLocation.Graveyard;
             player.Hand.Cards.Remove(monster);
             var zone = player.Field.MonsterZones.First(z => z.Monster == tributeMaterial);
             zone.Monster = monster;
-            zone.AttackPosition = false;
-            zone.FaceUp = false;
-            SummonComplete(monster);
+            SummonComplete(monster, false, false);
             Console.WriteLine($"{player.Name} Tribute Set {monster.Name} by tributing {tributeMaterial.Name}.");
             _haveAlreadyNormalSummoned = true;
             return true;
@@ -209,15 +222,15 @@ namespace CardShuffler.Models.Yugioh.Phases
 
             var player = (YugiohGamePlayer)_game.TurnPlayer;
             player.DiscardPile.Add(tributeMaterial1);
+            tributeMaterial1.Location = CardLocation.Graveyard;
             player.DiscardPile.Add(tributeMaterial2);
+            tributeMaterial2.Location = CardLocation.Graveyard;
             player.Hand.Cards.Remove(monster);
             var zone1 = player.Field.MonsterZones.First(z => z.Monster == tributeMaterial1);
             zone1.Monster = monster;
-            zone1.AttackPosition = true;
-            zone1.FaceUp = true;
             var zIndex = player.Field.MonsterZones.ToList().FindIndex(z => z.Monster == tributeMaterial2);
             player.Field.MonsterZones[zIndex] = new MonsterZone();
-            SummonComplete(monster);
+            SummonComplete(monster, true, true);
             Console.WriteLine($"{player.Name} Tribute Summoned {monster.Name} by tributing {tributeMaterial1.Name} and {tributeMaterial2.Name}.");
             _haveAlreadyNormalSummoned = true;
             return true;
@@ -230,15 +243,15 @@ namespace CardShuffler.Models.Yugioh.Phases
 
             var player = (YugiohGamePlayer)_game.TurnPlayer;
             player.DiscardPile.Add(tributeMaterial1);
+            tributeMaterial1.Location = CardLocation.Graveyard;
             player.DiscardPile.Add(tributeMaterial2);
+            tributeMaterial2.Location = CardLocation.Graveyard;
             player.Hand.Cards.Remove(monster);
             var zone1 = player.Field.MonsterZones.First(z => z.Monster == tributeMaterial1);
             zone1.Monster = monster;
-            zone1.AttackPosition = false;
-            zone1.FaceUp = false;
             var zIndex = player.Field.MonsterZones.ToList().FindIndex(z => z.Monster == tributeMaterial2);
             player.Field.MonsterZones[zIndex] = new MonsterZone();
-            SummonComplete(monster);
+            SummonComplete(monster, false, false);
             Console.WriteLine($"{player.Name} Tribute Set {monster.Name} by tributing {tributeMaterial1.Name} and {tributeMaterial2.Name}.");
             _haveAlreadyNormalSummoned = true;
             return true;

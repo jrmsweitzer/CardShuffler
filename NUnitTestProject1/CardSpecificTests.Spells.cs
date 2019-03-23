@@ -51,7 +51,8 @@ namespace Tests.CardSpecificTests.Spells
 
             Assert.IsTrue(Mai.Field.FieldZone.FieldSpell == village, "Mai should have Amazoness Village active in the field spell zone.");
             Assert.AreEqual(1, Game.FieldBuffs.Count, "Mai should have 1 field buff");
-            Assert.AreEqual(CardLocation.MonsterZoneFaceUpAttack, swordsWoman.Location, "Swordswoman should be in face-up attack position.");
+            Assert.AreEqual(CardLocation.MonsterZone, swordsWoman.Location, "Swordswoman should be in a monster zone.");
+            Assert.AreEqual(CardPosition.FaceUpAttack, swordsWoman.Position, "Swordswoman should be in face-up attack position.");
             Assert.AreEqual(1700, swordsWoman.ATK, "Swordswoman should have 1700 ATK");
         }
     }

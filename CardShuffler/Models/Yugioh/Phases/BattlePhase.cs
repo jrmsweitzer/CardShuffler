@@ -98,7 +98,7 @@ namespace CardShuffler.Models.Yugioh.Phases
                 var oZoneIndex = opponent.Field.MonsterZones.ToList().FindIndex(m => m.Monster == opponentMonster);
                 var oZone = opponent.Field.MonsterZones[oZoneIndex];
 
-                var isOpposingMonsterInAttack = oZone.AttackPosition;
+                var isOpposingMonsterInAttack = oZone.Monster.Position == CardPosition.FaceUpAttack;
                 var difference = pZone.Monster.ATK - (isOpposingMonsterInAttack ?
                         oZone.Monster.ATK :
                         oZone.Monster.DEF);

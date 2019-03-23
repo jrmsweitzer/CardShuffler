@@ -1,11 +1,19 @@
 ﻿using CardShuffler.Models;
 using CardShuffler.Models.Yugioh;
 using NUnit.Framework;
+using System;
 
 namespace Tests
 {
     public class SampleDuels: TestBase
     {
+        [Test]
+        public void GetCardWithProperCode()
+        {
+            var windstorm = GetCardByName("Windstorm of Etaqua");
+            Assert.IsNotNull(windstorm);
+        }
+
         public void SetupDuel(YugiohGamePlayer turnPlayer, Deck tpDeck, YugiohGamePlayer opponent, Deck oppDeck)
         {
             Game.P1 = turnPlayer;

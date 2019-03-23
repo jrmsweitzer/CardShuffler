@@ -3,6 +3,7 @@ using CardShuffler.Models.Yugioh;
 using CardShuffler.Models.Yugioh.YugiohCards;
 using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,15 +20,6 @@ namespace Tests
         protected YugiohGamePlayer Kaiba;
         protected YugiohGamePlayer Mai;
         protected YugiohGamePlayer Pegasus;
-
-        protected Monster AmazonessChainMaster;
-        protected Monster AmazonessSwordsWoman;
-        protected Monster BattleOx;
-        protected Monster TwinHeadedBehemoth;
-        protected Monster LusterDragon2;
-        protected Monster BlueEyesWhiteDragon;
-        protected Monster HarpieLady1;
-        protected Monster Birdface;
 
         [SetUp]
         public void SetUp()
@@ -168,26 +160,35 @@ namespace Tests
             Game.TurnPlayer = Kaiba;
             Kaiba.SetDeck(BlueEyesDeck);
             Mai.SetDeck(AmazonessDeck);
-            AmazonessChainMaster = (Monster)GetCardByName("Amazoness Chain Master");
-            AmazonessSwordsWoman = (Monster)GetCardByName("Amazoness Swords Woman");
-            BattleOx = (Monster)GetCardByName("Battle Ox");
-            Birdface = (Monster)GetCardByName("Birdface");
-            BlueEyesWhiteDragon = (Monster)GetCardByName("Blue-Eyes White Dragon");
-            HarpieLady1 = (Monster)GetCardByName("Harpie Lady 1");
-            LusterDragon2 = (Monster)GetCardByName("Luster Dragon #2");
-            TwinHeadedBehemoth = (Monster)GetCardByName("Twin-Headed Behemoth");
         }
         
         public Card GetCardByName(string name)
         {
-            var card = AllCardsInGame.FirstOrDefault(c => c.Name == name);
+            var trimmedName = name.Replace(" ", "").Replace("-", "").Replace(".", "").Replace("#","").Replace("'","").Replace(",", "");
+            var fqt = $"CardShuffler.Models.Yugioh.YugiohCards.{trimmedName}";
+            var type = Type.GetType(fqt);
+            if (type != null)
+                return (Card)Activator.CreateInstance(type);
 
-            if (card is EffectMonster effectMonster)
-                return effectMonster.Clone();
-            if (card is NormalMonster normalMonster)
-                return normalMonster.Clone();
+            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                type = asm.GetType(fqt);
+                if (type != null)
+                    return (Card)Activator.CreateInstance(type, Game);
+            }
+            return null;
 
-            return card;
+
+
+
+            //var card = AllCardsInGame.FirstOrDefault(c => c.Name == name);
+
+            //if (card is EffectMonster effectMonster)
+            //    return effectMonster.Clone();
+            //if (card is NormalMonster normalMonster)
+            //    return normalMonster.Clone();
+
+            //return card;
         }
     }
 }

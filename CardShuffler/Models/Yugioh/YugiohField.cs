@@ -24,12 +24,16 @@ namespace CardShuffler.Models.Yugioh
         }
         public List<Monster> GetMonstersInAttackPosition()
         {
-            return MonsterZones.Where(zone => zone.Monster != null && zone.AttackPosition == true)
+            return MonsterZones.Where(zone => zone.Monster != null && 
+                zone.Monster.Position == CardPosition.FaceUpAttack)
                 .Select(zone => zone.Monster).ToList();
         }
         public List<Monster> GetMonstersInDefensePosition()
         {
-            return MonsterZones.Where(zone => zone.Monster != null && zone.AttackPosition == false)
+            return MonsterZones.Where(zone => 
+                zone.Monster != null && 
+               (zone.Monster.Position == CardPosition.FaceDownDefense ||
+                zone.Monster.Position == CardPosition.FaceUpDefense))
                 .Select(zone => zone.Monster).ToList();
         }
         public bool HasFreeMonsterZone()
@@ -51,8 +55,6 @@ namespace CardShuffler.Models.Yugioh
         {
             var zIndex = MonsterZones.ToList().FindIndex(z => z.Monster == null);
             MonsterZones[zIndex].Monster = monster;
-            MonsterZones[zIndex].AttackPosition = atkPosition;
-            MonsterZones[zIndex].FaceUp = faceUp;
             monster.Location = CardLocation.MonsterZone;
             if (faceUp)
             {
@@ -67,7 +69,7 @@ namespace CardShuffler.Models.Yugioh
                     monster.Position = CardPosition.FaceDownAttack;
                 else
                     monster.Position = CardPosition.FaceDownDefense;
-            }            
+            }      
         }
         public void PlaceSpellTrapFaceup(SpellTrap st)
         {
@@ -113,8 +115,6 @@ namespace CardShuffler.Models.Yugioh
             }
             var freeZone = MonsterZones.ToList().FindIndex(z => z.Monster == null);
             MonsterZones[freeZone].Monster = monster;
-            MonsterZones[freeZone].AttackPosition = true;
-            MonsterZones[freeZone].FaceUp = true;
             monster.Location = CardLocation.MonsterZone;
             monster.Position = CardPosition.FaceUpAttack;
         }
@@ -127,8 +127,6 @@ namespace CardShuffler.Models.Yugioh
             }
             var freeZone = MonsterZones.ToList().FindIndex(z => z.Monster == null);
             MonsterZones[freeZone].Monster = monster;
-            MonsterZones[freeZone].AttackPosition = false;
-            MonsterZones[freeZone].FaceUp = false;
             monster.Location = CardLocation.MonsterZone;
             monster.Position = CardPosition.FaceDownDefense;
         }

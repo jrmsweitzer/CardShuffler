@@ -38,7 +38,8 @@ namespace Tests.CardSpecificTests.Monsters
 
             // before summon of harpie
             Assert.IsTrue(Mai.Field.MonsterZones.Any(zone => zone.Monster == birdface), "Birdface should be on Mai's field, in a monster zone");
-            Assert.AreEqual(CardLocation.MonsterZoneFaceUpAttack, birdface.Location, "Birdface should be in face-up attack position");
+            Assert.AreEqual(CardLocation.MonsterZone, birdface.Location, "Birdface should be in a monster zone");
+            Assert.AreEqual(CardPosition.FaceUpAttack, birdface.Position, "Birdface should be in faceup attack position.");
             Assert.AreEqual(1600, Mai.Field.GetMonsters()[0].ATK, "Birdface should have 1600 ATK");
             Assert.AreEqual(1, Mai.Hand.Cards.Count, "Mai should have 1 card in hand.");
             Assert.IsTrue(Mai.Hand.Cards.Contains(harpieLady), "Mai should have Harpie Lady in hand.");
@@ -50,9 +51,9 @@ namespace Tests.CardSpecificTests.Monsters
             Assert.AreEqual(2, Mai.Field.GetMonsters().Count);
             Assert.AreEqual(1, Game.FieldBuffs.Count);
             Assert.AreEqual("Birdface", Mai.Field.GetMonsters()[0].Name);
-            Assert.AreEqual(1900, Mai.Field.GetMonsters()[0].ATK);
+            Assert.AreEqual(1900, Mai.Field.GetMonsters()[0].ATK, "Birdface ATK");
             Assert.AreEqual("Harpie Lady 1", Mai.Field.GetMonsters()[1].Name);
-            Assert.AreEqual(1600, Mai.Field.GetMonsters()[1].ATK);
+            Assert.AreEqual(1600, Mai.Field.GetMonsters()[1].ATK, "Harpie Lady 1 ATK");
         }
 
         [Test]
@@ -68,10 +69,11 @@ namespace Tests.CardSpecificTests.Monsters
             new MainPhase1(Game).NormalSummonWithoutTribute(firstHarpie);
 
             // first should be buffed, second, not yet
-            Assert.AreEqual(CardLocation.MonsterZoneFaceUpAttack, firstHarpie.Location, "First Harpie should be on the field.");
+            Assert.AreEqual(CardLocation.MonsterZone, firstHarpie.Location, "First Harpie should be on the field.");
+            Assert.AreEqual(CardPosition.FaceUpAttack, firstHarpie.Position, "First Harpie should be in face-up attack position.");
             Assert.AreEqual(1, Game.FieldBuffs.Count);
             Assert.AreEqual(1600, firstHarpie.ATK, "Harpie on field should have 1600 ATK.");
-            Assert.AreEqual(CardLocation.HandHidden, secondHarpie.Location, "Second Harpie should still be in the hand.");
+            Assert.AreEqual(CardLocation.Hand, secondHarpie.Location, "Second Harpie should still be in the hand.");
             Assert.AreEqual(1300, secondHarpie.ATK, "Harpie in hand should only have 1300 ATK.");
 
             // Normal summon second
