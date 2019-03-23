@@ -13,8 +13,9 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
         public bool IsFaceUpOnField()
         {
             return
-                Location == CardLocation.MonsterZoneFaceUpAttack ||
-                Location == CardLocation.MonsterZoneFaceUpDefense;
+                Location == CardLocation.MonsterZone &&
+                (Position == CardPosition.FaceUpAttack ||
+                 Position == CardPosition.FaceUpDefense);
         }
 
         public MonsterAttribute Attribute { get; set; }

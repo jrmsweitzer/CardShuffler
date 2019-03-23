@@ -256,7 +256,8 @@ namespace CardShuffler.Models.Yugioh.Phases
             var zone = player.Field.SpellTrapZones.FirstOrDefault(z => z.SpellTrapCard == null);
             zone.IsFaceup = false;
             zone.SpellTrapCard = trap;
-            trap.Location = CardLocation.FieldSpellZoneFaceDown;
+            trap.Location = CardLocation.FieldSpellZone;
+            trap.Position = CardPosition.FaceDown;
             return true;
         }
 
@@ -273,7 +274,8 @@ namespace CardShuffler.Models.Yugioh.Phases
             var zone = player.Field.SpellTrapZones.FirstOrDefault(z => z.SpellTrapCard == null);
             zone.IsFaceup = false;
             zone.SpellTrapCard = spell;
-            spell.Location = CardLocation.FieldSpellZoneFaceDown;
+            spell.Location = CardLocation.FieldSpellZone;
+            spell.Position = CardPosition.FaceDown;
             return true;
         }
     }

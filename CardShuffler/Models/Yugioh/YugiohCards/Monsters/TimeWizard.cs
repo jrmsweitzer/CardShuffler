@@ -18,8 +18,9 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
 
             CanActivateIgnitionEffect =
                 Owner == TurnPlayer &&
-                ((Location == CardLocation.MonsterZoneFaceUpAttack) ||
-                (Location == CardLocation.MonsterZoneFaceUpDefense));
+                Location == CardLocation.MonsterZone &&
+                IsRevealed == true;
+
             IgnitionEffect = () =>
             {
                 var random = new Random();

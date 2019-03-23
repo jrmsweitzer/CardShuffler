@@ -47,8 +47,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             if (targets == null || targets.Count() != 1) return false;
             var target = targets[0];
             if (target.Name != "The Flute of Summoning Dragon") return false;
-            if (target.Location == CardLocation.DeckFaceDown ||
-                target.Location == CardLocation.DeckFaceUp)
+            if (target.Location == CardLocation.Deck)
             {
                 TurnPlayer.Deck.AddCardToHand(TurnPlayer.Hand, target);
                 HasAlreadyActivated = true;
@@ -58,7 +57,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             {
                 TurnPlayer.DiscardPile.Remove(target);
                 TurnPlayer.Hand.Add(target);
-                target.Location = CardLocation.HandHidden;
+                target.Location = CardLocation.Hand;
                 HasAlreadyActivated = true;
                 return true;
             }
@@ -76,8 +75,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             if (targets == null || targets.Count() != 1) return false;
             var target = targets[0];
             if (target.Name != "Lord of D.") return false;
-            if (target.Location == CardLocation.DeckFaceDown ||
-                target.Location == CardLocation.DeckFaceUp)
+            if (target.Location == CardLocation.Deck)
             {
                 TurnPlayer.Deck.AddCardToHand(TurnPlayer.Hand, target);
                 HasAlreadyActivated = true;
@@ -87,7 +85,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             {
                 TurnPlayer.DiscardPile.Remove(target);
                 TurnPlayer.Hand.Add(target);
-                target.Location = CardLocation.HandHidden;
+                target.Location = CardLocation.Hand;
                 HasAlreadyActivated = true;
                 return true;
             }

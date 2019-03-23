@@ -2,20 +2,12 @@
 {
     public enum CardLocation
     {
-        DeckFaceUp,
-        DeckFaceDown,
-        HandRevealed,
-        HandHidden,
-        FieldSpellZoneFaceDown,
-        FieldSpellZoneFaceUp,
-        SpellTrapZoneFaceDown,
-        SpellTrapZoneFaceUp,
-        MonsterZoneFaceDownAttack,
-        MonsterZoneFaceDownDefense,
-        MonsterZoneFaceUpAttack,
-        MonsterZoneFaceUpDefense,
+        Deck,
+        Hand,
+        FieldSpellZone,
+        SpellTrapZone,
+        MonsterZone,
         Graveyard,
-        BanishedFaceUp,
-        BanishedFaceDown
+        Banished
     }
 }

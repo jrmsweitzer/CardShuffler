@@ -39,7 +39,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
                 FieldSpell = this,
                 IsFaceup = true
             };
-            this.Location = CardLocation.FieldSpellZoneFaceUp;
+            this.Location = CardLocation.FieldSpellZone;
+            this.Position = CardPosition.FaceUp;
             Game.FieldBuffs.Add(WingedBeastBoost);
             return true;
         }

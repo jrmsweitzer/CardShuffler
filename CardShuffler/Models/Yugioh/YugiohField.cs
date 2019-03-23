@@ -16,9 +16,10 @@ namespace CardShuffler.Models.Yugioh
         }
         public List<Monster> GetMonstersFaceUp()
         {
-            return MonsterZones.Where(zone => zone.Monster != null &&
-                (zone.Monster.Location == CardLocation.MonsterZoneFaceUpAttack ||
-                    zone.Monster.Location == CardLocation.MonsterZoneFaceUpDefense))
+            return MonsterZones.Where(zone => 
+                zone.Monster != null &&
+               (zone.Monster.Position == CardPosition.FaceUpAttack ||
+                zone.Monster.Position == CardPosition.FaceUpDefense))
                     .Select(zone => zone.Monster).ToList();
         }
         public List<Monster> GetMonstersInAttackPosition()
@@ -52,19 +53,20 @@ namespace CardShuffler.Models.Yugioh
             MonsterZones[zIndex].Monster = monster;
             MonsterZones[zIndex].AttackPosition = atkPosition;
             MonsterZones[zIndex].FaceUp = faceUp;
+            monster.Location = CardLocation.MonsterZone;
             if (faceUp)
             {
                 if (atkPosition)
-                    monster.Location = CardLocation.MonsterZoneFaceUpAttack;
+                    monster.Position = CardPosition.FaceUpAttack;
                 else
-                    monster.Location = CardLocation.MonsterZoneFaceUpDefense;
+                    monster.Position = CardPosition.FaceUpDefense;
             }
             else
             {
                 if (atkPosition)
-                    monster.Location = CardLocation.MonsterZoneFaceDownAttack;
+                    monster.Position = CardPosition.FaceDownAttack;
                 else
-                    monster.Location = CardLocation.MonsterZoneFaceDownDefense;
+                    monster.Position = CardPosition.FaceDownDefense;
             }            
         }
         public void PlaceSpellTrapFaceup(SpellTrap st)
@@ -72,7 +74,8 @@ namespace CardShuffler.Models.Yugioh
             var zIndex = SpellTrapZones.ToList().FindIndex(z => z.SpellTrapCard == null);
             SpellTrapZones[zIndex].SpellTrapCard = st;
             SpellTrapZones[zIndex].IsFaceup = true;
-            st.Location = CardLocation.SpellTrapZoneFaceUp;
+            st.Location = CardLocation.SpellTrapZone;
+            st.IsRevealed = true;
         }
         public void RemoveSpellTrap(SpellTrap st)
         {
@@ -84,7 +87,8 @@ namespace CardShuffler.Models.Yugioh
             var zIndex = SpellTrapZones.ToList().FindIndex(z => z.SpellTrapCard == null);
             SpellTrapZones[zIndex].SpellTrapCard = st;
             SpellTrapZones[zIndex].IsFaceup = false;
-            st.Location = CardLocation.SpellTrapZoneFaceDown;
+            st.Location = CardLocation.SpellTrapZone;
+            st.IsRevealed = false;
         }
         public MonsterZone[] MonsterZones { get; set; } = new MonsterZone[3]
         {
@@ -111,7 +115,8 @@ namespace CardShuffler.Models.Yugioh
             MonsterZones[freeZone].Monster = monster;
             MonsterZones[freeZone].AttackPosition = true;
             MonsterZones[freeZone].FaceUp = true;
-            monster.Location = CardLocation.MonsterZoneFaceUpAttack;
+            monster.Location = CardLocation.MonsterZone;
+            monster.Position = CardPosition.FaceUpAttack;
         }
 
         public void NormalSet(Monster monster)
@@ -124,7 +129,8 @@ namespace CardShuffler.Models.Yugioh
             MonsterZones[freeZone].Monster = monster;
             MonsterZones[freeZone].AttackPosition = false;
             MonsterZones[freeZone].FaceUp = false;
-            monster.Location = CardLocation.MonsterZoneFaceDownDefense;
+            monster.Location = CardLocation.MonsterZone;
+            monster.Position = CardPosition.FaceDownDefense;
         }
 
         public void TributeSummon(Monster monster)

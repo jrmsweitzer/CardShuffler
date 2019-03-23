@@ -17,7 +17,7 @@ namespace CardShuffler.Models
         public Card DrawACardFromTop(Hand hand)
         {
             var card = Cards[0];
-            card.Location = Yugioh.CardLocation.HandHidden;
+            card.Location = Yugioh.CardLocation.Hand;
             hand.Add(card);
             Cards.RemoveAt(0);
             return card;
@@ -31,7 +31,7 @@ namespace CardShuffler.Models
         {
             var index = Cards.Count() - 1;
             var card = Cards[index];
-            card.Location = Yugioh.CardLocation.HandHidden;
+            card.Location = Yugioh.CardLocation.Hand;
             hand.Add(card);
             Cards.RemoveAt(index);
         }
@@ -51,7 +51,7 @@ namespace CardShuffler.Models
             var cardToAdd = Cards.FirstOrDefault(c => c.Name == cardName);
             if (cardToAdd == null)
                 throw new Exception("Cannot find card by name " + cardName);
-            cardToAdd.Location = Yugioh.CardLocation.HandHidden;
+            cardToAdd.Location = Yugioh.CardLocation.Hand;
             Cards.Remove(cardToAdd);
             hand.Add(cardToAdd);
             return cardToAdd;
@@ -59,7 +59,7 @@ namespace CardShuffler.Models
 
         public Card AddCardToHand(Hand hand, Card card)
         {
-            card.Location = Yugioh.CardLocation.HandHidden;
+            card.Location = Yugioh.CardLocation.Hand;
             Cards.Remove(card);
             hand.Add(card);
             return card;
