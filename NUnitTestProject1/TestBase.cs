@@ -16,6 +16,7 @@ namespace Tests
         protected Deck BlueEyesDeck;
         protected Deck AmazonessDeck;
         protected Deck HarpieDeck;
+        protected Deck TribalSynergyDeck;
         protected Deck ToonDeck;
         protected YugiohGamePlayer Kaiba;
         protected YugiohGamePlayer Mai;
@@ -129,6 +130,32 @@ namespace Tests
                     GetCardByName("Toon World"),
                     GetCardByName("Toon World"),
                     GetCardByName("Toon Rollback"),
+                    GetCardByName("Windstorm of Etaqua"),
+                    GetCardByName("Windstorm of Etaqua"),
+                    GetCardByName("Windstorm of Etaqua"),
+                    GetCardByName("Kunai With Chain"),
+                    GetCardByName("Kunai With Chain"),
+                    GetCardByName("Kunai With Chain"),
+                }
+            };
+            TribalSynergyDeck = new Deck()
+            {
+                Cards = new List<Card>()
+                {
+                    GetCardByName("Amazoness Swords Woman"),
+                    GetCardByName("Amazoness Swords Woman"),
+                    GetCardByName("Amazoness Swords Woman"),
+                    GetCardByName("Amazoness Sage"),
+                    GetCardByName("Amazoness Sage"),
+                    GetCardByName("Amazoness Chain Master"),
+                    GetCardByName("Amazoness Chain Master"),
+                    GetCardByName("Harpie Lady 1"),
+                    GetCardByName("Harpie Lady 1"),
+                    GetCardByName("Harpie Lady 1"),
+                    GetCardByName("Amazoness Heirloom"),
+                    GetCardByName("Amazoness Heirloom"),
+                    GetCardByName("Amazoness Village"),
+                    GetCardByName("Amazoness Village"),
                     GetCardByName("Windstorm of Etaqua"),
                     GetCardByName("Windstorm of Etaqua"),
                     GetCardByName("Windstorm of Etaqua"),

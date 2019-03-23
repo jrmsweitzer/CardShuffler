@@ -292,6 +292,8 @@ namespace Tests.MainPhaseTests.NormalSummon
             Assert.AreEqual(2, Kaiba.DiscardPile.Count);
             Assert.IsTrue(Kaiba.DiscardPile.Contains(BattleOx));
             Assert.IsTrue(Kaiba.DiscardPile.Contains(TwinHeadedBehemoth));
+            Assert.AreEqual(CardLocation.Graveyard, BattleOx.Location);
+            Assert.AreEqual(CardLocation.Graveyard, TwinHeadedBehemoth.Location);
         }
 
         [Test]
@@ -314,6 +316,8 @@ namespace Tests.MainPhaseTests.NormalSummon
             Assert.AreEqual(2, Kaiba.DiscardPile.Count);
             Assert.IsTrue(Kaiba.DiscardPile.Contains(BattleOx));
             Assert.IsTrue(Kaiba.DiscardPile.Contains(TwinHeadedBehemoth));
+            Assert.AreEqual(CardLocation.Graveyard, BattleOx.Location);
+            Assert.AreEqual(CardLocation.Graveyard, TwinHeadedBehemoth.Location);
         }
 
         [Test]

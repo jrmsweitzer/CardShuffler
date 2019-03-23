@@ -113,6 +113,7 @@ namespace CardShuffler.Models.Yugioh.Phases
                         Console.WriteLine($"{pZone.Monster.Name} was destroyed in battle by {oZone.Monster.Name}");
                         Console.WriteLine($"{player.Name} lost {(-1 * difference)} LP");
                         player.DiscardPile.Add(pZone.Monster);
+                        pZone.Monster.Location = CardLocation.Graveyard;
                         player.Field.MonsterZones[pZoneIndex] = new MonsterZone();
                         player.LifePoints += difference;
                     }
@@ -121,15 +122,18 @@ namespace CardShuffler.Models.Yugioh.Phases
                         // tie, they both lose
                         Console.WriteLine($"{pZone.Monster.Name} and {oZone.Monster.Name} destroyed each other in battle");
                         player.DiscardPile.Add(pZone.Monster);
+                        pZone.Monster.Location = CardLocation.Graveyard;
                         player.Field.MonsterZones[pZoneIndex] = new MonsterZone();
                         opponent.DiscardPile.Add(oZone.Monster);
+                        oZone.Monster.Location = CardLocation.Graveyard;
                         opponent.Field.MonsterZones[oZoneIndex] = new MonsterZone();
                     }
                     else
                     {
                         // player wins
                         Console.WriteLine($"{oZone.Monster.Name} was destroyed in battle by {pZone.Monster.Name}");
-                        opponent.DiscardPile.Add(pZone.Monster);
+                        opponent.DiscardPile.Add(oZone.Monster);
+                        oZone.Monster.Location = CardLocation.Graveyard;
                         opponent.Field.MonsterZones[oZoneIndex] = new MonsterZone();
                         opponent.LifePoints -= difference;
                         Console.WriteLine($"{opponent.Name} lost {difference} LP");
@@ -137,6 +141,15 @@ namespace CardShuffler.Models.Yugioh.Phases
                 }
                 else
                 {
+                    if (oZone.Monster.Position == CardPosition.FaceDownDefense)
+                    {
+                        oZone.Monster.Position = CardPosition.FaceUpDefense;
+                        if (oZone.Monster is EffectMonster effectMonster &&
+                                effectMonster.HasFlipEffect)
+                        {
+                            effectMonster.FlipEffect.Invoke();
+                        }
+                    }
                     // opposing monster in defense
                     var opposingDef = oZone.Monster.DEF;
                     if (offense < opposingDef)
@@ -152,7 +165,8 @@ namespace CardShuffler.Models.Yugioh.Phases
                     else
                     {
                         Console.WriteLine($"{oZone.Monster.Name} was destroyed in battle by {pZone.Monster.Name}");
-                        opponent.DiscardPile.Add(pZone.Monster);
+                        opponent.DiscardPile.Add(oZone.Monster);
+                        oZone.Monster.Location = CardLocation.Graveyard;
                         opponent.Field.MonsterZones[oZoneIndex] = new MonsterZone();
                     }
                 }

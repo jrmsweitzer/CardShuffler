@@ -1,236 +1,288 @@
-﻿//using CardShuffler.Models;
-//using CardShuffler.Models.Yugioh;
-//using CardShuffler.Models.Yugioh.Phases;
-//using CardShuffler.Models.Yugioh.YugiohCardTypes;
-//using NUnit.Framework;
-//using System.Collections.Generic;
+﻿using CardShuffler.Models;
+using CardShuffler.Models.Yugioh;
+using CardShuffler.Models.Yugioh.Phases;
+using CardShuffler.Models.Yugioh.YugiohCardTypes;
+using NUnit.Framework;
+using System.Collections.Generic;
 
-//namespace Tests.BattlePhaseTests
-//{
-//    public class BattlePhaseTests : TestBase
-//    {
-//        Monster BattleOx, BattleOx2, BattleOx3, TwinHeadedBehemoth, LusterDragon2, BlueEyesWhiteDragon;
+namespace Tests.BattlePhaseTests
+{
+    public class BattlePhaseTests : TestBase
+    {
+        Monster BattleOx, BattleOx2, BattleOx3, TwinHeadedBehemoth, LusterDragon2, BlueEyesWhiteDragon;
 
-//        [SetUp]
-//        public void Setup()
-//        {
-//            var kaibaDeck = new Deck()
-//            {
-//                Cards = new List<Card>()
-//                {
-//                    (Monster)GetCardByName("Battle Ox"),
-//                    (Monster)GetCardByName("Battle Ox"),
-//                    (Monster)GetCardByName("Battle Ox"),
-//                    (Monster)GetCardByName("Twin-Headed Behemoth"),
-//                    (Monster)GetCardByName("Luster Dragon #2"),
-//                    (Monster)GetCardByName("Blue-Eyes White Dragon")
-//                }
-//            };
+        [SetUp]
+        public void Setup()
+        {
+            var kaibaDeck = new Deck()
+            {
+                Cards = new List<Card>()
+                {
+                    (Monster)GetCardByName("Battle Ox"),
+                    (Monster)GetCardByName("Twin-Headed Behemoth"),
+                }
+            };
 
-//            Kaiba.Deck = kaibaDeck;
-//            BattleOx = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Battle Ox");
-//            BattleOx2 = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Battle Ox");
-//            BattleOx3 = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Battle Ox");
-//            TwinHeadedBehemoth = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Twin-Headed Behemoth");
-//            LusterDragon2 = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Luster Dragon #2");
-//            BlueEyesWhiteDragon = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Blue-Eyes White Dragon");
+            Kaiba.Deck = kaibaDeck;
+            BattleOx = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Battle Ox");
+            TwinHeadedBehemoth = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Twin-Headed Behemoth");
+        }
 
-//        [Test]
-//        public void HigherAttackAgainstLowerAttackShouldWin()
-//        {
-//            Kaiba.Field.MonsterZones[0].Monster = BattleOx;
-//            BattleOx.Location = CardLocation.MonsterZone;
-//            BattleOx.Position = CardPosition.FaceUpAttack;
+        [Test]
+        public void HigherAttackAgainstLowerAttackShouldWin()
+        {
+            Game.TurnPlayer = Kaiba;
+            new MainPhase1(Game).NormalSummonWithoutTribute(BattleOx);
+            Game.TurnPlayer = Mai;
 
-//            Mai.Field.MonsterZones[0].Monster = AmazonessChainMaster;
-//            AmazonessChainMaster.Location = CardLocation.MonsterZone;
-//            AmazonessChainMaster.Position = CardPosition.FaceUpAttack;
+            Mai.Deck = AmazonessDeck;
+            var AmazonessChainMaster = (Monster)Mai.Deck.AddCardToHand(Mai.Hand, "Amazoness Chain Master");
+            new MainPhase1(Game).NormalSummonWithoutTribute(AmazonessChainMaster);
 
-//            Assert.AreEqual(1700, BattleOx.ATK);
-//            Assert.AreEqual(1500, AmazonessChainMaster.ATK);
+            // before attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, BattleOx.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, BattleOx.Position);
+            Assert.AreEqual(1700, BattleOx.ATK);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // before attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, AmazonessChainMaster.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, AmazonessChainMaster.Position);
+            Assert.AreEqual(1500, AmazonessChainMaster.ATK);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
 
-//            // before attack
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
+            Game.TurnPlayer = Kaiba;
+            var battlePhase = new BattlePhase();
+            battlePhase.Attack(Kaiba, BattleOx, Mai, AmazonessChainMaster);
 
-//            var battlePhase = new BattlePhase();
-//            battlePhase.Attack(Kaiba, BattleOx, Mai, AmazonessChainMaster);
+            // after attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, BattleOx.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, BattleOx.Position);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // after attack mai
+            Assert.AreEqual(3800, Mai.LifePoints);
+            Assert.AreEqual(0, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(1, Mai.DiscardPile.Count);
+            Assert.AreEqual(CardLocation.Graveyard, AmazonessChainMaster.Location);
+        }
 
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(3800, Mai.LifePoints);
-//            Assert.AreEqual(0, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(1, Mai.DiscardPile.Count);
-//        }
+        [Test]
+        public void LowerAttackAgainstHigherAttackShouldLose()
+        {
+            Game.TurnPlayer = Kaiba;
+            new MainPhase1(Game).NormalSummonWithoutTribute(BattleOx);
+            Game.TurnPlayer = Mai;
 
-//        [Test]
-//        public void LowerAttackAgainstHigherAttackShouldLose()
-//        {
-//            Kaiba.Field.MonsterZones[0].Monster = BattleOx;
-//            BattleOx.Location = CardLocation.MonsterZone;
-//            BattleOx.Position = CardPosition.FaceUpAttack;
+            Mai.Deck = AmazonessDeck;
+            var AmazonessChainMaster = (Monster)Mai.Deck.AddCardToHand(Mai.Hand, "Amazoness Chain Master");
+            new MainPhase1(Game).NormalSummonWithoutTribute(AmazonessChainMaster);
 
-//            Mai.Field.MonsterZones[0].Monster = AmazonessChainMaster;
-//            AmazonessChainMaster.Location = CardLocation.MonsterZone;
-//            AmazonessChainMaster.Position = CardPosition.FaceUpAttack;
+            // before attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, BattleOx.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, BattleOx.Position);
+            Assert.AreEqual(1700, BattleOx.ATK);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // before attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, AmazonessChainMaster.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, AmazonessChainMaster.Position);
+            Assert.AreEqual(1500, AmazonessChainMaster.ATK);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
 
-//            Assert.AreEqual(1700, BattleOx.ATK);
-//            Assert.AreEqual(1500, AmazonessChainMaster.ATK);
+            var battlePhase = new BattlePhase();
+            battlePhase.Attack(Mai, AmazonessChainMaster, Kaiba, BattleOx);
 
-//            // before attack
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
+            // after attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, BattleOx.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, BattleOx.Position);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // after attack mai
+            Assert.AreEqual(3800, Mai.LifePoints);
+            Assert.AreEqual(0, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(1, Mai.DiscardPile.Count);
+            Assert.AreEqual(CardLocation.Graveyard, AmazonessChainMaster.Location);
+        }
 
-//            var battlePhase = new BattlePhase();
-//            battlePhase.Attack(Mai, AmazonessChainMaster, Kaiba, BattleOx);
+        [Test]
+        public void EqualAttackAgainstEqualAttackShouldDestroyBoth()
+        {
+            Game.TurnPlayer = Kaiba;
+            new MainPhase1(Game).NormalSummonWithoutTribute(TwinHeadedBehemoth);
+            Game.TurnPlayer = Mai;
 
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(3800, Mai.LifePoints);
-//            Assert.AreEqual(0, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(1, Mai.DiscardPile.Count);
-//        }
+            Mai.Deck = AmazonessDeck;
+            var AmazonessChainMaster = (Monster)Mai.Deck.AddCardToHand(Mai.Hand, "Amazoness Chain Master");
+            new MainPhase1(Game).NormalSummonWithoutTribute(AmazonessChainMaster);
 
-//        [Test]
-//        public void EqualAttackAgainstEqualAttackShouldDestroyBoth()
-//        {
-//            Kaiba.Field.MonsterZones[0].Monster = TwinHeadedBehemoth;
-//            TwinHeadedBehemoth.Location = CardLocation.MonsterZone;
-//            TwinHeadedBehemoth.Position = CardPosition.FaceUpAttack;
+            // before attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, TwinHeadedBehemoth.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, TwinHeadedBehemoth.Position);
+            Assert.AreEqual(1500, TwinHeadedBehemoth.ATK);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // before attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, AmazonessChainMaster.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, AmazonessChainMaster.Position);
+            Assert.AreEqual(1500, AmazonessChainMaster.ATK);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
 
-//            Mai.Field.MonsterZones[0].Monster = AmazonessChainMaster;
-//            AmazonessChainMaster.Location = CardLocation.MonsterZone;
-//            AmazonessChainMaster.Position = CardPosition.FaceUpAttack;
+            var battlePhase = new BattlePhase();
+            battlePhase.Attack(Mai, AmazonessChainMaster, Kaiba, TwinHeadedBehemoth);
 
-//            Assert.AreEqual(1500, TwinHeadedBehemoth.ATK);
-//            Assert.AreEqual(1500, AmazonessChainMaster.ATK);
+            // after attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(0, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(1, Kaiba.DiscardPile.Count);
+            Assert.AreEqual(CardLocation.Graveyard, TwinHeadedBehemoth.Location);
+            // after attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(0, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(1, Mai.DiscardPile.Count);
+            Assert.AreEqual(CardLocation.Graveyard, AmazonessChainMaster.Location);
+        }
 
-//            // before attack
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
+        [Test]
+        public void LowerDefenseAgainstHigherDefenseShouldOnlyDealDamage()
+        {
+            Game.TurnPlayer = Kaiba;
+            new MainPhase1(Game).NormalSummonWithoutTribute(TwinHeadedBehemoth);
+            Game.TurnPlayer = Mai;
 
-//            var battlePhase = new BattlePhase();
-//            battlePhase.Attack(Mai, AmazonessChainMaster, Kaiba, TwinHeadedBehemoth);
+            Mai.Deck = AmazonessDeck;
+            var AmazonessSwordsWoman = (Monster)Mai.Deck.AddCardToHand(Mai.Hand, "Amazoness Swords Woman");
+            new MainPhase1(Game).NormalSetWithoutTribute(AmazonessSwordsWoman);            
 
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(0, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(1, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(0, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(1, Mai.DiscardPile.Count);
-//        }
+            // before attack
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, TwinHeadedBehemoth.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, TwinHeadedBehemoth.Position);
+            Assert.AreEqual(1500, TwinHeadedBehemoth.ATK);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // before attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, AmazonessSwordsWoman.Location);
+            Assert.AreEqual(CardPosition.FaceDownDefense, AmazonessSwordsWoman.Position);
+            Assert.AreEqual(1600, AmazonessSwordsWoman.DEF);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
 
-//        [Test]
-//        public void LowerDefenseAgainstHigherDefenseShouldOnlyDealDamage()
-//        {
-//            Kaiba.Field.MonsterZones[0].Monster = TwinHeadedBehemoth;
-//            TwinHeadedBehemoth.Location = CardLocation.MonsterZone;
-//            TwinHeadedBehemoth.Position = CardPosition.FaceUpAttack;
+            Game.TurnPlayer = Kaiba;
+            var battlePhase = new BattlePhase();
+            battlePhase.Attack(Kaiba, TwinHeadedBehemoth, Mai, AmazonessSwordsWoman);
 
-//            Mai.Field.MonsterZones[0].Monster = AmazonessSwordsWoman;
-//            AmazonessSwordsWoman.Location = CardLocation.MonsterZone;
-//            AmazonessSwordsWoman.Position = CardPosition.FaceUpDefense;
+            // after attack kaiba
+            Assert.AreEqual(3900, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, TwinHeadedBehemoth.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, TwinHeadedBehemoth.Position);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // after attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, AmazonessSwordsWoman.Location);
+            Assert.AreEqual(CardPosition.FaceUpDefense, AmazonessSwordsWoman.Position);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
+        }
 
-//            Assert.AreEqual(1500, TwinHeadedBehemoth.ATK);
-//            Assert.AreEqual(1600, AmazonessSwordsWoman.DEF);
+        [Test]
+        public void HigherAttackAgainstLowerDefenseShouldWin()
+        {
+            Game.TurnPlayer = Kaiba;
+            new MainPhase1(Game).NormalSetWithoutTribute(BattleOx);
+            Game.TurnPlayer = Mai;
 
-//            // before attack
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
+            Mai.Deck = AmazonessDeck;
+            var AmazonessSwordsWoman = (Monster)Mai.Deck.AddCardToHand(Mai.Hand, "Amazoness Swords Woman");
+            new MainPhase1(Game).NormalSummonWithoutTribute(AmazonessSwordsWoman);
 
-//            var battlePhase = new BattlePhase();
-//            battlePhase.Attack(Kaiba, TwinHeadedBehemoth, Mai, AmazonessSwordsWoman);
+            // before attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, BattleOx.Location);
+            Assert.AreEqual(CardPosition.FaceDownDefense, BattleOx.Position);
+            Assert.AreEqual(1000, BattleOx.DEF);
+            // before attack mai
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, AmazonessSwordsWoman.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, AmazonessSwordsWoman.Position);
+            Assert.AreEqual(1500, AmazonessSwordsWoman.ATK);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
 
-//            Assert.AreEqual(3900, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
-//        }
+            var battlePhase = new BattlePhase();
+            battlePhase.Attack(Mai, AmazonessSwordsWoman, Kaiba, BattleOx);
 
-//        [Test]
-//        public void HigherAttackAgianstLowerDefenseShouldWin()
-//        {
-//            Kaiba.Field.MonsterZones[0].Monster = BattleOx;
-//            BattleOx.Location = CardLocation.MonsterZone;
-//            BattleOx.Position = CardPosition.FaceUpDefense;
+            // after attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(0, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(1, Kaiba.DiscardPile.Count);
+            Assert.AreEqual(CardLocation.Graveyard, BattleOx.Location);
+            // after attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, AmazonessSwordsWoman.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, AmazonessSwordsWoman.Position);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
+        }
 
-//            Mai.Field.MonsterZones[0].Monster = AmazonessSwordsWoman;
-//            AmazonessSwordsWoman.Location = CardLocation.MonsterZone;
-//            AmazonessSwordsWoman.Position = CardPosition.FaceUpAttack;
+        [Test]
+        public void EqualAttackAgainstEqualDefenseShouldTie()
+        {
+            Game.TurnPlayer = Kaiba;
+            Kaiba.Deck = HarpieDeck;
+            var kaibaBirdface = (Monster)Kaiba.Deck.AddCardToHand(Kaiba.Hand, "Birdface");
+            new MainPhase1(Game).NormalSetWithoutTribute(kaibaBirdface);
 
-//            Assert.AreEqual(1000, BattleOx.DEF);
-//            Assert.AreEqual(1500, AmazonessSwordsWoman.ATK);
+            Game.TurnPlayer = Mai;
+            Mai.Deck = HarpieDeck;
+            var MaiBirdface = (Monster)Mai.Deck.AddCardToHand(Mai.Hand, "Birdface");
+            new MainPhase1(Game).NormalSummonWithoutTribute(MaiBirdface);
 
-//            // before attack
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
+            // before attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, kaibaBirdface.Location);
+            Assert.AreEqual(CardPosition.FaceDownDefense, kaibaBirdface.Position);
+            Assert.AreEqual(1600, kaibaBirdface.DEF);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // before attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, MaiBirdface.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, MaiBirdface.Position);
+            Assert.AreEqual(1600, MaiBirdface.DEF);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
 
-//            var battlePhase = new BattlePhase();
-//            battlePhase.Attack(Mai, AmazonessSwordsWoman, Kaiba, BattleOx);
+            var battlePhase = new BattlePhase();
+            battlePhase.Attack(Mai, MaiBirdface, Kaiba, kaibaBirdface);
 
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(0, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(1, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
-//        }
-
-//        [Test]
-//        public void EqualAttackAgainstEqualDefenseShouldTie()
-//        {
-//            Kaiba.Field.MonsterZones[0].Monster = Birdface;
-//            Birdface.Location = CardLocation.MonsterZone;
-//            Birdface.Position = CardPosition.FaceUpDefense;
-
-//            Mai.Field.MonsterZones[0].Monster = Birdface;
-//            Birdface.Location = CardLocation.MonsterZone;
-//            Birdface.Position = CardPosition.FaceUpAttack;
-
-//            Assert.AreEqual(1600, Birdface.DEF);
-//            Assert.AreEqual(1600, Birdface.ATK);
-
-//            // before attack
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
-
-//            var battlePhase = new BattlePhase();
-//            battlePhase.Attack(Mai, Birdface, Kaiba, Birdface);
-
-//            Assert.AreEqual(4000, Kaiba.LifePoints);
-//            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-//            Assert.AreEqual(4000, Mai.LifePoints);
-//            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
-//            Assert.AreEqual(0, Mai.DiscardPile.Count);
-//        }
-//    }
-//}
+            // after attack kaiba
+            Assert.AreEqual(4000, Kaiba.LifePoints);
+            Assert.AreEqual(1, Kaiba.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, kaibaBirdface.Location);
+            Assert.AreEqual(CardPosition.FaceUpDefense, kaibaBirdface.Position);
+            Assert.AreEqual(0, Kaiba.DiscardPile.Count);
+            // after attack mai
+            Assert.AreEqual(4000, Mai.LifePoints);
+            Assert.AreEqual(1, Mai.Field.GetMonsters().Count);
+            Assert.AreEqual(CardLocation.MonsterZone, MaiBirdface.Location);
+            Assert.AreEqual(CardPosition.FaceUpAttack, MaiBirdface.Position);
+            Assert.AreEqual(0, Mai.DiscardPile.Count);
+        }
+    }
+}
