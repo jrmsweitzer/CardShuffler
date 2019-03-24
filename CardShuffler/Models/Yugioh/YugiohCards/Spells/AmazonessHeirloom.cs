@@ -10,6 +10,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public AmazonessHeirloom(YugiohGame game) : base(game)
         {
             Name = "Amazoness Heirloom";
+            SetCodes.Add("SS02-ENC14");
+            CardCode = 79965360;
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

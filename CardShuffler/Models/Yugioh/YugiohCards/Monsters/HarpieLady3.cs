@@ -1,12 +1,12 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Monsters
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class HarpieLady3 : EffectMonster
     {
         public HarpieLady3(YugiohGame game) : base(game)
         {
-            Name = "Harpie Lady 23;
+            Name = "Harpie Lady 3";
             Attribute = MonsterAttribute.Wind;
             Level = 4;
             Type = MonsterType.WingedBeast;

@@ -37,5 +37,13 @@ namespace Tests
 
             Assert.IsTrue(cards.Any(c => c.Name == "Dark Magician"));
         }
+
+        [Test]
+        public void SearchByCardType()
+        {
+            var monsters = AllCardsInGame.Where(c => c is Monster);
+            Assert.IsNotNull(monsters);
+            Assert.IsTrue(monsters.Count() == 53);
+        }
     }
 }
