@@ -10,5 +10,10 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
         {
             SpellType = SpellType.Ritual;
         }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

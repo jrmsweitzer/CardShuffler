@@ -17,6 +17,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public AmazonessVillage(YugiohGame game) : base(game)
         {
             Name = "Amazoness Village";
+            SetCodes.Add("SS02-ENV03");
+            CardCode = 00712559;
         }
 
         public override bool Activate(params object[] targets)
