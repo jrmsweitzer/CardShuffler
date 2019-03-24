@@ -12,6 +12,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             Level = 4;
             ATK = 1600;
             DEF = 1600;
+            SetCodes.Add("SS02-ENC08");
+            CardCode = 45547649;
         }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -16,6 +13,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             Type = MonsterType.Spellcaster;
             ATK = GetAttack(); 
             DEF = 1700;
+            SetCodes.Add("SS01-ENA04");
+            CardCode = 38033121;
         }
 
         private int GetAttack()
