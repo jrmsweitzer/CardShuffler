@@ -7,6 +7,11 @@
             TrapType = TrapType.Counter;
         }
 
+        public override string ToString()
+        {
+            return $"{Name} - Counter Trap";
+        }
+
         public override bool CanActivate() => throw new System.NotImplementedException();
     }
 }

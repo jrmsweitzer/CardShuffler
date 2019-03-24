@@ -8,6 +8,10 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
         {
             SpellType = SpellType.Continuous;
         }
-        
+
+        public override string ToString()
+        {
+            return $"{Name} - Continuous Spell";
+        }
     }
 }

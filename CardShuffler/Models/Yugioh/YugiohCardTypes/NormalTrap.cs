@@ -11,6 +11,11 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
             TrapType = TrapType.Normal;
         }
 
+        public override string ToString()
+        {
+            return $"{Name} - Normal Trap";
+        }
+
         public override bool CanActivate() => throw new NotImplementedException();
     }
 }

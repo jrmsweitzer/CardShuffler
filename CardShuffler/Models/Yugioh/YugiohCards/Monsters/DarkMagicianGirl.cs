@@ -14,12 +14,21 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             Attribute = MonsterAttribute.Dark;
             Level = 6;
             Type = MonsterType.Spellcaster;
-            ATK = 2000 +
+            ATK = GetAttack(); 
+            DEF = 1700;
+        }
+
+        private int GetAttack()
+        {
+            if (TurnPlayer == null)
+                return 2000;
+            if (DefendingPlayer == null)
+                return 2000;
+            return 2000 +
                  (TurnPlayer.DiscardPile.Where(card => card is Monster monster && monster.Name == "Dark Magician").Count() * 300) +
                  (TurnPlayer.DiscardPile.Where(card => card is Monster monster && monster.Name == "Magician of Black Chaos").Count() * 300) +
                  (DefendingPlayer.DiscardPile.Where(card => card is Monster monster && monster.Name == "Dark Magician").Count() * 300) +
                  (DefendingPlayer.DiscardPile.Where(card => card is Monster monster && monster.Name == "Magician of Black Chaos").Count() * 300);
-            DEF = 1700;
         }
     }
 }

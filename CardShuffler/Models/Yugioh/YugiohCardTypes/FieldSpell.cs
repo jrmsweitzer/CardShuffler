@@ -10,6 +10,11 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
             SpellType = SpellType.Field;
         }
 
+        public override string ToString()
+        {
+            return $"{Name} - Field Spell";
+        }
+
         public abstract void WhenRemoved();
     }
 }

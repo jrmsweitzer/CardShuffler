@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class WildTornado : Trap
+    public class WildTornado : NormalTrap
     {
         public WildTornado(YugiohGame game) : base(game)
         {

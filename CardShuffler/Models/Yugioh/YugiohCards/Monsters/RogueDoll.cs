@@ -1,7 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -15,6 +12,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             Type = MonsterType.Spellcaster;
             ATK = 1600;
             DEF = 1000;
+            SetCodes.Add("SS01-ENA03");
+            SetCodes.Add("SS01-ENC01");
         }
     }
 }

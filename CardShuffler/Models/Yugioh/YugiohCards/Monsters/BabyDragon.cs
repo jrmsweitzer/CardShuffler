@@ -5,18 +5,18 @@ using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class LusterDragon2 : NormalMonster
+    public class BabyDragon : NormalMonster
     {
-        public LusterDragon2(YugiohGame game) : base(game)
+        public BabyDragon(YugiohGame game) : base(game)
         {
-            Name = "Luster Dragon #2";
+            Name = "Baby Dragon";
+            Level = 3;
             Attribute = MonsterAttribute.Wind;
-            Level = 6;
             Type = MonsterType.Dragon;
-            ATK = 2400;
-            DEF = 1400;
-            SetCodes.Add("SS02-ENA04");
-            CardCode = 17658803;
+            ATK = 1200;
+            DEF = 700;
+            SetCodes.Add("SS02-ENB06");
+            CardCode = 88819587;
         }
     }
 }

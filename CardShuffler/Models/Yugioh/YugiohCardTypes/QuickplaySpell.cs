@@ -11,6 +11,11 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
             SpellType = SpellType.QuickPlay;
         }
 
+        public override string ToString()
+        {
+            return $"{Name} - Quickplay Spell";
+        }
+
         public int TurnSet { get; set; } = -1;
 
         public override bool CanActivate()

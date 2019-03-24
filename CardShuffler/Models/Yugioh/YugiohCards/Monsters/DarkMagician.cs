@@ -15,6 +15,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             Type = MonsterType.Spellcaster;
             ATK = 2500;
             DEF = 2100;
+            SetCodes.Add("SS01-ENA01");
+            CardCode = 46986414;
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -15,6 +12,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             Type = MonsterType.Dragon;
             ATK = 2400;
             DEF = 2000;
+            SetCodes.Add("SS02-ENB01");
+            CardCode = 74677422;
         }
     }
 }

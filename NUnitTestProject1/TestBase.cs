@@ -5,6 +5,7 @@ using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Tests
@@ -12,7 +13,7 @@ namespace Tests
     public class TestBase
     {
         protected YugiohGame Game;
-        private List<Card> AllCardsInGame;
+        protected List<YugiohGameCard> AllCardsInGame;
         protected Deck BlueEyesDeck;
         protected Deck AmazonessDeck;
         protected Deck HarpieDeck;
@@ -26,13 +27,7 @@ namespace Tests
         public void SetUp()
         {
             Game = new YugiohGame();
-            var monsters = MonsterList.GetMonsters(Game);
-            var traps = TrapList.GetTraps(Game);
-            var spells = SpellList.GetSpells(Game);
-            AllCardsInGame = new List<Card>();
-            AllCardsInGame.AddRange(monsters);
-            AllCardsInGame.AddRange(spells);
-            AllCardsInGame.AddRange(traps);
+            AllCardsInGame = BuildCardsFromFiles(Game);
 
             BlueEyesDeck = new Deck()
             {
@@ -189,25 +184,21 @@ namespace Tests
             Mai.SetDeck(AmazonessDeck);
         }
         
-        public Card GetCardByName(string name)
+        public YugiohGameCard GetCardByName(string name)
         {
             var trimmedName = name.Replace(" ", "").Replace("-", "").Replace(".", "").Replace("#","").Replace("'","").Replace(",", "");
             var fqt = $"CardShuffler.Models.Yugioh.YugiohCards.{trimmedName}";
             var type = Type.GetType(fqt);
             if (type != null)
-                return (Card)Activator.CreateInstance(type);
+                return (YugiohGameCard)Activator.CreateInstance(type);
 
             foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
             {
                 type = asm.GetType(fqt);
                 if (type != null)
-                    return (Card)Activator.CreateInstance(type, Game);
+                    return (YugiohGameCard)Activator.CreateInstance(type, Game);
             }
             return null;
-
-
-
-
             //var card = AllCardsInGame.FirstOrDefault(c => c.Name == name);
 
             //if (card is EffectMonster effectMonster)
@@ -216,6 +207,32 @@ namespace Tests
             //    return normalMonster.Clone();
 
             //return card;
+        }
+
+        public List<YugiohGameCard> BuildCardsFromFiles(YugiohGame game)
+        {
+            var list = new List<YugiohGameCard>();
+
+            var directory = @"C:\Users\Keebler\Source\Repos\CardShuffler\CardShuffler\Models\Yugioh\YugiohCards";
+            DirectoryInfo d = new DirectoryInfo(directory);
+
+            var subDirectories = d.GetDirectories();
+            foreach (var subDir in subDirectories)
+            {
+                FileInfo[] Files = subDir.GetFiles("*.cs");
+                foreach (var file in Files)
+                {
+                    var name = file.Name.Replace(".cs", "");
+                    list.Add(GetCardByName(name));
+                }
+            }            
+
+            return list;
+        }
+
+        public YugiohGameCard GetCardByCardCode(int cardCode)
+        {
+            return AllCardsInGame.FirstOrDefault(c => c.CardCode == cardCode);
         }
     }
 }

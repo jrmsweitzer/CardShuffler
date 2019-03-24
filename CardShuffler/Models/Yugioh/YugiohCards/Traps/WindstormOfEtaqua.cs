@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class WindstormofEtaqua : Trap
+    public class WindstormofEtaqua : NormalTrap
     {
         public WindstormofEtaqua(YugiohGame game) : base(game)
         {

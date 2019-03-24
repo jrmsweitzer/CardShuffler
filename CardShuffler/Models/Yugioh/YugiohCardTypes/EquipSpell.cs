@@ -8,6 +8,10 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
         {
             SpellType = SpellType.Equip;
         }
-        
+
+        public override string ToString()
+        {
+            return $"{Name} - Equip Spell";
+        }
     }
 }

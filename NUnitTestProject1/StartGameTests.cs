@@ -1,7 +1,5 @@
 using CardShuffler.Models;
-using CardShuffler.Models.Yugioh;
 using NUnit.Framework;
-using CardSpecificTests;
 using System.Linq;
 
 namespace Tests.StartGameTests
