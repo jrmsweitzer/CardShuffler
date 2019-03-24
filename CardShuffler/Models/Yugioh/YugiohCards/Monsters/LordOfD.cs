@@ -1,7 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -24,6 +21,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             EffectText = "Neither player can target monsters on the field with effects.";
             ATK = 1200;
             DEF = 1100;
+            SetCodes.Add("SS02-ENA05");
+            CardCode = 17985575;
             OnFieldEnter = () =>
             {
                 TurnPlayer.Field.FieldProtections.Add(DragonProtection);

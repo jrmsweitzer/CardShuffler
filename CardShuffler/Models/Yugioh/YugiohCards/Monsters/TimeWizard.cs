@@ -1,7 +1,5 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -15,6 +13,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             Type = MonsterType.Spellcaster;
             ATK = 500;
             DEF = 400;
+            SetCodes.Add("SS02-ENB07");
+            CardCode = 71625222;
 
             CanActivateIgnitionEffect =
                 Owner == TurnPlayer &&

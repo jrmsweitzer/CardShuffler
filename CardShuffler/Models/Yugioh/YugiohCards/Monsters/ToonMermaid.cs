@@ -1,7 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -10,6 +7,13 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public ToonMermaid(YugiohGame game) : base(game)
         {
             Name = "Toon Mermaid";
+            Attribute = MonsterAttribute.Water;
+            Level = 4;
+            Type = MonsterType.Aqua;
+            ATK = 1400;
+            DEF = 1500;
+            SetCodes.Add("SS01-ENC06");
+            CardCode = 65458948;
         }
     }
 }

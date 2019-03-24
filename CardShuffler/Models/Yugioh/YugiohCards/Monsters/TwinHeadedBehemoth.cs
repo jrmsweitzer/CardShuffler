@@ -14,6 +14,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             Level = 3;
             Type = MonsterType.Dragon;
             Attribute = MonsterAttribute.Wind;
+            SetCodes.Add("SS02-ENA06");
+            CardCode = 43586926;
         }
 
 

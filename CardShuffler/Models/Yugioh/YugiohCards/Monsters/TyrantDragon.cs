@@ -1,7 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -10,6 +7,13 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public TyrantDragon(YugiohGame game) : base(game)
         {
             Name = "Tyrant Dragon";
+            Attribute = MonsterAttribute.Fire;
+            Level = 8;
+            Type = MonsterType.Dragon;
+            ATK = 2900;
+            DEF = 2500;
+            SetCodes.Add("SS02-ENA07");
+            CardCode = 94568601;
         }
     }
 }

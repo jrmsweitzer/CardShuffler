@@ -1,5 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -19,6 +18,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             ATK = 1300;
             DEF = 1400;
             Level = 4;
+            SetCodes.Add("SS02-ENC01");
+            CardCode = 91932350;
             EffectText = "(This card's name is always treated as \"Harpie Lady\".) All WIND monsters gain 300 ATK.";
 
             OnFieldEnter = () =>
