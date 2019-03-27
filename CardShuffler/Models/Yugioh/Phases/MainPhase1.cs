@@ -35,7 +35,12 @@ namespace CardShuffler.Models.Yugioh.Phases
             if (spell.CanActivate())
             {
                 if (spell.Activate(targets))
+                {
+                    _game.TurnPlayer.Hand.Cards.Remove(spell);
+                    spell.Location = CardLocation.SpellTrapZone;
+                    spell.Position = CardPosition.FaceUp;
                     return spell.Resolve(targets);
+                }
                 else
                     return false;
             }
@@ -269,7 +274,7 @@ namespace CardShuffler.Models.Yugioh.Phases
             var zone = player.Field.SpellTrapZones.FirstOrDefault(z => z.SpellTrapCard == null);
             zone.IsFaceup = false;
             zone.SpellTrapCard = trap;
-            trap.Location = CardLocation.FieldSpellZone;
+            trap.Location = CardLocation.SpellTrapZone;
             trap.Position = CardPosition.FaceDown;
             return true;
         }

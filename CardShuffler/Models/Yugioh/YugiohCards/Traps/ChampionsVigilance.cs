@@ -1,7 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -10,6 +7,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public ChampionsVigilance(YugiohGame game) : base(game)
         {
             Name = "Champion's Vigilance";
+            SetCodes.Add("SS02-ENV01");
         }
     }
 }

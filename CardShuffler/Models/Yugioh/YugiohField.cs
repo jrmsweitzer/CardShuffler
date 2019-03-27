@@ -77,7 +77,7 @@ namespace CardShuffler.Models.Yugioh
             SpellTrapZones[zIndex].SpellTrapCard = st;
             SpellTrapZones[zIndex].IsFaceup = true;
             st.Location = CardLocation.SpellTrapZone;
-            st.IsRevealed = true;
+            st.Position = CardPosition.FaceUp;
         }
         public void RemoveSpellTrap(SpellTrap st)
         {
@@ -90,7 +90,7 @@ namespace CardShuffler.Models.Yugioh
             SpellTrapZones[zIndex].SpellTrapCard = st;
             SpellTrapZones[zIndex].IsFaceup = false;
             st.Location = CardLocation.SpellTrapZone;
-            st.IsRevealed = false;
+            st.Position = CardPosition.FaceDown;
         }
         public MonsterZone[] MonsterZones { get; set; } = new MonsterZone[3]
         {

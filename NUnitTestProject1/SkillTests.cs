@@ -23,7 +23,7 @@ namespace Tests.SkillTests
 
             // Haven't normal summoned yet
             Assert.False(dragonCaller.CanActivateFirstSkill());
-            var success = dragonCaller.ExecuteSecondSkill(legalTargets[0]);
+            var success = dragonCaller.ExecuteFirstSkill(legalTargets[0]);
             Assert.False(success);
 
             new MainPhase1(Game).NormalSummonWithoutTribute(lordOfD);

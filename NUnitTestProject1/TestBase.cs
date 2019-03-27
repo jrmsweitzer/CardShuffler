@@ -211,10 +211,13 @@ namespace Tests
 
         public List<YugiohGameCard> BuildCardsFromFiles(YugiohGame game)
         {
-            var list = new List<YugiohGameCard>();
+            var pathIndex = Directory.GetCurrentDirectory().IndexOf("NUnitTestProject");
+            var path = Path.Combine(Directory.GetCurrentDirectory().Substring(0, pathIndex), "CardShuffler", "Models", "Yugioh", "YugiohCards");
 
-            var directory = @"C:\Users\Keebler\Source\Repos\CardShuffler\CardShuffler\Models\Yugioh\YugiohCards";
-            DirectoryInfo d = new DirectoryInfo(directory);
+
+            var list = new List<YugiohGameCard>();
+            
+            DirectoryInfo d = new DirectoryInfo(path);
 
             var subDirectories = d.GetDirectories();
             foreach (var subDir in subDirectories)

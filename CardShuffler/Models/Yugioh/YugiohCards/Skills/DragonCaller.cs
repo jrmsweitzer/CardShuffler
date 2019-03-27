@@ -1,5 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +13,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
             HiddenSidetText = "Flip this card over when you activate\nthis Skill.";
             ActiveSideText = "Once per Duel, you can use 1 of the following Skills.\n* If you successfully Normal Summon \"Lord of D.\", add 1 \"The Flute\nof Summoning Dragon\" from your Deck or GY to your hand.\n* Reveal 1 \"The Flute of Summoning Dragon\" from your hand, then\nadd 1 \"Lord of D.\" from your Deck or GY to your hand.";
             SkillCount = 2;
+            Character = "Kaiba";
+            SetCodes.Add("SS02-ENAS3");
         }
 
         public new bool CanActivateFirstSkill()
@@ -44,6 +45,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
 
         public new bool ExecuteFirstSkill(params Card[] targets)
         {
+            if (!CanActivateFirstSkill()) return false;
             if (targets == null || targets.Count() != 1) return false;
             var target = targets[0];
             if (target.Name != "The Flute of Summoning Dragon") return false;

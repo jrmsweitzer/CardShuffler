@@ -10,6 +10,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
         }
         public string ActiveSideText { get; set; }
         public string HiddenSidetText { get; set; }
+        public string Character { get; set; }
         public int SkillCount;
         public bool CanActivateFirstSkill;
         public bool CanActivateSecondSkill;

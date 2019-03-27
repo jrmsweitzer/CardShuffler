@@ -7,7 +7,19 @@ namespace CardShuffler.Models
     public class GamePlayer
     {
         public string Name { get; set; }
-        public Deck Deck { get; set; }
+        private Deck _deck { get; set; }
+        public Deck Deck
+        {
+            get { return _deck; }
+            set
+            {
+                _deck = value;
+                for (int i = 0; i < _deck.Cards.Count; i++)
+                {
+                    _deck.Cards[i].Owner = this;
+                }
+            }
+        }
         public Skill Skill { get; set; }
         public Hand Hand { get; set; } = new Hand();
         public List<Card> DiscardPile { get; set; } = new List<Card>();
