@@ -43,7 +43,7 @@ namespace Tests
         {
             var monsters = AllCardsInGame.Where(c => c is Monster);
             Assert.IsNotNull(monsters);
-            Assert.IsTrue(monsters.Count() == 53);
+            Assert.IsTrue(monsters.Count() >= 55);
         }
     }
 }

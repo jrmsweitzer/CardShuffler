@@ -199,14 +199,6 @@ namespace Tests
                     return (YugiohGameCard)Activator.CreateInstance(type, Game);
             }
             return null;
-            //var card = AllCardsInGame.FirstOrDefault(c => c.Name == name);
-
-            //if (card is EffectMonster effectMonster)
-            //    return effectMonster.Clone();
-            //if (card is NormalMonster normalMonster)
-            //    return normalMonster.Clone();
-
-            //return card;
         }
 
         public List<YugiohGameCard> BuildCardsFromFiles(YugiohGame game)
