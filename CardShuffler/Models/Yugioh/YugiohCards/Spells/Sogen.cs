@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class TributeDoll : NormalSpell
+    public class Sogen : FieldSpell
     {
-        public TributeDoll(YugiohGame game) : base(game)
+        public Sogen(YugiohGame game) : base(game)
         {
-            Name = "Tribute Doll";
-            SetCodes.Add("SS01-ENA13");
+            Name = "Sogen";
+            SetCodes.Add("SS02-ENB14");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();
@@ -17,5 +17,6 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public override List<Card> GetLegalTargets() => throw new NotImplementedException();
         public override bool NeedsTarget() => throw new NotImplementedException();
         public override bool Resolve(params object[] targets) => throw new NotImplementedException();
+        public override void WhenRemoved() => throw new NotImplementedException();
     }
 }

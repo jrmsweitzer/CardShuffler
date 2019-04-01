@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public HiddenTemplesofNecrovalley(YugiohGame game) : base(game)
         {
             Name = "Hidden Temples of Necrovalley";
+            SetCodes.Add("SS01-ENB13");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

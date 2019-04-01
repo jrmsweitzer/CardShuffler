@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public Mountain(YugiohGame game) : base(game)
         {
             Name = "Mountain";
+            SetCodes.Add("SS02-ENA14");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

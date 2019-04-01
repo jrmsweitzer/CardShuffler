@@ -1,6 +1,6 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards.Traps
+namespace CardShuffler.Models.Yugioh.YugiohCards
 {
     public class Michizure : NormalTrap
     {

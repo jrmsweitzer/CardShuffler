@@ -7,6 +7,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public MagiciansCircle(YugiohGame game) : base(game)
         {
             Name = "Magician's Circle";
+            SetCodes.Add("SS01-ENA16");
         }
     }
 }

@@ -7,6 +7,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public TheEyeofTruth(YugiohGame game) : base(game)
         {
             Name = "The Eye of Truth";
+            SetCodes.Add("SS01-ENB17");
         }
     }
 }

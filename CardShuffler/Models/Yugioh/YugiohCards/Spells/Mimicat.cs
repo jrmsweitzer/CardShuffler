@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public Mimicat(YugiohGame game) : base(game)
         {
             Name = "Mimicat";
+            SetCodes.Add("SS01-ENV03");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

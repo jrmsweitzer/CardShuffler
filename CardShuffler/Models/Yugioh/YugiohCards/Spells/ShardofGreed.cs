@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public ShardofGreed(YugiohGame game) : base(game)
         {
             Name = "Shard of Greed";
+            SetCodes.Add("SS01-ENV01");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

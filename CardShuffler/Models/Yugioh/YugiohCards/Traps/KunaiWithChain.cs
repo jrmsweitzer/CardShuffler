@@ -1,7 +1,4 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -10,13 +7,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public KunaiWithChain(YugiohGame game) : base(game)
         {
             Name = "Kunai With Chain";
+            SetCodes.Add("SS02-ENB18");
         }
-
-        public override string ToString()
-        {
-            return $"{Name} - Counter Trap";
-        }
-
-        public override bool CanActivate() => throw new NotImplementedException();
     }
 }

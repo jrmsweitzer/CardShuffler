@@ -7,6 +7,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public TrapJammer(YugiohGame game) : base(game)
         {
             Name = "Trap Jammer";
+            SetCodes.Add("SS02-ENA17");
         }
     }
 }

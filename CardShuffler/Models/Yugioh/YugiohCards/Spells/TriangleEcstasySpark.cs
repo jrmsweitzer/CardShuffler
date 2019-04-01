@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class TributeDoll : NormalSpell
+    public class TriangleEcstasySpark : NormalSpell
     {
-        public TributeDoll(YugiohGame game) : base(game)
+        public TriangleEcstasySpark(YugiohGame game) : base(game)
         {
-            Name = "Tribute Doll";
-            SetCodes.Add("SS01-ENA13");
+            Name = "Triangle Ecstacy Spark";
+            SetCodes.Add("SS02-ENC11");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

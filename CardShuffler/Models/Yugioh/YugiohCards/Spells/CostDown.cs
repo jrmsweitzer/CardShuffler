@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public CostDown(YugiohGame game) : base(game)
         {
             Name = "Cost Down";
+            SetCodes.Add("SS02-ENA12");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

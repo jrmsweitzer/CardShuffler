@@ -10,6 +10,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public ToonWorld(YugiohGame game) : base(game)
         {
             Name = "Toon World";
+            SetCodes.Add("SS01-ENC12");
         }
 
         public override bool Activate(params object[] targets)

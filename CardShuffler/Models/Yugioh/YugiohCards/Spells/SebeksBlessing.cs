@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public SebeksBlessing(YugiohGame game) : base(game)
         {
             Name = "Sebek's Blessing";
+            SetCodes.Add("SS01-ENB14");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

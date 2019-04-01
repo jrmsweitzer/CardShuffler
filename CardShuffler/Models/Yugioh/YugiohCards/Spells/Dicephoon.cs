@@ -1,7 +1,6 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
@@ -10,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public Dicephoon(YugiohGame game) : base(game)
         {
             Name = "Dicephoon";
+            SetCodes.Add("SS02-ENB15");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

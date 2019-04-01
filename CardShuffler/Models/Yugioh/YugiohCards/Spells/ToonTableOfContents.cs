@@ -11,6 +11,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public ToonTableofContents(YugiohGame game) : base(game)
         {
             Name = "Toon Table of Contents";
+            SetCodes.Add("SS01-ENC10");
         }
 
         public override List<Card> GetLegalTargets()

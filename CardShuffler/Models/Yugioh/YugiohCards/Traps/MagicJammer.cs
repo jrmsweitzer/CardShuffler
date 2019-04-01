@@ -10,6 +10,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public MagicJammer(YugiohGame game) : base(game)
         {
             Name = "Magic Jammer";
+            SetCodes.Add("SS01-ENA17");
         }
     }
 }

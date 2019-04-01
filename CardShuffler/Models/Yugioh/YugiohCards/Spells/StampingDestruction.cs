@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public StampingDestruction(YugiohGame game) : base(game)
         {
             Name = "Stamping Destruction";
+            SetCodes.Add("SS02-ENA11");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

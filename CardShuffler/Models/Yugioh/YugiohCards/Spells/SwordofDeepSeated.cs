@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public SwordofDeepSeated(YugiohGame game) : base(game)
         {
             Name = "Sword of Deep-Seated";
+            SetCodes.Add("SS01-ENC14");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

@@ -7,6 +7,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public TheGoldenApples(YugiohGame game) : base(game)
         {
             Name = "The Golden Apples";
+            SetCodes.Add("SS01-ENV02");
         }
     }
 }

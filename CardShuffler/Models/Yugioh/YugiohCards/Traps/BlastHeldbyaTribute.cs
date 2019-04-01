@@ -7,6 +7,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public BlastHeldbyaTribute(YugiohGame game) : base(game)
         {
             Name = "Blast Held by a Tribute";
+            SetCodes.Add("SS01-ENB15");
         }
     }
 }

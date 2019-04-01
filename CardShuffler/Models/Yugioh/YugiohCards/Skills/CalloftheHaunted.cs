@@ -8,6 +8,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         {
             Name = "Call of the Haunted";
             Character = "Bonz";
+            SetCodes.Add("SBLS-ENS03");
         }
     }
 }

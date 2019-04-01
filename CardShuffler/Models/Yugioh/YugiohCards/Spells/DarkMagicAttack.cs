@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public DarkMagicAttack(YugiohGame game) : base(game)
         {
             Name = "Dark Magic Attack";
+            SetCodes.Add("SS01-ENA11");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

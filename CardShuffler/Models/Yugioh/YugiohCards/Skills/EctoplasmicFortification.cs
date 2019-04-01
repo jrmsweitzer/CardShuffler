@@ -8,6 +8,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         {
             Name = "Ectoplasmic Fortification";
             Character = "Bonz";
+            SetCodes.Add("SBLS-ENS01");
         }
     }
 }

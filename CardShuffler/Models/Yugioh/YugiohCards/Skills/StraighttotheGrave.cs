@@ -8,6 +8,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         {
             Name = "Straight to the Grave";
             Character = "Bonz";
+            SetCodes.Add("SBLS-ENS02");
         }
     }
 }

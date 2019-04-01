@@ -1,15 +1,16 @@
 ﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CardShuffler.Models.Yugioh.YugiohCards
 {
-    public class TributeDoll : NormalSpell
+    public class CyberShield : EquipSpell
     {
-        public TributeDoll(YugiohGame game) : base(game)
+        public CyberShield(YugiohGame game) : base(game)
         {
-            Name = "Tribute Doll";
-            SetCodes.Add("SS01-ENA13");
+            Name = "Cyber Shield";
+            SetCodes.Add("SS02-ENC12");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

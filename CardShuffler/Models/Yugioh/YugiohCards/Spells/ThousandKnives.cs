@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public ThousandKnives(YugiohGame game) : base(game)
         {
             Name = "Thousand Knives";
+            SetCodes.Add("SS01-ENA09");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

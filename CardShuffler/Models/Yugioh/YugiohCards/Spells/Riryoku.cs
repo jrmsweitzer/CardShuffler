@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public Riryoku(YugiohGame game) : base(game)
         {
             Name = "Riryoku";
+            SetCodes.Add("SS01-ENA12");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

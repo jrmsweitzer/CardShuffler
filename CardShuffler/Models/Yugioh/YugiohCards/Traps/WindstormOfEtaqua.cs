@@ -11,6 +11,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public WindstormofEtaqua(YugiohGame game) : base(game)
         {
             Name = "Windstorm of Etaqua";
+            SetCodes.Add("SS02-ENC16");
         }
 
         public override bool CanActivate()

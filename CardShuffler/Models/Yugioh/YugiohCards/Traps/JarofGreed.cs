@@ -7,6 +7,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public JarofGreed(YugiohGame game) : base(game)
         {
             Name = "Jar of Greed";
+            SetCodes.Add("SS01-ENC16");
         }
     }
 }

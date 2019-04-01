@@ -1,7 +1,5 @@
 ﻿using CardShuffler.Models;
 using CardShuffler.Models.Yugioh;
-using CardShuffler.Models.Yugioh.YugiohCards;
-using CardShuffler.Models.Yugioh.YugiohCardTypes;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

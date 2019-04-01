@@ -16,6 +16,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public HarpiesHuntingGround(YugiohGame game) : base(game)
         {
             Name = "Harpie's Hunting Ground";
+            SetCodes.Add("SS02-ENC13");
         }        
 
         public override bool Activate(params object[] targets)

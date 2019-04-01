@@ -8,6 +8,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         {
             Name = "Royal Flush";
             Character = "Yami Yugi";
+            SetCodes.Add("SBLS-ENS04");
         }
     }
 }

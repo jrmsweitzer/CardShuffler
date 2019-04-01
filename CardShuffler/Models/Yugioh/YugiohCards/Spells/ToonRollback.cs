@@ -8,6 +8,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public ToonRollback(YugiohGame game) : base(game)
         {
             Name = "Toon Rollback";
+            SetCodes.Add("SS01-ENC11");
         }
 
         public override bool Activate(params object[] targets) => throw new System.NotImplementedException();

@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public SagesStone(YugiohGame game) : base(game)
         {
             Name = "Sage's Stone";
+            SetCodes.Add("SS01-ENA10");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

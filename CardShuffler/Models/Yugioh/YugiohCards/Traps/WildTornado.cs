@@ -8,6 +8,8 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public WildTornado(YugiohGame game) : base(game)
         {
             Name = "Wild Tornado";
+            SetCodes.Add("SS01-ENC17");
+            SetCodes.Add("SS02-ENC18");
         }
 
         public override bool CanActivate()

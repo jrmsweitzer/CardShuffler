@@ -10,5 +10,6 @@ namespace CardShuffler.Models.Yugioh.YugiohCardTypes
         }
 
         public List<string> FusionMaterials { get; set; }
+        public bool CanUseFusionSubstitutes { get; set; } = true;
     }
 }

@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public TheFluteofSummoningDragon(YugiohGame game) : base(game)
         {
             Name = "The Flute of Summoning Dragon";
+            SetCodes.Add("SS02-ENA10");
         }
 
         public override bool Activate(params object[] targets)

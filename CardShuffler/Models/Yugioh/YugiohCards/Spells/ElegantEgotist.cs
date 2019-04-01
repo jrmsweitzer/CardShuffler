@@ -10,6 +10,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public ElegantEgotist(YugiohGame game) : base(game)
         {
             Name = "Elegant Egotist";
+            SetCodes.Add("SS02-ENC10");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

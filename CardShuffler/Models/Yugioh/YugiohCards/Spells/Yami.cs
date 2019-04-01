@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public Yami(YugiohGame game) : base(game)
         {
             Name = "Yami";
+            SetCodes.Add("SS01-ENC13");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

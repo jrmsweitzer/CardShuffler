@@ -8,6 +8,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         {
             Name = "Tomb of the Pharoah";
             Character = "Ishizu";
+            SetCodes.Add("SBLS-ENS06");
         }
     }
 }

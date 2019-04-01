@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public GravekeepersStele(YugiohGame game) : base(game)
         {
             Name = "Gravekeeper's Stele";
+            SetCodes.Add("SS01-ENB12");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

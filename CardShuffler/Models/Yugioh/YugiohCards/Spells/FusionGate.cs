@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public FusionGate(YugiohGame game) : base(game)
         {
             Name = "Fusion Gate";
+            SetCodes.Add("SS02-ENV02");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

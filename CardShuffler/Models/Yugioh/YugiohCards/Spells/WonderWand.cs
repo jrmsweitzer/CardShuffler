@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public WonderWand(YugiohGame game) : base(game)
         {
             Name = "Wonder Wand";
+            SetCodes.Add("SS01-ENA14");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

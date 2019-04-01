@@ -9,6 +9,7 @@ namespace CardShuffler.Models.Yugioh.YugiohCards
         public BurstStreamofDestruction(YugiohGame game) : base(game)
         {
             Name = "Burst Stream of Destruction";
+            SetCodes.Add("SS02-ENA13");
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();
