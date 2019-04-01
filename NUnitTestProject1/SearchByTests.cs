@@ -106,7 +106,7 @@ namespace Tests
         public void SBLS_50()
         {
             var arenaOflostSoulsCards = AllCardsInGame.Where(c => c.SetCodes.Any(sc => sc.Contains("SBLS-EN"))).ToList();
-            Assert.AreEqual(20, arenaOflostSoulsCards.Count);
+            Assert.AreEqual(50, arenaOflostSoulsCards.Count);
         }
 
         [Test]
@@ -114,6 +114,48 @@ namespace Tests
         {
             var cardsWithoutSetCodes = AllCardsInGame.Where(c => c.SetCodes == null);
             Assert.AreEqual(0, cardsWithoutSetCodes.Count());
+        }
+
+        [Test]
+        public void MonsterCount_84()
+        {
+            var monsters = AllCardsInGame.Where(c => c is Monster);
+            Assert.AreEqual(84, monsters.Count());
+        }
+
+        [Test]
+        public void RitualMonsterCount_1()
+        {
+            var monsters = AllCardsInGame.Where(c => c is RitualMonster);
+            Assert.AreEqual(1, monsters.Count());
+        }
+
+        [Test]
+        public void FusionMonsterCount_8()
+        {
+            var monsters = AllCardsInGame.Where(c => c is FusionMonster);
+            Assert.AreEqual(8, monsters.Count());
+        }
+
+        [Test]
+        public void SpellCount_49()
+        {
+            var spells = AllCardsInGame.Where(c => c is Spell);
+            Assert.AreEqual(49, spells.Count());
+        }
+
+        [Test]
+        public void TrapCount_25()
+        {
+            var traps = AllCardsInGame.Where(c => c is Trap);
+            Assert.AreEqual(25, traps.Count());
+        }
+
+        [Test]
+        public void SkillCount_23()
+        {
+            var skills = AllCardsInGame.Where(c => c is Skill);
+            Assert.AreEqual(23, skills.Count());
         }
     }
 }

@@ -184,7 +184,7 @@ namespace Tests
         
         public YugiohGameCard GetCardByName(string name)
         {
-            var trimmedName = name.Replace(" ", "").Replace("-", "").Replace(".", "").Replace("#","").Replace("'","").Replace(",", "");
+            var trimmedName = name.Replace(" ", "").Replace("-", "").Replace(".", "").Replace("#","").Replace("'","").Replace(",", "").Replace("&", "");
             var fqt = $"CardShuffler.Models.Yugioh.YugiohCards.{trimmedName}";
             var type = Type.GetType(fqt);
             if (type != null)
