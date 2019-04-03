@@ -1,7 +1,7 @@
-﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
+﻿using SDO.Models.Yugioh.YugiohCardTypes;
 using System;
 
-namespace CardShuffler.Models.Yugioh.YugiohCards
+namespace SDO.Models.Yugioh.YugiohCards.Monsters
 {
     public class ACatofIllOmen : EffectMonster
     {

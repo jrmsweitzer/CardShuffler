@@ -1,6 +1,6 @@
-﻿using CardShuffler.Models.Yugioh;
-using CardShuffler.Models.Yugioh.Phases;
-using CardShuffler.Models.Yugioh.YugiohCardTypes;
+﻿using SDO.Models.Yugioh;
+using SDO.Models.Yugioh.Phases;
+using SDO.Models.Yugioh.YugiohCardTypes;
 using NUnit.Framework;
 
 namespace Tests.CardSpecificTests.Traps

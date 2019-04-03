@@ -1,20 +1,23 @@
-﻿using CardShuffler.Models.Yugioh.YugiohCardTypes;
+﻿using SDO.Models.Yugioh.YugiohCardTypes;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SDO.Services;
 
 namespace Tests
 {
     public class SearchByTests: TestBase
     {
         [Test]
-        public void SearchByCardCode()
+        public void CardServiceWorksWithoutGAME()
         {
-            var code = 46986414;
-            var card = (Monster)GetCardByCardCode(code);
-            Assert.AreEqual("Dark Magician", card.Name);
+            var cards = new CardService(null).GetAllCards();
+            Assert.IsNotNull(cards);
+            Assert.AreEqual(181, cards.Count);
+
+            Assert.IsFalse(cards.Any(c => string.IsNullOrEmpty(c.Name)));
         }
 
         [Test]

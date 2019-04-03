@@ -1,10 +1,11 @@
-﻿using CardShuffler.Models;
-using CardShuffler.Models.Yugioh;
+﻿using SDO.Models;
+using SDO.Models.Yugioh;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using SDO.Services;
 
 namespace Tests
 {
@@ -20,141 +21,143 @@ namespace Tests
         protected YugiohGamePlayer Kaiba;
         protected YugiohGamePlayer Mai;
         protected YugiohGamePlayer Pegasus;
+        protected CardService cardSvc;
 
         [SetUp]
         public void SetUp()
         {
             Game = new YugiohGame();
-            AllCardsInGame = BuildCardsFromFiles(Game);
+            cardSvc = new CardService(Game);
+            AllCardsInGame = cardSvc.GetAllCards();
 
             BlueEyesDeck = new Deck()
             {
                 Cards = new List<Card>()
                 {
-                    GetCardByName("Blue-Eyes White Dragon"),
-                    GetCardByName("Blue-Eyes White Dragon"),
-                    GetCardByName("Blue-Eyes White Dragon"),
-                    GetCardByName("Lord of D."),
-                    GetCardByName("Lord of D."),
-                    GetCardByName("Lord of D."),
-                    GetCardByName("Tyrant Dragon"),
-                    GetCardByName("Tyrant Dragon"),
-                    GetCardByName("Tyrant Dragon"),
-                    GetCardByName("Red-Eyes B. Dragon"),
-                    GetCardByName("Red-Eyes B. Dragon"),
-                    GetCardByName("The Flute of Summoning Dragon"),
-                    GetCardByName("The Flute of Summoning Dragon"),
-                    GetCardByName("The Flute of Summoning Dragon"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Champion's Vigilance"),
-                    GetCardByName("Champion's Vigilance"),
-                    GetCardByName("Champion's Vigilance"),
+                    cardSvc.GetCardByName("Blue-Eyes White Dragon"),
+                    cardSvc.GetCardByName("Blue-Eyes White Dragon"),
+                    cardSvc.GetCardByName("Blue-Eyes White Dragon"),
+                    cardSvc.GetCardByName("Lord of D."),
+                    cardSvc.GetCardByName("Lord of D."),
+                    cardSvc.GetCardByName("Lord of D."),
+                    cardSvc.GetCardByName("Tyrant Dragon"),
+                    cardSvc.GetCardByName("Tyrant Dragon"),
+                    cardSvc.GetCardByName("Tyrant Dragon"),
+                    cardSvc.GetCardByName("Red-Eyes B. Dragon"),
+                    cardSvc.GetCardByName("Red-Eyes B. Dragon"),
+                    cardSvc.GetCardByName("The Flute of Summoning Dragon"),
+                    cardSvc.GetCardByName("The Flute of Summoning Dragon"),
+                    cardSvc.GetCardByName("The Flute of Summoning Dragon"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Champion's Vigilance"),
+                    cardSvc.GetCardByName("Champion's Vigilance"),
+                    cardSvc.GetCardByName("Champion's Vigilance"),
                 }
             };
             AmazonessDeck = new Deck()
             {
                 Cards = new List<Card>()
                 {
-                    GetCardByName("Amazoness Swords Woman"),
-                    GetCardByName("Amazoness Swords Woman"),
-                    GetCardByName("Amazoness Swords Woman"),
-                    GetCardByName("Amazoness Sage"),
-                    GetCardByName("Amazoness Sage"),
-                    GetCardByName("Amazoness Sage"),
-                    GetCardByName("Amazoness Chain Master"),
-                    GetCardByName("Amazoness Chain Master"),
-                    GetCardByName("Amazoness Heirloom"),
-                    GetCardByName("Amazoness Heirloom"),
-                    GetCardByName("Amazoness Heirloom"),
-                    GetCardByName("Amazoness Village"),
-                    GetCardByName("Amazoness Village"),
-                    GetCardByName("Amazoness Village"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Kunai With Chain"),
-                    GetCardByName("Kunai With Chain"),
-                    GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Amazoness Swords Woman"),
+                    cardSvc.GetCardByName("Amazoness Swords Woman"),
+                    cardSvc.GetCardByName("Amazoness Swords Woman"),
+                    cardSvc.GetCardByName("Amazoness Sage"),
+                    cardSvc.GetCardByName("Amazoness Sage"),
+                    cardSvc.GetCardByName("Amazoness Sage"),
+                    cardSvc.GetCardByName("Amazoness Chain Master"),
+                    cardSvc.GetCardByName("Amazoness Chain Master"),
+                    cardSvc.GetCardByName("Amazoness Heirloom"),
+                    cardSvc.GetCardByName("Amazoness Heirloom"),
+                    cardSvc.GetCardByName("Amazoness Heirloom"),
+                    cardSvc.GetCardByName("Amazoness Village"),
+                    cardSvc.GetCardByName("Amazoness Village"),
+                    cardSvc.GetCardByName("Amazoness Village"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
                 }
             };
             HarpieDeck = new Deck()
             {
                 Cards = new List<Card>()
                 {
-                    GetCardByName("Harpie Lady 1"),
-                    GetCardByName("Harpie Lady 1"),
-                    GetCardByName("Harpie Lady 1"),
-                    GetCardByName("Harpie Lady Sisters"),
-                    GetCardByName("Harpie Lady Sisters"),
-                    GetCardByName("Harpie Lady Sisters"),
-                    GetCardByName("Birdface"),
-                    GetCardByName("Birdface"),
-                    GetCardByName("Birdface"),
-                    GetCardByName("Elegant Egotist"),
-                    GetCardByName("Elegant Egotist"),
-                    GetCardByName("Elegant Egotist"),
-                    GetCardByName("Harpie's Hunting Ground"),
-                    GetCardByName("Harpie's Hunting Ground"),
-                    GetCardByName("Harpie's Hunting Ground"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Wild Tornado"),
-                    GetCardByName("Wild Tornado"),
+                    cardSvc.GetCardByName("Harpie Lady 1"),
+                    cardSvc.GetCardByName("Harpie Lady 1"),
+                    cardSvc.GetCardByName("Harpie Lady 1"),
+                    cardSvc.GetCardByName("Harpie Lady Sisters"),
+                    cardSvc.GetCardByName("Harpie Lady Sisters"),
+                    cardSvc.GetCardByName("Harpie Lady Sisters"),
+                    cardSvc.GetCardByName("Birdface"),
+                    cardSvc.GetCardByName("Birdface"),
+                    cardSvc.GetCardByName("Birdface"),
+                    cardSvc.GetCardByName("Elegant Egotist"),
+                    cardSvc.GetCardByName("Elegant Egotist"),
+                    cardSvc.GetCardByName("Elegant Egotist"),
+                    cardSvc.GetCardByName("Harpie's Hunting Ground"),
+                    cardSvc.GetCardByName("Harpie's Hunting Ground"),
+                    cardSvc.GetCardByName("Harpie's Hunting Ground"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Wild Tornado"),
+                    cardSvc.GetCardByName("Wild Tornado"),
                 }
             };
             ToonDeck = new Deck()
             {
                 Cards = new List<Card>()
                 {
-                    GetCardByName("Toon Masked Sorcerer"),
-                    GetCardByName("Toon Masked Sorcerer"),
-                    GetCardByName("Toon Masked Sorcerer"),
-                    GetCardByName("Toon Mermaid"),
-                    GetCardByName("Toon Mermaid"),
-                    GetCardByName("Toon Mermaid"),
-                    GetCardByName("Toon Summoned Skull"),
-                    GetCardByName("Toon Table of Contents"),
-                    GetCardByName("Toon Table of Contents"),
-                    GetCardByName("Toon Table of Contents"),
-                    GetCardByName("Toon World"),
-                    GetCardByName("Toon World"),
-                    GetCardByName("Toon World"),
-                    GetCardByName("Toon Rollback"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Kunai With Chain"),
-                    GetCardByName("Kunai With Chain"),
-                    GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Toon Masked Sorcerer"),
+                    cardSvc.GetCardByName("Toon Masked Sorcerer"),
+                    cardSvc.GetCardByName("Toon Masked Sorcerer"),
+                    cardSvc.GetCardByName("Toon Mermaid"),
+                    cardSvc.GetCardByName("Toon Mermaid"),
+                    cardSvc.GetCardByName("Toon Mermaid"),
+                    cardSvc.GetCardByName("Toon Summoned Skull"),
+                    cardSvc.GetCardByName("Toon Table of Contents"),
+                    cardSvc.GetCardByName("Toon Table of Contents"),
+                    cardSvc.GetCardByName("Toon Table of Contents"),
+                    cardSvc.GetCardByName("Toon World"),
+                    cardSvc.GetCardByName("Toon World"),
+                    cardSvc.GetCardByName("Toon World"),
+                    cardSvc.GetCardByName("Toon Rollback"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
                 }
             };
             TribalSynergyDeck = new Deck()
             {
                 Cards = new List<Card>()
                 {
-                    GetCardByName("Amazoness Swords Woman"),
-                    GetCardByName("Amazoness Swords Woman"),
-                    GetCardByName("Amazoness Swords Woman"),
-                    GetCardByName("Amazoness Sage"),
-                    GetCardByName("Amazoness Sage"),
-                    GetCardByName("Amazoness Chain Master"),
-                    GetCardByName("Amazoness Chain Master"),
-                    GetCardByName("Harpie Lady 1"),
-                    GetCardByName("Harpie Lady 1"),
-                    GetCardByName("Harpie Lady 1"),
-                    GetCardByName("Amazoness Heirloom"),
-                    GetCardByName("Amazoness Heirloom"),
-                    GetCardByName("Amazoness Village"),
-                    GetCardByName("Amazoness Village"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Windstorm of Etaqua"),
-                    GetCardByName("Kunai With Chain"),
-                    GetCardByName("Kunai With Chain"),
-                    GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Amazoness Swords Woman"),
+                    cardSvc.GetCardByName("Amazoness Swords Woman"),
+                    cardSvc.GetCardByName("Amazoness Swords Woman"),
+                    cardSvc.GetCardByName("Amazoness Sage"),
+                    cardSvc.GetCardByName("Amazoness Sage"),
+                    cardSvc.GetCardByName("Amazoness Chain Master"),
+                    cardSvc.GetCardByName("Amazoness Chain Master"),
+                    cardSvc.GetCardByName("Harpie Lady 1"),
+                    cardSvc.GetCardByName("Harpie Lady 1"),
+                    cardSvc.GetCardByName("Harpie Lady 1"),
+                    cardSvc.GetCardByName("Amazoness Heirloom"),
+                    cardSvc.GetCardByName("Amazoness Heirloom"),
+                    cardSvc.GetCardByName("Amazoness Village"),
+                    cardSvc.GetCardByName("Amazoness Village"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Windstorm of Etaqua"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
+                    cardSvc.GetCardByName("Kunai With Chain"),
                 }
             };
             Kaiba = new YugiohGamePlayer()
@@ -181,51 +184,10 @@ namespace Tests
             Kaiba.SetDeck(BlueEyesDeck);
             Mai.SetDeck(AmazonessDeck);
         }
-        
+
         public YugiohGameCard GetCardByName(string name)
         {
-            var trimmedName = name.Replace(" ", "").Replace("-", "").Replace(".", "").Replace("#","").Replace("'","").Replace(",", "").Replace("&", "");
-            var fqt = $"CardShuffler.Models.Yugioh.YugiohCards.{trimmedName}";
-            var type = Type.GetType(fqt);
-            if (type != null)
-                return (YugiohGameCard)Activator.CreateInstance(type);
-
-            foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                type = asm.GetType(fqt);
-                if (type != null)
-                    return (YugiohGameCard)Activator.CreateInstance(type, Game);
-            }
-            return null;
-        }
-
-        public List<YugiohGameCard> BuildCardsFromFiles(YugiohGame game)
-        {
-            var pathIndex = Directory.GetCurrentDirectory().IndexOf("NUnitTestProject");
-            var path = Path.Combine(Directory.GetCurrentDirectory().Substring(0, pathIndex), "CardShuffler", "Models", "Yugioh", "YugiohCards");
-
-
-            var list = new List<YugiohGameCard>();
-            
-            DirectoryInfo d = new DirectoryInfo(path);
-
-            var subDirectories = d.GetDirectories();
-            foreach (var subDir in subDirectories)
-            {
-                FileInfo[] Files = subDir.GetFiles("*.cs");
-                foreach (var file in Files)
-                {
-                    var name = file.Name.Replace(".cs", "");
-                    list.Add(GetCardByName(name));
-                }
-            }            
-
-            return list;
-        }
-
-        public YugiohGameCard GetCardByCardCode(int cardCode)
-        {
-            return AllCardsInGame.FirstOrDefault(c => c.CardCode == cardCode);
+            return cardSvc.GetCardByName(name);
         }
     }
 }

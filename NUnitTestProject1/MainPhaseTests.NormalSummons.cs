@@ -1,7 +1,7 @@
-﻿using CardShuffler.Models;
-using CardShuffler.Models.Yugioh;
-using CardShuffler.Models.Yugioh.Phases;
-using CardShuffler.Models.Yugioh.YugiohCardTypes;
+﻿using SDO.Models;
+using SDO.Models.Yugioh;
+using SDO.Models.Yugioh.Phases;
+using SDO.Models.Yugioh.YugiohCardTypes;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;

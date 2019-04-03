@@ -1,4 +1,4 @@
-using CardShuffler.Models;
+using SDO.Models;
 using NUnit.Framework;
 using System.Linq;
 

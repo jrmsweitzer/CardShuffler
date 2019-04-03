@@ -1,7 +1,8 @@
-﻿using CardShuffler.Models.Yugioh.Phases;
-using CardShuffler.Models.Yugioh.YugiohCards;
-using CardShuffler.Models.Yugioh.YugiohCardTypes;
+﻿using SDO.Models.Yugioh.Phases;
+using SDO.Models.Yugioh.YugiohCards;
+using SDO.Models.Yugioh.YugiohCardTypes;
 using NUnit.Framework;
+using SDO.Models.Yugioh.YugiohCards.Skills;
 
 namespace Tests.SkillTests
 {

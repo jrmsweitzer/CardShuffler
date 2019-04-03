@@ -1,5 +1,5 @@
-﻿using CardShuffler.Models;
-using CardShuffler.Models.Yugioh;
+﻿using SDO.Models;
+using SDO.Models.Yugioh;
 using NUnit.Framework;
 using System;
 
