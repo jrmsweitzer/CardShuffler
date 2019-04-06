@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1500;
             SetCodes.Add("SS01-ENB06");
             CardCode = 25262697;
+            Description = "When this card declares an attack while "Necrovalley" is on the field: You can target 1 face-up monster your opponent controls; change that target's battle position.";
         }
     }
 }

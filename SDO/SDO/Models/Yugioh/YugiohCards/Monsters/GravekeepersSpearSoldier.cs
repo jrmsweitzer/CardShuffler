@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1000;
             SetCodes.Add("SS01-ENB02");
             CardCode = 63695531;
+            Description = "If this card attacks a Defense Position monster, inflict piercing Battle Damage to your opponent.";
         }
     }
 }

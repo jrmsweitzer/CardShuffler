@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1200;
             SetCodes.Add("SS01-ENB04");
             CardCode = 62473983;
+            Description = "You can only control 1 face-up \"Gravekeeper's Chief\". Your Graveyard is unaffected by \"Necrovalley\". When this card is Tribute Summoned: You can target 1 \"Gravekeeper's\" monster in your Graveyard; Special Summon that target.";
         }
     }
 }

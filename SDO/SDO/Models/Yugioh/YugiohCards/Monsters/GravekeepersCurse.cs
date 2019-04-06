@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 800;
             SetCodes.Add("SS01-ENB01");
             CardCode = 50712728;
+            Description = "When this card is Summoned: Inflict 500 damage to your opponent.";
         }
     }
 }

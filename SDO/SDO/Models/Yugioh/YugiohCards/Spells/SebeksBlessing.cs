@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Sebek's Blessing";
             SetCodes.Add("SS01-ENB14");
+            CardCode = 22537443;
+            Description = "Activate only when a monster you control has attacked your opponent directly. Gain Life Points equal to the Battle Damage that the monster inflicted to your opponent.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

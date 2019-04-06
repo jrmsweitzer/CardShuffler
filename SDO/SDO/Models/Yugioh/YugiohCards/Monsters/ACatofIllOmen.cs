@@ -15,6 +15,7 @@ namespace SDO.Models.Yugioh.YugiohCards.Monsters
             DEF = 300;
             CardCode = 24140059;
             SetCodes.Add("SS01-ENB11");
+            Description = "FLIP: Select 1 Trap Card from your Deck and place it on top of your Deck. If \"Necrovalley\" is on the field, you can add the selected card to your hand instead.";
 
             HasFlipEffect = true;
             FlipEffect = () =>

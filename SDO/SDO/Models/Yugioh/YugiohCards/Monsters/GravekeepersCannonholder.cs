@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1200;
             SetCodes.Add("SS01-ENB05");
             CardCode = 99877698;
+            Description = "You can Tribute 1 \"Gravekeeper's\" monster, except \"Gravekeeper's Cannonholder\"; inflict 700 damage to your opponent."
         }
     }
 }

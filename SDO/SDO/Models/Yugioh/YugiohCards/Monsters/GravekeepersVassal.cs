@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 500;
             SetCodes.Add("SS01-ENB03");
             CardCode = 99690140;
+            Description = "Any battle damage this card inflicts to your opponent is treated as effect damage instead.";
         }
     }
 }

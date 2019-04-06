@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1500;
             SetCodes.Add("SS01-ENB08");
             CardCode = 93023479;
+            Description = "When this card you control is sent to your Graveyard: Add 1 \"Gravekeeper's\" monster with 1500 or less DEF from your Deck to your hand.";
         }
     }
 }
