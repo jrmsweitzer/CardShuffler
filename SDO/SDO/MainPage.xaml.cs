@@ -1,5 +1,6 @@
 ﻿using SDO.Models;
 using SDO.Models.Yugioh;
+using SDO.View;
 using SDO.ViewModel;
 using Xamarin.Forms;
 
@@ -14,9 +15,11 @@ namespace SDO
             this.BindingContext = new CardListViewModel();
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            //var s = sender;
+            var args = (YugiohGameCard)e.Item;
+
+            Navigation.PushModalAsync(new ViewIndividualCardPage(args));
         }
     }
 }

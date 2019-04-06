@@ -11,7 +11,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Name = "Shard of Greed";
             SetCodes.Add("SS01-ENV01");
             CardCode = 33904024;
-            Description = "Each time you draw a card(s) for your normal draw in your Draw Phase, place 1 Greed Counter on this card. You can send this card with 2 or more Greed Counters to the Graveyard; draw 2 cards.";
+            Description = "Each time you draw a card(s) for your normal draw in your Draw Phase, place 1 Greed Counter on this card. You can send this card with 2 or more Greed Counters to the GY; draw 2 cards.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

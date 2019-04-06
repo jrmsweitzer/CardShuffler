@@ -11,7 +11,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Name = "Mimicat";
             SetCodes.Add("SS01-ENV03");
             CardCode = 88032456;
-            Description = "If you control \"Toon World\" and a Toon monster: Target 1 card in your opponent's Graveyard; if it is a monster, Special Summon it to your side of the field, or if it is a Spell/Trap Card, Set it to your side of the field. You can only activate 1 \"Mimicat\" per turn."
+            Description = "If you control \"Toon World\" and a Toon monster: Target 1 card in your opponent's GY; if it is a monster, Special Summon it to your side of the field, or if it is a Spell/Trap Card, Set it to your side of the field. You can only activate 1 \"Mimicat\" per turn.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

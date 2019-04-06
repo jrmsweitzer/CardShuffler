@@ -12,15 +12,12 @@
         <Picker ItemsSource="{Binding SelectCardAttribute}" SelectedItem="{Binding SelectedCardAttribute}" IsVisible="{Binding DisplayAttributeDropdown}"/>
         
         
-        <ListView ItemsSource="{Binding FilteredCards}" HasUnevenRows="True">
+        <ListView ItemsSource="{Binding FilteredCards}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" SelectionMode="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
 
                         <StackLayout Orientation="Horizontal">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            </StackLayout.GestureRecognizers>
                             <Label Text="{Binding Name}"/>
                         </StackLayout>
 

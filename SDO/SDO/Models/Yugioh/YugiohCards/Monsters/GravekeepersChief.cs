@@ -8,13 +8,13 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Gravekeeper's Chief";
             Attribute = MonsterAttribute.Dark;
-            Level = 6;
+            Level = 5;
             Type = MonsterType.Spellcaster;
             ATK = 1900;
             DEF = 1200;
             SetCodes.Add("SS01-ENB04");
             CardCode = 62473983;
-            Description = "You can only control 1 face-up \"Gravekeeper's Chief\". Your Graveyard is unaffected by \"Necrovalley\". When this card is Tribute Summoned: You can target 1 \"Gravekeeper's\" monster in your Graveyard; Special Summon that target.";
+            Description = "You can only control 1 face-up \"Gravekeeper's Chief\". Your GY is unaffected by \"Necrovalley\". When this card is Tribute Summoned: You can target 1 \"Gravekeeper's\" monster in your GY; Special Summon that target.";
         }
     }
 }

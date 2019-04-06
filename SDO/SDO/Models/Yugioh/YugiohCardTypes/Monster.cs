@@ -25,8 +25,8 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
         {
             get
             {
-                if (IsFaceUpOnField() == false)
-                    return _atk;
+                if (Game == null) return _atk;
+                if (IsFaceUpOnField() == false) return _atk;
 
                 var combinedAtk = _atk;
                 if (Game.FieldBuffs.Any())
@@ -59,6 +59,9 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
         {
             get
             {
+                if (Game == null) return _def;
+                if (IsFaceUpOnField() == false) return _def;
+
                 var combinedDEF = _def;
                 if (Game.FieldBuffs.Any())
                 {

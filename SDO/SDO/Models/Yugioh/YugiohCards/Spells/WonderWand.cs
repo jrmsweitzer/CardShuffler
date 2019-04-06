@@ -11,7 +11,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Name = "Wonder Wand";
             SetCodes.Add("SS01-ENA14");
             CardCode = 67775894;
-            Description = "Equip only to a Spellcaster-Type monster. It gains 500 ATK. If you control the equipped monster and this card: You can send both to the Graveyard; draw 2 cards.";
+            Description = "Equip only to a Spellcaster-Type monster. It gains 500 ATK. If you control the equipped monster and this card: You can send both to the GY; draw 2 cards.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();
