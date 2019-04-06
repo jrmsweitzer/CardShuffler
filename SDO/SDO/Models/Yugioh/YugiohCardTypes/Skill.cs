@@ -8,8 +8,7 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
         public Skill(YugiohGame game) : base(game)
         {
         }
-        public string ActiveSideText { get; set; }
-        public string HiddenSidetText { get; set; }
+        public string SkillActivationDescription { get; set; } = "Flip this card over when you activate this Skill."
         public string Character { get; set; }
         public int SkillCount;
         public bool CanActivateFirstSkill;
