@@ -15,6 +15,7 @@ namespace SDO.Models.Yugioh.YugiohCards.Monsters
             DEF = 1700;
             SetCodes.Add("SS01-ENA04");
             CardCode = 38033121;
+            Description = "Gains 300 ATK for every \"Dark Magician\" or \"Magician of Black Chaos\" in the GY.";
         }
 
         private int GetAttack()

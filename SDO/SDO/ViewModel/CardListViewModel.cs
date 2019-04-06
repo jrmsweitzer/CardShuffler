@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace SDO.ViewModel
 {
-    public class CardListViewModel: ViewModelBase
+    public class CardListViewModel : ViewModelBase
     {
         public CardListViewModel()
         {
@@ -27,48 +27,87 @@ namespace SDO.ViewModel
         {
             get
             {
-                var nameFilteredCards = string.IsNullOrEmpty(_cardSearchFilter) ? cards :
-                    cards.Where(c => c.Name.ToLower().Contains(_cardSearchFilter.ToLower())).ToList();
+                var filteredCards = cards;
 
-                switch (_selectedCardType)
+                if (!string.IsNullOrEmpty(_cardSearchFilterName))
+                    filteredCards = filteredCards.Where(card => card.Name.ToLower().Contains(_cardSearchFilterName.ToLower())).ToList();
+
+                if (!string.IsNullOrEmpty(_cardSearchFilterDescription))
+                    filteredCards = filteredCards.Where(card => card.Description.ToLower().Contains(_cardSearchFilterDescription.ToLower())).ToList();
+
+                switch (_selectedCardCategory)
                 {
                     case "Monsters":
-                        return nameFilteredCards.Where(c => c is Monster).ToList();
+                        filteredCards = filteredCards.Where(c => c is Monster).ToList();
+                        if (null != _selectedCardType &&
+                            "All Monster Types" != _selectedCardType)
+                            filteredCards = filteredCards.Where(c => ((Monster)c).Type.ToString() == _selectedCardType).ToList();
+                        break;
                     case "Spells":
-                        return nameFilteredCards.Where(c => c is Spell).ToList();
+                        filteredCards = filteredCards.Where(c => c is Spell).ToList();
+                        if ("All Spell Types" != _selectedCardType)
+                        {
+                            switch (_selectedCardType)
+                            {
+                                case "Continuous":
+                                    filteredCards = filteredCards.Where(c => c is ContinuousSpell).ToList();
+                                    break;
+                                case "Field":
+                                    filteredCards = filteredCards.Where(c => c is FieldSpell).ToList();
+                                    break;
+                                case "Ritual":
+                                    filteredCards = filteredCards.Where(c => c is RitualSpell).ToList();
+                                    break;
+                                case "Normal":
+                                    filteredCards = filteredCards.Where(c => c is NormalSpell).ToList();
+                                    break;
+                                case "Equip":
+                                    filteredCards = filteredCards.Where(c => c is EquipSpell).ToList();
+                                    break;
+                                case "QuickPlay":
+                                    filteredCards = filteredCards.Where(c => c is QuickplaySpell).ToList();
+                                    break;
+                            }
+                        }
+                        break;
                     case "Traps":
-                        return nameFilteredCards.Where(c => c is Trap).ToList();
+                        filteredCards = filteredCards.Where(c => c is Trap).ToList();
+                        if ("All Trap Types" != _selectedCardType)
+                        {
+                            switch (_selectedCardType)
+                            {
+                                case "Continuous":
+                                    filteredCards = filteredCards.Where(c => c is ContinuousTrap).ToList();
+                                    break;
+                                case "Counter":
+                                    filteredCards = filteredCards.Where(c => c is CounterTrap).ToList();
+                                    break;
+                                case "Normal":
+                                    filteredCards = filteredCards.Where(c => c is NormalTrap).ToList();
+                                    break;
+                            }
+                        }
+                        break;
                     case "Skills":
-                        return nameFilteredCards.Where(c => c is Skill).ToList();
-                    default:
-                        return nameFilteredCards;
+                        filteredCards = filteredCards.Where(c => c is Skill).ToList();
+                        if (null != _selectedCardType &&
+                            "All Characters" != _selectedCardType)
+                            filteredCards = filteredCards.Where(c => ((Skill)c).Character == _selectedCardType).ToList();
+                        break;
                 }
+
+                return filteredCards;
             }
         }
 
-        private string _selectedCardType = "All";
-        public string SelectedCardType
+        // monsters, spells, traps
+        private string _selectedCardCategory = "All";
+        public string SelectedCardCategory
         {
-            get { return _selectedCardType; }
-            set
-            {
-                SetProperty(ref _selectedCardType, value);
-                OnPropertyChanged(nameof(FilteredCards));
-            }
+            get { return _selectedCardCategory; }
+            set => OnCategoryChanged(value);            
         }
-
-        private string _cardSearchFilter = string.Empty;
-        public string CardSearchFilter
-        {
-            get { return _cardSearchFilter; }
-            set
-            {
-                SetProperty(ref _cardSearchFilter, value);
-                OnPropertyChanged(nameof(FilteredCards));
-            }
-        }
-
-        public List<string> SelectCardType
+        public List<string> SelectCardCategory
         {
             get
             {
@@ -80,6 +119,156 @@ namespace SDO.ViewModel
                     "Traps",
                     "Skills"
                 };
+            }
+        }
+
+        private string _selectedCardType = string.Empty;
+        public string SelectedCardType
+        {
+            get { return _selectedCardType; }
+            set
+            {
+                SetProperty(ref _selectedCardType, value);
+                OnPropertyChanged(nameof(FilteredCards));
+            }
+        }
+
+        public List<string> SelectCardType
+        {
+            get
+            {
+                switch (_selectedCardCategory)
+                {
+                    case "Monsters":
+                        return _monsterTypeDropdown;
+                    case "Spells":
+                        return _spellTypeDropdown;
+                    case "Traps":
+                        return _trapTypeDropdown;
+                    case "Skills":
+                        return _skillTypeDropdown;
+                    default:
+                        return new List<string>();
+                }
+            }
+        }
+
+        private List<string> _monsterTypeDropdown
+        {
+            get
+            {
+                var list = new List<string>();
+                list.Add("All Monster Types");
+                list.AddRange(
+                    Enum.GetNames(typeof(MonsterType)).ToList());
+                return list;
+            }
+        }
+        private List<string> _spellTypeDropdown
+        {
+            get
+            {
+                var list = new List<string>();
+                list.Add("All Spell Types");
+                list.AddRange(
+                    Enum.GetNames(typeof(SpellType)).ToList());
+                return list;
+            }
+        }
+        private List<string> _trapTypeDropdown
+        {
+            get
+            {
+                var list = new List<string>();
+                list.Add("All Trap Types");
+                list.AddRange(
+                    Enum.GetNames(typeof(TrapType)).ToList());
+                return list;
+            }
+        }
+
+        private List<string> _skillTypeDropdown = new List<string>()
+        {
+            "All Characters",
+            "Joey",
+            "Kaiba",
+            "Mai",
+            "Yami Yugi",
+            "Pegasus",
+            "Ishizu",
+            "Bonz"
+        };
+
+        private string _selectedCardAttribute = "All Attributes";
+        public string SelectedCardCAttribute
+        {
+            get { return _selectedCardAttribute; }
+            set
+            {
+                SetProperty(ref _selectedCardAttribute, value);
+                OnPropertyChanged(nameof(FilteredCards));
+            }
+        }
+        public List<string> SelectCardAttribute
+        {
+            get
+            {
+                var list = new List<string>()
+                {
+                    "All"
+                };
+                list.AddRange(Enum.GetNames(typeof(MonsterAttribute)).ToList());
+                return list;
+            }
+        }
+
+        private string _cardSearchFilterName = string.Empty;
+        public string CardSearchFilterName
+        {
+            get { return _cardSearchFilterName; }
+            set
+            {
+                SetProperty(ref _cardSearchFilterName, value);
+                OnPropertyChanged(nameof(FilteredCards));
+            }
+        }
+
+        private string _cardSearchFilterDescription = string.Empty;
+        public string CardSearchFilterDescription
+        {
+            get { return _cardSearchFilterDescription; }
+            set
+            {
+                SetProperty(ref _cardSearchFilterDescription, value);
+                OnPropertyChanged(nameof(FilteredCards));
+            }
+        }
+
+
+
+
+        public bool DisplayAttributeDropdown { get; set; } = false;
+
+        private void OnCategoryChanged(string category)
+        {
+            SetProperty(ref _selectedCardCategory, category);
+            OnPropertyChanged(nameof(SelectCardType));
+            OnPropertyChanged(nameof(FilteredCards));
+
+            switch(category)
+            {
+                case "Monsters":
+                    DisplayAttributeDropdown = true;
+                    break;
+                case "Spells":
+                    DisplayAttributeDropdown = false;
+                    break;
+                case "Traps":
+                    DisplayAttributeDropdown = false;
+                    break;
+                case "Skills":
+                    DisplayAttributeDropdown = false;
+                    break;
             }
         }
     }

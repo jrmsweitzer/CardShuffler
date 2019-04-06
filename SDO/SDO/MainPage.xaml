@@ -4,9 +4,14 @@
              x:Class="SDO.MainPage">
 
     <StackLayout>
-        <Entry Text="{Binding CardSearchFilter}" Placeholder="Search"/>
+        <Entry Text="{Binding CardSearchFilterName}" Placeholder="Name"/>
+        <Entry Text="{Binding CardSearchFilterDescription}" Placeholder="Description"/>
+        <Picker ItemsSource="{Binding SelectCardCategory}" 
+                SelectedItem="{Binding SelectedCardCategory}"/>
         <Picker ItemsSource="{Binding SelectCardType}" SelectedItem="{Binding SelectedCardType}"/>
-
+        <Picker ItemsSource="{Binding SelectCardAttribute}" SelectedItem="{Binding SelectedCardAttribute}" IsVisible="{Binding DisplayAttributeDropdown}"/>
+        
+        
         <ListView ItemsSource="{Binding FilteredCards}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>

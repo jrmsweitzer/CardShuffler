@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1650;
             SetCodes.Add("SS01-ENA07");
             CardCode = 44436472;
+            Description = "This card can be treated as 2 Tributes for the Tribute Summon of a DARK monster.";
         }
     }
 }

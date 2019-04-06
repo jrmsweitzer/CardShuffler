@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Thousand Knives";
             SetCodes.Add("SS01-ENA09");
+            CardCode = 63391643;
+            Description = "If you control \"Dark Magician\": Target 1 monster your opponent controls; destroy that target.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

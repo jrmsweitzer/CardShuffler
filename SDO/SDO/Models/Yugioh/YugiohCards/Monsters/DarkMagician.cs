@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 2100;
             SetCodes.Add("SS01-ENA01");
             CardCode = 46986414;
+            Description = "The ultimate wizard in terms of attack and defense.";
         }
     }
 }

@@ -14,6 +14,8 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1000;
             SetCodes.Add("SS01-ENA03");
             SetCodes.Add("SS01-ENC01");
+            CardCode = 91939608;
+            Description = "A deadly doll gifted with mystical power, it is particularly powerful when attacking against dark forces.";
         }
     }
 }

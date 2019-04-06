@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1400;
             CardCode = 41392891;
             SetCodes.Add("SS01-ENA02");
+            Description = "A playful little fiend that lurks in the dark, waiting to attack an unwary enemy.";
         }
     }
 }

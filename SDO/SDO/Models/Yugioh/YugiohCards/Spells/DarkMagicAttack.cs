@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Dark Magic Attack";
             SetCodes.Add("SS01-ENA11");
+            CardCode = 02314238;
+            Description = "If you control \"Dark Magician\": Destroy all Spells and Traps your opponent controls.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

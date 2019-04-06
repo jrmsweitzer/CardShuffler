@@ -16,7 +16,7 @@ namespace SDO
 
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            var s = (YugiohGameCard)sender;
+            //var s = sender;
         }
     }
 }

@@ -8,6 +8,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Sevel Tools of the Bandit";
             SetCodes.Add("SS01-ENA18");
+            CardCode = 03819470;
+            Description = "When a Trap Card is activated: Pay 1000 LP; negate the activation, and if you do, destroy it.";
         }
     }
 }
