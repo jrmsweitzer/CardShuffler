@@ -11,15 +11,11 @@ namespace SDO
         public MainPage()
         {
             InitializeComponent();
-
-            this.BindingContext = new CardListViewModel();
         }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void OpenCardList(object sender, System.EventArgs e)
         {
-            var args = (YugiohGameCard)e.Item;
-
-            Navigation.PushModalAsync(new ViewIndividualCardPage(args));
+            Navigation.PushModalAsync(new CardListPage());
         }
     }
 }
