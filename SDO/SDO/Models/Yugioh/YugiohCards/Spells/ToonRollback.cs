@@ -9,6 +9,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Toon Rollback";
             SetCodes.Add("SS01-ENC11");
+            CardCode = 70560957;
+            Description = "Target 1 Toon monster you control; it can make a second attack during each Battle Phase this turn.";
         }
 
         public override bool Activate(params object[] targets) => throw new System.NotImplementedException();

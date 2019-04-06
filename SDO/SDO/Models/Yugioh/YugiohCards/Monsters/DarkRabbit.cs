@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1500;
             CardCode = 99261403;
             SetCodes.Add("SS01-ENC04");
+            Description = "He leaps up, down, and all around! Nobody can lay a hand on this funny bunny.";
         }
     }
 }

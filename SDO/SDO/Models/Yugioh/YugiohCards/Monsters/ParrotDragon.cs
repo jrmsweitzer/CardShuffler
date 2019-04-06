@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1300;
             SetCodes.Add("SS01-ENC03");
             CardCode = 62762898;
+            Description = "A dragon from the cartoons that's more dangerous than it appears to be.";
         }
     }
 }

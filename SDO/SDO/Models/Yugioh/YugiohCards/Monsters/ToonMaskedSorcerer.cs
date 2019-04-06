@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1400;
             SetCodes.Add("SS01-ENC05");
             CardCode = 16392422;
+            Description = "Cannot attack the turn it is Summoned. If \"Toon World\" on the field is destroyed, destroy this card. While you control \"Toon World\" and your opponent controls no Toon monsters, this card can attack your opponent directly. If this card inflicts battle damage to your opponent: Draw 1 card.";
         }
     }
 }

@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1600;
             SetCodes.Add("SS01-ENC02");
             CardCode = 59383041;
+            Description = "An alligator monster straight from the cartoons.";
         }
     }
 }

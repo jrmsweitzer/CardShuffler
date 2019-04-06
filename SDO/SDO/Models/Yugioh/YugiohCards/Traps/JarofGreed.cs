@@ -8,6 +8,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Jar of Greed";
             SetCodes.Add("SS01-ENC16");
+            CardCode = 83968380;
+            Description = "Draw 1 card.";
         }
     }
 }

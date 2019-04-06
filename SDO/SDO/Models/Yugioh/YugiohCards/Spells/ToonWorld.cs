@@ -13,6 +13,8 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
         {
             Name = "Toon World";
             SetCodes.Add("SS01-ENC12");
+            CardCode = 15259703;
+            Description = "Activate this card by paying 1000 LP.";
         }
 
         public override bool Activate(params object[] targets)

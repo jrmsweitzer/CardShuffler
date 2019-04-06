@@ -11,6 +11,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Name = "Black Illusion Ritual";
             SetCodes.Add("SS01-ENC09");
             CardCode = 41426869;
+            Description = "This card is used to Ritual Summon \"Relinquished\". You must also Tribute a monster from your hand or field whose Level is 1 or more.";
         }
 
         public override bool Activate(params object[] targets)
