@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 600;
             SetCodes.Add("SS02-ENC09");
             CardCode = 40384720;
+            Description = "If there are no cards in your opponent's Spell & Trap Zone, this card can attack your opponent directly. If it does, the battle damage inflicted to your opponent is the original ATK of this card.";
         }
     }
 }

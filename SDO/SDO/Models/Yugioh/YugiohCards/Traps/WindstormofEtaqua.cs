@@ -12,6 +12,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Windstorm of Etaqua";
             SetCodes.Add("SS02-ENC16");
+            CardCode = 59744639;
+            Description = "Change the battle positions of all face-up monsters your opponent controls.";
         }
 
         public override bool CanActivate()

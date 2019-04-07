@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 700;
             SetCodes.Add("SS02-ENC07");
             CardCode = 53162898;
+            Description = "At the end of the Damage Step, if this card attacked and is still on the field: Target 1 Spell/Trap your opponent controls; destroy that target.";
         }
     }
 }

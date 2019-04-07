@@ -14,6 +14,8 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1400;
             SetCodes.Add("SS02-ENC03");
             CardCode = 54415063;
+            Description = "(This card's name is always treated as \"Harpie Lady\".)\n" +
+"An opponent's monster that battles this card cannot declare an attack during your opponent's next 2 turns.";
         }
     }
 }

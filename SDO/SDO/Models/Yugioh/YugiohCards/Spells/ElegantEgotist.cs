@@ -11,6 +11,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Elegant Egotist";
             SetCodes.Add("SS02-ENC10");
+            CardCode = 90219263;
+            Description = "If \"Harpie Lady\" is on the field: Special Summon 1 \"Harpie Lady\" or \"Harpie Lady Sisters\" from your hand or Deck.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

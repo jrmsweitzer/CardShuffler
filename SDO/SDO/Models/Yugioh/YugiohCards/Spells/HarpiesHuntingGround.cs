@@ -17,6 +17,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Harpie's Hunting Ground";
             SetCodes.Add("SS02-ENC13");
+            CardCode = 75782277;
+            Description = "All Winged Beast monsters gain 200 ATK/DEF. If any \"Harpie Lady\" or \"Harpie Lady Sisters\" is Normal or Special Summoned: The player who conducted the Summon targets 1 Spell/Trap on the field; that player destroys that target.";
         }        
 
         public override bool Activate(params object[] targets)

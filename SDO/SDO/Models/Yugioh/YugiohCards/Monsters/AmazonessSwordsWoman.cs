@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1600;
             SetCodes.Add("SS02-ENC06");
             CardCode = 94004268;
+            Description = "Your opponent takes any battle damage you would have taken from battles involving this card instead.";
         }
     }
 }

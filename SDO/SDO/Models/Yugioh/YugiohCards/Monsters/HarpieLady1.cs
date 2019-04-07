@@ -20,7 +20,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Level = 4;
             SetCodes.Add("SS02-ENC01");
             CardCode = 91932350;
-            EffectText = "(This card's name is always treated as \"Harpie Lady\".) All WIND monsters gain 300 ATK.";
+            Description = "(This card's name is always treated as \"Harpie Lady\".) All WIND monsters gain 300 ATK.";
 
             OnFieldEnter = () =>
             {
