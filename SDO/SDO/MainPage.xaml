@@ -6,6 +6,7 @@
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
         <Label Text="Title Card Goes Here"/>
         <Button Text="Open Card List" Clicked="OpenCardList"/>
+        <Button Text="Deck Editor" Clicked="OpenDeckEditor" />
     </StackLayout>
 
 </ContentPage>

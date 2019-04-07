@@ -17,5 +17,10 @@ namespace SDO
         {
             Navigation.PushModalAsync(new CardListPage());
         }
+
+        private void OpenDeckEditor(object sender, System.EventArgs e)
+        {
+            Navigation.PushModalAsync(new DeckEditorPage());
+        }
     }
 }
