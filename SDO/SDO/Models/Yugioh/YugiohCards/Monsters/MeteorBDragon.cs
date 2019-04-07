@@ -14,6 +14,12 @@ namespace SDO.Models.Yugioh.YugiohCards
                 "Red-Eyes B. Dragon"
             };
             SetCodes.Add("SBLS-EN013");
+            CardCode = 90660762;
+            Attribute = MonsterAttribute.Fire;
+            Level = 8;
+            Type = MonsterType.Dragon;
+            ATK = 3500;
+            DEF = 2000;
         }
     }
 }

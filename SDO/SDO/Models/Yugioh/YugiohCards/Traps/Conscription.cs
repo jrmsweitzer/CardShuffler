@@ -8,6 +8,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Conscription";
             SetCodes.Add("SBLS-EN024");
+            CardCode = 31000575;
+            Description = "Excavate the top card of your opponent's Deck, and if it is a monster that can be Normal Summoned/Set, Special Summon it to your field. Otherwise, add that card to your opponent's hand.";
         }
     }
 }

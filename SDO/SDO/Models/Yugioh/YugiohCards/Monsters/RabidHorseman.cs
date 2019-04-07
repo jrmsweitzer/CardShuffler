@@ -14,6 +14,12 @@ namespace SDO.Models.Yugioh.YugiohCards
                 "Mystic Horseman"
             };
             SetCodes.Add("SBLS-EN011");
+            Attribute = MonsterAttribute.Earth;
+            Level = 6;
+            Type = MonsterType.BeastWarrior;
+            ATK = 2000;
+            DEF = 1700;
+            CardCode = 94905343;
         }
     }
 }
