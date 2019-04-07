@@ -1,4 +1,8 @@
-﻿using System;
+﻿using SDO.Models;
+using SDO.Models.Yugioh;
+using SDO.Services;
+using SDO.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +19,14 @@ namespace SDO.View
 		public DeckEditorPage ()
 		{
 			InitializeComponent ();
+
+            this.BindingContext = new DeckEditorPageViewModel();
 		}
-	}
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var card = (YugiohGameCard)e.Item;
+            ((DeckEditorPageViewModel)BindingContext).SelectedCard = card;
+        }
+    }
 }

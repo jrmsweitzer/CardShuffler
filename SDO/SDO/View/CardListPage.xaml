@@ -4,11 +4,18 @@
              x:Class="SDO.View.CardListPage">
     <ContentPage.Content>
         <StackLayout>
-            <Entry Text="{Binding CardSearchFilterName}" Placeholder="Name"/>
-            <Entry Text="{Binding CardSearchFilterDescription}" Placeholder="Description"/>
-            <Picker ItemsSource="{Binding SelectCardCategory}" 
-                SelectedItem="{Binding SelectedCardCategory}"/>
-            <Picker ItemsSource="{Binding SelectCardType}" SelectedItem="{Binding SelectedCardType}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                <Entry Text="{Binding CardSearchFilterName}" Placeholder="Name" HorizontalOptions="FillAndExpand"/>
+                <Entry Text="{Binding CardSearchFilterDescription}" Placeholder="Description" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                <Picker ItemsSource="{Binding SelectCardCategory}" 
+                        SelectedItem="{Binding SelectedCardCategory}"
+                        HorizontalOptions="FillAndExpand"/>
+                <Picker ItemsSource="{Binding SelectCardType}" 
+                        SelectedItem="{Binding SelectedCardType}"
+                        HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
             <Picker ItemsSource="{Binding SelectCardAttribute}" SelectedItem="{Binding SelectedCardAttribute}" IsVisible="{Binding DisplayAttributeDropdown}"/>
 
 
