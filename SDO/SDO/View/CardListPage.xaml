@@ -15,10 +15,11 @@
             <ListView ItemsSource="{Binding FilteredCards}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell Height="32">
 
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Name}"/>
+                            <StackLayout Orientation="Horizontal" BackgroundColor="{Binding BackgroundColor}">
+                                <Label Text="{Binding Card.Name}"/>
+                                <Label Text="{Binding ShortDetailsString}" XAlign="End"/>
                             </StackLayout>
 
                         </ViewCell>

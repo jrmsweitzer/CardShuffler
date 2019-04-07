@@ -12,91 +12,107 @@ namespace SDO.ViewModel
     {
         public CardListViewModel()
         {
-            var service = new CardService();
-            Cards = service.GetAllCards();
+            SetCards();
         }
 
-        private List<YugiohGameCard> cards;
-        public List<YugiohGameCard> Cards
+        private void SetCards()
+        {
+            var service = new CardService();
+            var cards = service.GetAllCards();
+            var list = new List<CardViewModel>();
+
+            foreach (var card in cards)
+            {
+                var cardVm = new CardViewModel { Card = card };
+                
+
+                list.Add(cardVm);
+            }
+
+            Cards = list;
+        }
+
+        private List<CardViewModel> cards;
+        public List<CardViewModel> Cards
         {
             get { return cards; }
             set { SetProperty(ref cards, value); }
         }
 
-        public List<YugiohGameCard> FilteredCards
+        public List<CardViewModel> FilteredCards
         {
             get
             {
                 var filteredCards = cards;
 
                 if (!string.IsNullOrEmpty(_cardSearchFilterName))
-                    filteredCards = filteredCards.Where(card => card.Name.ToLower().Contains(_cardSearchFilterName.ToLower())).ToList();
+                    filteredCards = filteredCards.Where(vm => vm.Card.Name.ToLower().Contains(_cardSearchFilterName.ToLower())).ToList();
 
                 if (!string.IsNullOrEmpty(_cardSearchFilterDescription))
-                    filteredCards = filteredCards.Where(card => card.Description.ToLower().Contains(_cardSearchFilterDescription.ToLower())).ToList();
+                    filteredCards = filteredCards.Where(vm => vm.Card.Description.ToLower().Contains(_cardSearchFilterDescription.ToLower())).ToList();
 
                 switch (_selectedCardCategory)
                 {
                     case "Monsters":
-                        filteredCards = filteredCards.Where(c => c is Monster).ToList();
+                        filteredCards = filteredCards.Where(vm => vm.Card is Monster).ToList();
                         if (null != _selectedCardType &&
                             "All Monster Types" != _selectedCardType)
-                            filteredCards = filteredCards.Where(c => ((Monster)c).Type.ToString() == _selectedCardType).ToList();
+                            filteredCards = filteredCards.Where(vm => ((Monster)vm.Card).Type.ToString() == _selectedCardType).ToList();
                         break;
                     case "Spells":
-                        filteredCards = filteredCards.Where(c => c is Spell).ToList();
+                        filteredCards = filteredCards.Where(vm => vm.Card is Spell).ToList();
                         if ("All Spell Types" != _selectedCardType)
                         {
                             switch (_selectedCardType)
                             {
                                 case "Continuous":
-                                    filteredCards = filteredCards.Where(c => c is ContinuousSpell).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is ContinuousSpell).ToList();
                                     break;
                                 case "Field":
-                                    filteredCards = filteredCards.Where(c => c is FieldSpell).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is FieldSpell).ToList();
                                     break;
                                 case "Ritual":
-                                    filteredCards = filteredCards.Where(c => c is RitualSpell).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is RitualSpell).ToList();
                                     break;
                                 case "Normal":
-                                    filteredCards = filteredCards.Where(c => c is NormalSpell).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is NormalSpell).ToList();
                                     break;
                                 case "Equip":
-                                    filteredCards = filteredCards.Where(c => c is EquipSpell).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is EquipSpell).ToList();
                                     break;
                                 case "QuickPlay":
-                                    filteredCards = filteredCards.Where(c => c is QuickplaySpell).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is QuickplaySpell).ToList();
                                     break;
                             }
                         }
                         break;
                     case "Traps":
-                        filteredCards = filteredCards.Where(c => c is Trap).ToList();
+                        filteredCards = filteredCards.Where(vm => vm.Card is Trap).ToList();
                         if ("All Trap Types" != _selectedCardType)
                         {
                             switch (_selectedCardType)
                             {
                                 case "Continuous":
-                                    filteredCards = filteredCards.Where(c => c is ContinuousTrap).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is ContinuousTrap).ToList();
                                     break;
                                 case "Counter":
-                                    filteredCards = filteredCards.Where(c => c is CounterTrap).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is CounterTrap).ToList();
                                     break;
                                 case "Normal":
-                                    filteredCards = filteredCards.Where(c => c is NormalTrap).ToList();
+                                    filteredCards = filteredCards.Where(vm => vm.Card is NormalTrap).ToList();
                                     break;
                             }
                         }
                         break;
                     case "Skills":
-                        filteredCards = filteredCards.Where(c => c is Skill).ToList();
+                        filteredCards = filteredCards.Where(vm => vm.Card is Skill).ToList();
                         if (null != _selectedCardType &&
                             "All Characters" != _selectedCardType)
-                            filteredCards = filteredCards.Where(c => ((Skill)c).Character == _selectedCardType).ToList();
+                            filteredCards = filteredCards.Where(vm => ((Skill)vm.Card).Character == _selectedCardType).ToList();
                         break;
                 }
 
-                return filteredCards;
+                return filteredCards.OrderBy(vm => vm.Card.Name).ToList();
             }
         }
 

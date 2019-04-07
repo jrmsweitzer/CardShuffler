@@ -23,7 +23,7 @@ namespace SDO.View
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var args = (YugiohGameCard)e.Item;
+            var args = ((CardViewModel)e.Item).Card;
 
             Navigation.PushModalAsync(new ViewIndividualCardPage(args));
         }

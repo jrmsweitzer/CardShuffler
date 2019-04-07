@@ -1,7 +1,5 @@
 ﻿using SDO.Models.Yugioh;
 using SDO.Models.Yugioh.YugiohCardTypes;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -9,17 +7,10 @@ using Xamarin.Forms;
 
 namespace SDO.View
 {
-	public class ViewIndividualCardPage : ContentPage
+    public class ViewIndividualCardPage : ContentPage
     {
         public ViewIndividualCardPage()
         {
-            
-            Content = new StackLayout
-            {
-                Children = {
-                    new Label { Text = "Welcome to Xamarin.Forms!" }
-                }
-            };
         }
         public ViewIndividualCardPage(YugiohGameCard card)
         {
@@ -45,6 +36,8 @@ namespace SDO.View
                     new Label { Text = $"{card.SkillActivationDescription}", Margin = new Thickness(10, 0, 0, 0) },
                     new Label { Text = "Effect:" },
                     new Label { Text = $"{card.Description}", Margin = new Thickness(10, 0, 0, 0) },
+                    new Label { Text = string.Empty },
+                    new Label { Text = $"{string.Join(", ", card.SetCodes)}" },
                 }
             };
         }
@@ -54,8 +47,8 @@ namespace SDO.View
             string cardType;
             if (card is ContinuousSpell) cardType = "Continuous Spell";
             else if (card is EquipSpell) cardType = "Equip Spell";
-            else if (card is RitualSpell) cardType = "Equip Spell";
-            else if (card is FieldSpell) cardType = "Equip Spell";
+            else if (card is RitualSpell) cardType = "Ritual Spell";
+            else if (card is FieldSpell) cardType = "Field Spell";
             else if (card is QuickplaySpell) cardType = "Quickplay Spell";
             else cardType = "Spell";
 
@@ -113,7 +106,6 @@ namespace SDO.View
                     new Label { Text = card.Name },
                     new Label { Text = card.Attribute.ToString().ToUpper() },
                     new Label { Text = levelString.ToString() },
-                    new Label { Text = $"{string.Join(", ", card.SetCodes)}" },
                     new Label { Text = typeString.ToString() },
                 }
             };
@@ -132,6 +124,7 @@ namespace SDO.View
             if (card.CardCode != 0)
                 layout.Children.Add(new Label { Text = card.CardCode.ToString() });
 
+            layout.Children.Add(new Label { Text = $"{string.Join(", ", card.SetCodes)}" });
             return layout;
         }
     }

@@ -30,20 +30,6 @@ namespace SDO.Services
                 return (YugiohGameCard)Activator.CreateInstance(type, _game);
             else
                 throw new Exception("Cannot find type with name " + name);
-
-
-            //var fqt = $"SDO.Models.Yugioh.YugiohCards.{trimmedName}";
-            //var type = Type.GetType(fqt);
-            //if (type != null)
-            //    return (YugiohGameCard)Activator.CreateInstance(type, _game);
-
-            //foreach (var asm in AppDomain.CurrentDomain.GetAssemblies())
-            //{
-            //    type = asm.GetType(fqt);
-            //    if (type != null)
-            //        return (YugiohGameCard)Activator.CreateInstance(type, _game);
-            //}
-            //return null;
         }
 
         public List<YugiohGameCard> GetAllCards()
