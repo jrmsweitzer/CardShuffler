@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 0;
             SetCodes.Add("SS02-ENB09");
             CardCode = 26376390;
+            Description = "If this card is Summoned: Target 1 face-up monster your opponent controls; this card's ATK/DEF become equal to that monster's original ATK/DEF.";
         }
     }
 }

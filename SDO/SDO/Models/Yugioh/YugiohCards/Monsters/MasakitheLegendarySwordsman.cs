@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1100;
             CardCode = 44287299;
             SetCodes.Add("SS02-ENB04");
+            Description = "Legendary swordmaster Masaki is a veteran of over 100 battles.";
         }
     }
 }

@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Graceful Dice";
             SetCodes.Add("SS02-ENB16");
+            CardCode = 74137509;
+            Description = "Roll a six-sided die. All monsters you currently control gain ATK/DEF equal to the result x 100, until the end of this turn.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

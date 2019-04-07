@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Legendary Sword";
             SetCodes.Add("SS02-ENB13");
+            CardCode = 61854111;
+            Description = "Equip only to a Warrior monster. It gains 300 ATK/DEF.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

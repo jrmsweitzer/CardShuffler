@@ -8,6 +8,7 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
     {
         public NormalFusionMonster(YugiohGame game) : base(game)
         {
+            Description = string.Empty;
         }
     }
 }

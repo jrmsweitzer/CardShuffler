@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 700;
             SetCodes.Add("SS02-ENB06");
             CardCode = 88819587;
+            Description = "Much more than just a child, this dragon is gifted with untapped power.";
         }
     }
 }

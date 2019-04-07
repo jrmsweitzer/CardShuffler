@@ -13,7 +13,8 @@ namespace SDO.Models.Yugioh.YugiohCards
             ATK = 1800;
             DEF = 2000;
             SetCodes.Add("SS02-ENB02");
-            CardCode = 0;
+            CardCode = 64271667;
+            Description = "This dragon appeared from the sky and crashed to the earth.";
         }
     }
 }

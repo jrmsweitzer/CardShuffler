@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Stray Lambs";
             SetCodes.Add("SS02-ENB12");
+            CardCode = 60764581;
+            Description = "Special Summon 2 \"Lamb Tokens\" (Beast/EARTH/Level 1/ATK 0/DEF 0) in Defense Position. You cannot Summon other monsters the turn you activate this card (but you can Set).";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

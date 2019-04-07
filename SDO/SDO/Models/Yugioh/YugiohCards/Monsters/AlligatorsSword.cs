@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1200;
             SetCodes.Add("SS02-ENB05");
             CardCode = 64428736;
+            Description = "ey, dis mighty lissard man can swing his sword so fast, dat it's more dan da speed a sound!";
         }
     }
 }

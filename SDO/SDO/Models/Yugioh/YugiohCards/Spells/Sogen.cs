@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Sogen";
             SetCodes.Add("SS02-ENB14");
+            CardCode = 86318356;
+            Description = "All Warrior and Beast-Warrior monsters on the field gain 200 ATK/DEF.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

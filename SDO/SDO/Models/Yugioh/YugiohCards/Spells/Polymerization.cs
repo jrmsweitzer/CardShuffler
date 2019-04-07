@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Polymerization";
             SetCodes.Add("SS02-ENB11");
+            CardCode = 24094653;
+            Description = "Fusion Summon 1 Fusion Monster from your Extra Deck, using monsters from your hand or field as Fusion Material.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

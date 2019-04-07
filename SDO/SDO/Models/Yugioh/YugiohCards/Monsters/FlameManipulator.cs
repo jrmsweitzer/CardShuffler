@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1000;
             CardCode = 34460851;
             SetCodes.Add("SS02-ENB03");
+            Description = "This Spellcaster attacks enemies with fire-related spells such as \"Sea of Flames\" and \"Wall of Fire\".";
         }
     }
 }
