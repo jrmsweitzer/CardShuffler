@@ -9,6 +9,9 @@ namespace SDO.Models.Yugioh.YugiohCards
             Name = "Tomb of the Pharoah";
             Character = "Ishizu";
             SetCodes.Add("SBLS-ENS06");
+            SkillActivationDescription = "At the start of the Duel, place this card in your Field Zone and flip it over.";
+            Description = "This card's name is always treated as \"Necrovalley\".\n" +
+"All \"Gravekeeper's\" monsters on the field gain 200 ATK / DEF.";
         }
     }
 }
