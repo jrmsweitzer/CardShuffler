@@ -4,6 +4,7 @@ using SDO.Models.Yugioh.YugiohCards;
 using SDO.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -13,33 +14,30 @@ namespace SDO.ViewModel
 {
     public class DeckEditorPageViewModel: ViewModelBase
     {
-        private List<YugiohGameCard> Cards;
+        private ObservableCollection<YugiohGameCard> Cards;
         public DeckEditorPageViewModel()
         {
-            Cards = new CardService().GetAllCards();
+            Cards = new ObservableCollection<YugiohGameCard>(new CardService().GetAllCards());
         }
 
-        public ICollection<YugiohGameCard> FilteredCards
+        public ObservableCollection<YugiohGameCard> FilteredCards
         {
             get
             {
-                return Cards
+                return new ObservableCollection<YugiohGameCard>(Cards
                     .Where(c => c.Name.ToLower().Contains(SearchName.ToLower()))
                     .Where(c => c.Description.ToLower().Contains(SearchDescription.ToLower()))
-                    .ToList();
+                    .OrderBy(c => c.Name));
             }
         }
 
-        private List<YugiohGameCard> _currentDeck;
-        public List<YugiohGameCard> CurrentDeck
+        private ObservableCollection<YugiohGameCard> _currentDeck;
+        public ObservableCollection<YugiohGameCard> CurrentDeck
         {
             get
             {
                 if (_currentDeck == null)
-                    _currentDeck = new List<YugiohGameCard>()
-                    {
-                        new AmazonessSwordsWoman(null)
-                    };
+                    _currentDeck = new ObservableCollection<YugiohGameCard>();
                 return _currentDeck;
             }
             set
@@ -119,7 +117,7 @@ namespace SDO.ViewModel
                 return new Command(() => 
                 {
                     CurrentDeck.Add(SelectedCard);
-                    SelectedCard = null;
+                    //SelectedCard = null;
                     UpdateDeck();
                 });
             }
@@ -131,8 +129,9 @@ namespace SDO.ViewModel
             {
                 return new Command(() => 
                 {
-                    CurrentDeck.ToList().Remove(SelectedCard);
-                    SelectedCard = null;
+                    var index = CurrentDeck.ToList().FindIndex(c => c.Name == SelectedCard.Name);
+                    CurrentDeck.RemoveAt(index);
+                    //SelectedCard = null;
                     UpdateDeck();
                 });
             }
@@ -145,8 +144,9 @@ namespace SDO.ViewModel
 
         private void UpdateDeck()
         {
-            //SetProperty(ref _currentDeck, CurrentDeck);
             OnPropertyChanged(nameof(CurrentDeck));
+            OnPropertyChanged(nameof(IsAddToDeckButtonEnabled));
+            OnPropertyChanged(nameof(IsRemoveFromDeckButtonEnabled));
         }
     }
 }

@@ -6,8 +6,8 @@
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="130"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -42,32 +42,52 @@
             </Grid>
             
             <!-- Deck Viewer -->
-            <StackLayout Grid.Column="2">
+            <Grid Grid.Column="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
                 
                 <!-- Selected Card details -->
-                <StackLayout HeightRequest="100">
-                    <StackLayout IsVisible="{Binding IsCardSelected}">
-                        <Label Text="{Binding SelectedCard.Name}"/>
+                <ScrollView VerticalScrollBarVisibility="Always">
+                    <StackLayout HeightRequest="100" Grid.Row="0">
+                        <StackLayout IsVisible="{Binding IsCardSelected}" x:Name="SelectedCardDetails">
+                            <Label Text="{Binding SelectedCard.Name}"/>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
+                </ScrollView>
                 
                 <!-- Add/Remove from deck buttons -->
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="+" IsEnabled="{Binding IsAddToDeckButtonEnabled}" Command="{Binding AddToDeckButtonClicked}"/>
-                    <Button Text="-" IsEnabled="{Binding IsRemoveFromDeckButtonEnabled}" Command="{Binding RemoveFromDeckButtonClicked}"/>
+                <StackLayout Orientation="Horizontal" Grid.Row="1">
+                    <Grid>
+                        <Button Text="+" 
+                                IsEnabled="{Binding IsAddToDeckButtonEnabled}" 
+                                Command="{Binding AddToDeckButtonClicked}"
+                                Grid.Column="0"/>
+                        <Button Text="-" 
+                                IsEnabled="{Binding IsRemoveFromDeckButtonEnabled}" 
+                                Command="{Binding RemoveFromDeckButtonClicked}"
+                                Grid.Column="1"/>
+                    </Grid>
                 </StackLayout>
                 
                 <!-- DeckList -->
-                <ListView ItemsSource="{Binding CurrentDeck}" ItemTapped="ListView_ItemTapped">
-                    <ListView.ItemTemplate >
+                <ListView ItemsSource="{Binding CurrentDeck}" 
+                          ItemTapped="ListView_ItemTapped"
+                          Grid.Row="2"
+                          HasUnevenRows="True">
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
+                            <ViewCell Height="20">
                                 <Label Text="{Binding Name}" />
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackLayout>
+            </Grid>
 
         </Grid>
         
