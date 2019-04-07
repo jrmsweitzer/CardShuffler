@@ -33,14 +33,14 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
                 CanBeNormalSummoned = CanBeNormalSummoned,
                 CanBeSpecialSummoned = CanBeSpecialSummoned,
                 DEF = DEF,
-                EffectText = EffectText,
+                Description = Description,
                 Level = Level,
                 Location = Location,
                 MustFirstBeSpecialSummoned = MustFirstBeSpecialSummoned,
                 Name = Name,
                 Type = Type,
                 OnFieldEnter = OnFieldEnter,
-                OnFieldLeave = OnFieldLeave
+                OnFieldLeave = OnFieldLeave,                
             };
         }
     }

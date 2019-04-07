@@ -9,7 +9,7 @@ namespace Tests.BattlePhaseTests
 {
     public class BattlePhaseTests : TestBase
     {
-        Monster BattleOx, TwinHeadedBehemoth, LusterDragon2, BlueEyesWhiteDragon;
+        Monster BattleOx, TwinHeadedBehemoth;
 
         [SetUp]
         public void Setup()
