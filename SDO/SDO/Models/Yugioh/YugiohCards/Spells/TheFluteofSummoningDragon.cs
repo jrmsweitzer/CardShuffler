@@ -12,6 +12,8 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
         {
             Name = "The Flute of Summoning Dragon";
             SetCodes.Add("SS02-ENA10");
+            CardCode = 43973174;
+            Description = "Special Summon up to 2 Dragon monsters from your hand. \"Lord of D.\" must be on the field to activate and to resolve this effect.";
         }
 
         public override bool Activate(params object[] targets)

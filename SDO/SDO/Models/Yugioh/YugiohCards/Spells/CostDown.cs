@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Cost Down";
             SetCodes.Add("SS02-ENA12");
+            CardCode = 23265313;
+            Description = "Discard 1 card; for the rest of this turn, reduce the Levels of all monsters in your hand by 2 (even after they are Summoned).";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

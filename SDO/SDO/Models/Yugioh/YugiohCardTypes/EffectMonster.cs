@@ -20,7 +20,6 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
         {
             return $"{Name} {Attribute.ToString().ToUpper()} {Level} {Type}/Effect {ATK}/{DEF}";
         }
-        public string EffectText { get; set; }
 
         public EffectMonster(YugiohGame game) : base(game)
         {

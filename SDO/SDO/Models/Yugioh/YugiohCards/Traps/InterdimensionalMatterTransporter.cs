@@ -8,6 +8,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Interdimensional Matter Transporter";
             SetCodes.Add("SS02-ENA15");
+            CardCode = 36261276;
+            Description = "Target 1 face-up monster you control; banish that target until the End Phase.";
         }
     }
 }

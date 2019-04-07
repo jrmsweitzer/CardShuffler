@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 700;
             SetCodes.Add("SS02-ENA09");
             CardCode = 34627841;
+            Description = "You can Tribute this card; Special Summon 1 \"Blue - Eyes White Dragon\" from your hand.";
         }
     }
 }

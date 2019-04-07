@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1000;
             SetCodes.Add("SS02-ENA08");
             CardCode = 67957315;
+            Description = "During your Battle Step, if this card battles (Quick Effect): You can discard 1 Dragon monster to the GY; this card gains 1000 ATK/DEF until the end of the Battle Phase.";
         }
     }
 }

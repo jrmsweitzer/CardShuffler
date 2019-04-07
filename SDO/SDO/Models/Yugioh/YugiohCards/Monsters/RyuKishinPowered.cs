@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1200;
             SetCodes.Add("SS02-ENA03");
             CardCode = 24611934;
+            Description = "A gargoyle enhanced by the powers of darkness. Very sharp talons make it a worthy opponent.";
         }
     }
 }

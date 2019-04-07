@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 2500;
             SetCodes.Add("SS02-ENA01");
             CardCode = 89631139;
+            Description = "This legendary dragon is a powerful engine of destruction. Virtually invincible, very few have faced this awesome creature and lived to tell the tale.";
         }
     }
 }

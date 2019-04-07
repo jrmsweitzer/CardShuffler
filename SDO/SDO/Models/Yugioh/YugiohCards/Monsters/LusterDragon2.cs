@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1400;
             SetCodes.Add("SS02-ENA04");
             CardCode = 17658803;
+            Description = "This dragon feeds on emerald. Enchanted by this monster even when attacked, few people live to tell of its beauty.";
         }
     }
 }

@@ -18,7 +18,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Attribute = MonsterAttribute.Dark;
             Level = 4;
             Type = MonsterType.Spellcaster;
-            EffectText = "Neither player can target monsters on the field with effects.";
+            Description = "Neither player can target monsters on the field with effects.";
             ATK = 1200;
             DEF = 1100;
             SetCodes.Add("SS02-ENA05");

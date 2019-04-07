@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Level = 4;
             SetCodes.Add("SS02-ENA02");
             CardCode = 05053103;
+            Description = "A monster with tremendous power, it destroys enemies with a swing of its axe.";
         }
     }
 }

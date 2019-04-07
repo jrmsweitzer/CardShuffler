@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Burst Stream of Destruction";
             SetCodes.Add("SS02-ENA13");
+            CardCode = 17655904;
+            Description = "If you control \"Blue - Eyes White Dragon\": Destroy all monsters your opponent controls. \"Blue - Eyes White Dragon\" you control cannot attack the turn you activate this card.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

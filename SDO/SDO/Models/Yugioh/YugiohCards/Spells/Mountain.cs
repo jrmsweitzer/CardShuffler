@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Mountain";
             SetCodes.Add("SS02-ENA14");
+            CardCode = 50913601;
+            Description = "All Dragon, Winged Beast, and Thunder monsters on the field gain 200 ATK/DEF.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();
