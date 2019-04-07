@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Fusion Gate";
             SetCodes.Add("SS02-ENV02");
+            CardCode = 33550694;
+            Description = "While this card is on the field: The turn player can Fusion Summon 1 Fusion Monster from their Extra Deck, by banishing Fusion Materials listed on it from their hand or field.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

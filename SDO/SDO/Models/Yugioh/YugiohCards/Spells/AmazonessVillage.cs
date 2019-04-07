@@ -8,18 +8,19 @@ namespace SDO.Models.Yugioh.YugiohCards
 {
     public class AmazonessVillage : FieldSpell
     {
-        YugiohFieldBuff AmazonessBoost = new YugiohNamedBuff()
-        {
-            NameIncludes = "Amazoness",
-            ATKBuff = 200
-        };
-
         public AmazonessVillage(YugiohGame game) : base(game)
         {
             Name = "Amazoness Village";
             SetCodes.Add("SS02-ENV03");
             CardCode = 00712559;
+            Description = "All \"Amazoness\" monsters gain 200 ATK. Once per turn, when an \"Amazoness\" monster is destroyed by battle or card effect and sent to the GY: You can Special Summon 1 \"Amazoness\" monster from your Deck with a Level less than or equal to that \"Amazoness\" monster in the GY.";
         }
+
+        YugiohFieldBuff AmazonessBoost = new YugiohNamedBuff()
+        {
+            NameIncludes = "Amazoness",
+            ATKBuff = 200
+        };
 
         public override bool Activate(params object[] targets)
         {

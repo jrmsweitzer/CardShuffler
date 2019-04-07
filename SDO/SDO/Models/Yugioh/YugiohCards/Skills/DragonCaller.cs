@@ -12,8 +12,7 @@ namespace SDO.Models.Yugioh.YugiohCards.Skills
         public DragonCaller(YugiohGame game) : base(game)
         {
             Name = "Dragon Caller";
-            SkillActivationDescription = "Flip this card over when you activate\nthis Skill.";
-            Description = "Once per Duel, you can use 1 of the following Skills.\n* If you successfully Normal Summon \"Lord of D.\", add 1 \"The Flute\nof Summoning Dragon\" from your Deck or GY to your hand.\n* Reveal 1 \"The Flute of Summoning Dragon\" from your hand, then\nadd 1 \"Lord of D.\" from your Deck or GY to your hand.";
+            Description = "Once per Duel, you can use 1 of the following Skills.\n● If you successfully Normal Summon \"Lord of D.\", add 1 \"The Flute\nof Summoning Dragon\" from your Deck or GY to your hand.\n● Reveal 1 \"The Flute of Summoning Dragon\" from your hand, then\nadd 1 \"Lord of D.\" from your Deck or GY to your hand.";
             SkillCount = 2;
             Character = "Kaiba";
             SetCodes.Add("SS02-ENAS3");
