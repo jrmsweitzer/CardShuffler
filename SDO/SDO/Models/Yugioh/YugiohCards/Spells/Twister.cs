@@ -11,6 +11,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Name = "Twister";
             SetCodes.Add("SBLS-EN042");
             CardCode = 45939741;
+            Description = "Pay 500 LP, then target 1 face-up Spell/Trap on the field; destroy that target.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

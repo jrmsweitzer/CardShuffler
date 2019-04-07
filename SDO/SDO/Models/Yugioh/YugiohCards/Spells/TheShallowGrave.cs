@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "The Shallow Grave";
             SetCodes.Add("SBLS-EN039");
+            CardCode = 43434803;
+            Description = "Each player targets 1 monster in their own GY; each player Special Summons the target from their GY in face-down Defense Position.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

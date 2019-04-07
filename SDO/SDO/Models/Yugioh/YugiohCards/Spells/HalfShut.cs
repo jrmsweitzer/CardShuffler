@@ -11,6 +11,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Name = "Half Shut";
             SetCodes.Add("SBLS-EN043");
             CardCode = 73048641;
+            Description = "Target 1 face-up monster on the field; it cannot be destroyed by battle this turn, also its ATK is halved until the end of this turn.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

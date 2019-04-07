@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Block Attack";
             SetCodes.Add("SBLS-EN038");
+            CardCode = 25880422;
+            Description = "Target 1 face-up Attack Position monster your opponent controls; change that target to face-up Defense Position.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

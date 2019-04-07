@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "White Elephant's Gift";
             SetCodes.Add("SBLS-EN040");
+            CardCode = 18756904;
+            Description = "Send 1 face-up non-Effect Monster you control to the GY; draw 2 cards.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

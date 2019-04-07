@@ -10,6 +10,9 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Violet Crystal";
             SetCodes.Add("SBLS-EN035");
+            CardCode = 15052462;
+            Description = "(This card is not treated as a \"Crystal\" card.)\n" +
+"Equip only to a Zombie monster. It gains 300 ATK / DEF.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();

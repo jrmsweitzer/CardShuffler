@@ -10,6 +10,8 @@ namespace SDO.Models.Yugioh.YugiohCards
         {
             Name = "Wasteland";
             SetCodes.Add("SBLS-EN036");
+            CardCode = 23424603;
+            Description = "All Dinosaur, Zombie, and Rock monsters on the field gain 200 ATK/DEF.";
         }
 
         public override bool Activate(params object[] targets) => throw new NotImplementedException();
