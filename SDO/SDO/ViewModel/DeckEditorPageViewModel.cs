@@ -1,13 +1,11 @@
-﻿using SDO.Models;
+﻿using Newtonsoft.Json;
 using SDO.Models.Yugioh;
-using SDO.Models.Yugioh.YugiohCards;
 using SDO.Models.Yugioh.YugiohCardTypes;
 using SDO.Services;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -16,9 +14,13 @@ namespace SDO.ViewModel
     public class DeckEditorPageViewModel: ViewModelBase
     {
         private ObservableCollection<YugiohGameCard> Cards;
+        private CardService _cardSvc;
+
+
         public DeckEditorPageViewModel()
         {
             Cards = new ObservableCollection<YugiohGameCard>(new CardService().GetAllCards());
+            _cardSvc = new CardService();
             UpdateUI();
         }
 
@@ -272,14 +274,47 @@ namespace SDO.ViewModel
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
                     var deckName = DeckName;
                     var md = MainDeck;
                     var sd = SideDeck;
                     var fd = FusionDeck;
 
-                    var deck = new Deck();
+                    var deckList = _cardSvc.BuildDecklistFromDecks(md.ToList(), fd.ToList(), sd.ToList());
+
+                    //var deck = new DB.Deck()
+                    //{
+                    //    PlayerID = 0,
+                    //    Decklist = deckList,
+                    //    Name = deckName,
+                    //};
+
+                    using (var client = new HttpClient())
+                    {
+                        var uri = "http://sdoapi.azurewebsites.net/api/";
+
+                        client.BaseAddress = new System.Uri(uri);
+
+                        var responseTask = client.GetAsync("cards");
+
+                        var result = responseTask.Result;
+                        if (result.IsSuccessStatusCode)
+                        {
+                            var readTask = result.Content.ReadAsStreamAsync();
+                            readTask.Wait();
+
+                            var cards = readTask.Result;
+                        }
+                        else //web api sent error response 
+                        {
+                            //log response status here..
+
+                            //students = Enumerable.Empty<StudentViewModel>();
+
+                            //ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
+                        }
+                    }
                 });
             }
         }
