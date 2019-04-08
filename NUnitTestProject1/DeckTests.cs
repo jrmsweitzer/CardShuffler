@@ -16,8 +16,8 @@ namespace Tests.DeckTests
 
             Assert.AreEqual(1, Pegasus.Hand.Cards.Count);
             Assert.AreEqual(0, Pegasus.DiscardPile.Count);
-            Assert.AreEqual(19, Pegasus.Deck.Cards.Count);
-            Assert.AreEqual(13, Pegasus.Deck.Cards.Where(c => c.Name.Contains("Toon")).Count());
+            Assert.AreEqual(19, Pegasus.Deck.MainDeckCards.Count);
+            Assert.AreEqual(13, Pegasus.Deck.MainDeckCards.Where(c => c.Name.Contains("Toon")).Count());
 
             var toonTable = (Spell)Pegasus.Hand.Cards[0];
 
@@ -31,7 +31,7 @@ namespace Tests.DeckTests
             Assert.AreEqual("Toon Table of Contents", Pegasus.DiscardPile[0].Name);
             Assert.AreEqual(1, Pegasus.Hand.Cards.Count);
             Assert.AreEqual("Toon World", Pegasus.Hand.Cards[0].Name);
-            Assert.AreEqual(18, Pegasus.Deck.Cards.Count);
+            Assert.AreEqual(18, Pegasus.Deck.MainDeckCards.Count);
         }
 
         [Test]
@@ -43,8 +43,8 @@ namespace Tests.DeckTests
 
             Assert.AreEqual(1, Pegasus.Hand.Cards.Count);
             Assert.AreEqual(0, Pegasus.DiscardPile.Count);
-            Assert.AreEqual(19, Pegasus.Deck.Cards.Count);
-            Assert.AreEqual(13, Pegasus.Deck.Cards.Where(c => c.Name.Contains("Toon")).Count());
+            Assert.AreEqual(19, Pegasus.Deck.MainDeckCards.Count);
+            Assert.AreEqual(13, Pegasus.Deck.MainDeckCards.Where(c => c.Name.Contains("Toon")).Count());
 
             var toonTable = (Spell)Pegasus.Hand.Cards[0];
             var success = new MainPhase1(Game).ActivateSpell(toonTable, "Battle Ox");
@@ -52,8 +52,8 @@ namespace Tests.DeckTests
             Assert.False(success);
             Assert.AreEqual(1, Pegasus.Hand.Cards.Count);
             Assert.AreEqual(0, Pegasus.DiscardPile.Count);
-            Assert.AreEqual(19, Pegasus.Deck.Cards.Count);
-            Assert.AreEqual(13, Pegasus.Deck.Cards.Where(c => c.Name.Contains("Toon")).Count());
+            Assert.AreEqual(19, Pegasus.Deck.MainDeckCards.Count);
+            Assert.AreEqual(13, Pegasus.Deck.MainDeckCards.Where(c => c.Name.Contains("Toon")).Count());
         }
 
         [Test]
@@ -63,8 +63,8 @@ namespace Tests.DeckTests
 
             Assert.AreEqual(1, Kaiba.Hand.Cards.Count);
             Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-            Assert.AreEqual(20, Kaiba.Deck.Cards.Count);
-            Assert.AreEqual(0, Kaiba.Deck.Cards.Where(c => c.Name.Contains("Toon")).Count());
+            Assert.AreEqual(20, Kaiba.Deck.MainDeckCards.Count);
+            Assert.AreEqual(0, Kaiba.Deck.MainDeckCards.Where(c => c.Name.Contains("Toon")).Count());
 
             var toonTable = (Spell)Kaiba.Hand.Cards[0];
             var legalTargets = toonTable.GetLegalTargets();
@@ -77,8 +77,8 @@ namespace Tests.DeckTests
             Assert.False(success);
             Assert.AreEqual(1, Kaiba.Hand.Cards.Count);
             Assert.AreEqual(0, Kaiba.DiscardPile.Count);
-            Assert.AreEqual(20, Kaiba.Deck.Cards.Count);
-            Assert.AreEqual(0, Kaiba.Deck.Cards.Where(c => c.Name.Contains("Toon")).Count());
+            Assert.AreEqual(20, Kaiba.Deck.MainDeckCards.Count);
+            Assert.AreEqual(0, Kaiba.Deck.MainDeckCards.Where(c => c.Name.Contains("Toon")).Count());
         }
 
         [Test]

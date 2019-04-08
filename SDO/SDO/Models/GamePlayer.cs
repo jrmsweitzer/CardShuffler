@@ -14,9 +14,9 @@ namespace SDO.Models
             set
             {
                 _deck = value;
-                for (int i = 0; i < _deck.Cards.Count; i++)
+                for (int i = 0; i < _deck.MainDeckCards.Count; i++)
                 {
-                    _deck.Cards[i].Owner = this;
+                    _deck.MainDeckCards[i].Owner = this;
                 }
             }
         }

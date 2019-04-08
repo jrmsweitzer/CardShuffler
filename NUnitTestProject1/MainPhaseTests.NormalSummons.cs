@@ -17,7 +17,7 @@ namespace Tests.MainPhaseTests.NormalSummon
         {
             var deck = new Deck()
             {
-                Cards = new List<Card>()
+                MainDeckCards = new List<Card>()
                 {
                     (Monster)GetCardByName("Battle Ox"),
                     (Monster)GetCardByName("Battle Ox"),

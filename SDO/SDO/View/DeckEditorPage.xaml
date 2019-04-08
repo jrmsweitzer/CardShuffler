@@ -4,92 +4,265 @@
              xmlns:suave ="clr-namespace:SuaveControls.DynamicStackLayout;assembly=SuaveControls.DynamicStackLayout"
              x:Class="SDO.View.DeckEditorPage">
     <ContentPage.Content>
+
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
-            <BoxView BackgroundColor="Red" Grid.Column="1"/>
-            <BoxView BackgroundColor="Green" Grid.Column="2"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
 
-            <!-- Search Options -->
-            <Grid Grid.Column="0">
-                <StackLayout>
-                    <Entry Placeholder="Name" Text="{Binding SearchName}"/>
-                    <Entry Placeholder="Description" Text="{Binding SearchDescription}"/>
-                </StackLayout>
-            </Grid>
-            
-            <!-- Filtered Cards Viewer -->
-            <Grid Grid.Column="1">                
-                <StackLayout>
-                    <ListView ItemsSource="{Binding FilteredCards}" HasUnevenRows="True" SelectionMode="None" ItemTapped="ListView_ItemTapped">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell Height="32">
+            <Grid Grid.Row="0">
 
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}"/>
-                                    </StackLayout>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackLayout>
-            </Grid>
-            
-            <!-- Deck Viewer -->
-            <Grid Grid.Column="2">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                
-                
-                <!-- Selected Card details -->
-                <ScrollView VerticalScrollBarVisibility="Always">
-                    <StackLayout HeightRequest="100" Grid.Row="0">
-                        <StackLayout IsVisible="{Binding IsCardSelected}" x:Name="SelectedCardDetails">
-                            <Label Text="{Binding SelectedCard.Name}"/>
+                <!-- Selected Card Details -->
+                <Grid Grid.Column="0">
+                    <ScrollView VerticalScrollBarVisibility="Always">
+                        <StackLayout HeightRequest="100" Grid.Row="0">
+                            <StackLayout IsVisible="{Binding IsCardSelected}" x:Name="SelectedCardDetails">
+                                <Label Text="{Binding SelectedCard.Name}"/>
+                            </StackLayout>
                         </StackLayout>
+                    </ScrollView>
+                </Grid>
+
+                <!-- Buttons -->
+                <Grid Grid.Column="1">
+
+                    <StackLayout>
+
+                        <Entry Placeholder="Deck Name" 
+                               Text="{Binding DeckName}"/>
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Save Deck -->
+                            <Button Text="Save Deck" 
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    Grid.Column="0" Grid.Row="0"
+                                    IsEnabled="{Binding IsSaveDeckButtonEnabled}"
+                                    Command="{Binding SaveDeck}"/>
+
+                            <!-- Save Deck As-->
+                            <Button Text="Save As" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="FillAndExpand"
+                                    Grid.Column="1" Grid.Row="0"/>
+
+                            <!-- Load Deck -->
+                            <Button Text="Load Deck" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="FillAndExpand"
+                                    Grid.Column="0" Grid.Row="1"/>
+
+                            <!-- Clear Deck -->
+                            <Button Text="New Deck" 
+                                    HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="FillAndExpand"
+                                    Grid.Column="1" Grid.Row="1"
+                                    Command="{Binding ClearDeck}"/>
+
+                        </Grid>
+
+                        <Button Text="Open Card Filter" />
+
                     </StackLayout>
-                </ScrollView>
-                
-                <!-- Add/Remove from deck buttons -->
-                <StackLayout Orientation="Horizontal" Grid.Row="1">
-                    <Grid>
-                        <Button Text="+" 
-                                IsEnabled="{Binding IsAddToDeckButtonEnabled}" 
-                                Command="{Binding AddToDeckButtonClicked}"
-                                Grid.Column="0"/>
-                        <Button Text="-" 
-                                IsEnabled="{Binding IsRemoveFromDeckButtonEnabled}" 
-                                Command="{Binding RemoveFromDeckButtonClicked}"
-                                Grid.Column="1"/>
-                    </Grid>
-                </StackLayout>
-                
-                <!-- DeckList -->
-                <ListView ItemsSource="{Binding CurrentDeck}" 
-                          ItemTapped="ListView_ItemTapped"
-                          Grid.Row="2"
-                          HasUnevenRows="True">
+
+                </Grid>
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Filtered Card List -->
+                <ListView Grid.Column="0" 
+                          ItemsSource="{Binding FilteredCards}" 
+                          HasUnevenRows="True" 
+                          SelectionMode="None" 
+                          ItemTapped="ListView_ItemTapped">
+
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell Height="20">
-                                <Label Text="{Binding Name}" />
+                            <ViewCell Height="32">
+
+                                <Label Text="{Binding Name}"/>
+
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+
+                <Grid Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Add to Main Deck -->
+                    <Button Grid.Row="0" 
+                            Text="→"
+                            IsEnabled="{Binding IsAddToDeckButtonEnabled}" 
+                            Command="{Binding AddToDeckButtonClicked}"/>
+                    <!-- Remove from Main Deck -->
+                    <Button Grid.Row="1" 
+                            Text="←"
+                            IsEnabled="{Binding IsRemoveFromDeckButtonEnabled}" 
+                            Command="{Binding RemoveFromDeckButtonClicked}"/>
+
+                    <!-- Add to Fusion Deck -->
+                    <Button Grid.Row="2" 
+                            Text="→"
+                            IsEnabled="{Binding IsAddToFusionDeckButtonEnabled}" 
+                            Command="{Binding AddToFusionDeckButtonClicked}"/>
+                    <!-- Remove from Fusion Deck -->
+                    <Button Grid.Row="3" 
+                            Text="←"
+                            IsEnabled="{Binding IsRemoveFromFusionDeckButtonEnabled}" 
+                            Command="{Binding RemoveFromFusionDeckButtonClicked}"/>
+
+                    <!-- Add to Side Deck -->
+                    <Button Grid.Row="4" 
+                            Text="→"
+                            IsEnabled="{Binding IsAddToSideDeckButtonEnabled}" 
+                            Command="{Binding AddToSideDeckButtonClicked}"/>
+                    <!-- Remove from Side Deck -->
+                    <Button Grid.Row="5" 
+                            Text="←"
+                            IsEnabled="{Binding IsRemoveFromSideDeckButtonEnabled}" 
+                            Command="{Binding RemoveFromSideDeckButtonClicked}"/>
+
+                </Grid>
+
+                <!-- Main, Fusion, Side Decks -->
+                <Grid Grid.Column="2">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Main Deck -->
+                    <Grid Grid.Row="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="18"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="{Binding MainDeckCountText}"
+                               Grid.Row="0"
+                               FontAttributes="Bold"/>
+
+                        <ListView Grid.Row="1"
+                              ItemsSource="{Binding MainDeck}" 
+                              HasUnevenRows="True"
+                              SelectionMode="None"
+                              ItemTapped="ListView_ItemTapped">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="20">
+
+                                        <Label Text="{Binding Name}" />
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+
+                    <!-- Fusion Deck -->
+                    <Grid Grid.Row="1">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="18"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="{Binding FusionDeckCountText}"
+                               Grid.Row="0"
+                               FontAttributes="Bold"/>
+
+                        <ListView Grid.Row="1"
+                              ItemsSource="{Binding FusionDeck}" 
+                              HasUnevenRows="True"
+                              SelectionMode="None"
+                              ItemTapped="ListView_ItemTapped">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="20">
+
+                                        <Label Text="{Binding Name}" />
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+
+                    <!-- Side Deck -->
+                    <Grid Grid.Row="2">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="18"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Text="{Binding SideDeckCountText}"
+                               Grid.Row="0"
+                               FontAttributes="Bold"/>
+
+                        <ListView Grid.Row="1"
+                              ItemsSource="{Binding SideDeck}" 
+                              HasUnevenRows="True"
+                              SelectionMode="None"
+                              ItemTapped="ListView_ItemTapped">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="20">
+
+                                        <Label Text="{Binding Name}" />
+
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                    </Grid>
+
+                </Grid>
+
             </Grid>
 
         </Grid>
-        
+
     </ContentPage.Content>
 </ContentPage>

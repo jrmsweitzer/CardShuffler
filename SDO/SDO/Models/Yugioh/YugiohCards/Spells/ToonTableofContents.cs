@@ -18,7 +18,7 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
 
         public override List<Card> GetLegalTargets()
         {
-            return Game.TurnPlayer.Deck.Cards.Where(c => c.Name.Contains("Toon")).ToList();
+            return Game.TurnPlayer.Deck.MainDeckCards.Where(c => c.Name.Contains("Toon")).ToList();
         }
 
         public override bool CanActivate() =>

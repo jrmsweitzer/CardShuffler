@@ -13,11 +13,11 @@ namespace SDO.Models.Yugioh
         {
             if (Turn == 0) return false;
             // Starting player decked out
-            if (P1.Deck.Cards.Count == 0) return true;
+            if (P1.Deck.MainDeckCards.Count == 0) return true;
             // Starting player is out of LP
             if (((YugiohGamePlayer)P1).LifePoints <= 0) return true;
             // Opponent decked out
-            if (P2.Deck.Cards.Count == 0) return true;
+            if (P2.Deck.MainDeckCards.Count == 0) return true;
             // Opponent is out of LP
             if (((YugiohGamePlayer)P2).LifePoints <= 0) return true;
             return false;
@@ -52,10 +52,10 @@ namespace SDO.Models.Yugioh
                     ((YugiohGamePlayer)TurnPlayer).PlayTurn(this, Turn);
                 }
 
-                if (P1.Deck.Cards.Count == 0 ||
+                if (P1.Deck.MainDeckCards.Count == 0 ||
                     ((YugiohGamePlayer)P1).LifePoints <= 0)
                     Console.WriteLine($"{P2.Name} won!");
-                else if (P2.Deck.Cards.Count == 0 ||
+                else if (P2.Deck.MainDeckCards.Count == 0 ||
                     ((YugiohGamePlayer)P2).LifePoints <= 0)
                     Console.WriteLine($"{P1.Name} won!");
 

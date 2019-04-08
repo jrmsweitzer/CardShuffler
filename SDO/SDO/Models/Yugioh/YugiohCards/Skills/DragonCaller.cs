@@ -31,7 +31,7 @@ namespace SDO.Models.Yugioh.YugiohCards.Skills
             var list = new List<Spell>();
             var name = "The Flute of Summoning Dragon";
             list.AddRange(TurnPlayer.DiscardPile.Where(c => c.Name == name).Select(c => (Spell)c).ToList());
-            list.AddRange(TurnPlayer.Deck.Cards.Where(c => c.Name == name).Select(c => (Spell)c).ToList());
+            list.AddRange(TurnPlayer.Deck.MainDeckCards.Where(c => c.Name == name).Select(c => (Spell)c).ToList());
             return list;
         }
 
@@ -40,7 +40,7 @@ namespace SDO.Models.Yugioh.YugiohCards.Skills
             var list = new List<Monster>();
             var name = "Lord of D.";
             list.AddRange(TurnPlayer.DiscardPile.Where(c => c.Name == name).Select(c => (Monster)c).ToList());
-            list.AddRange(TurnPlayer.Deck.Cards.Where(c => c.Name == name).Select(c => (Monster)c).ToList());
+            list.AddRange(TurnPlayer.Deck.MainDeckCards.Where(c => c.Name == name).Select(c => (Monster)c).ToList());
             return list;
         }
 

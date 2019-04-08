@@ -21,10 +21,10 @@ namespace SDO.Models.Yugioh
         public void SetDeck(Deck deck)
         {
             Deck = new Deck();
-            foreach (var card in deck.Cards)
+            foreach (var card in deck.MainDeckCards)
             {
                 ((YugiohGameCard)card).Owner = this;
-                Deck.Cards.Add(card);
+                Deck.MainDeckCards.Add(card);
             }
         }
     }

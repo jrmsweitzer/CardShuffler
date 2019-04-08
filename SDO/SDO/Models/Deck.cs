@@ -7,7 +7,9 @@ namespace SDO.Models
 {
     public class Deck
     {
-        public List<Card> Cards { get; set; } = new List<Card>();
+        public List<Card> MainDeckCards { get; set; } = new List<Card>();
+        public List<Card> SideDeckCards { get; set; } = new List<Card>();
+        public List<Card> FusionDeckCards { get; set; } = new List<Card>();
         public string OwnerName { get; set; }
 
         /// <summary>
@@ -16,10 +18,10 @@ namespace SDO.Models
         /// <param name="hand"></param>
         public Card DrawACardFromTop(Hand hand)
         {
-            var card = Cards[0];
+            var card = MainDeckCards[0];
             card.Location = Yugioh.CardLocation.Hand;
             hand.Add(card);
-            Cards.RemoveAt(0);
+            MainDeckCards.RemoveAt(0);
             return card;
         }
 
@@ -29,11 +31,11 @@ namespace SDO.Models
         /// <param name="hand"></param>
         public void DrawACardFromBottom(Hand hand)
         {
-            var index = Cards.Count() - 1;
-            var card = Cards[index];
+            var index = MainDeckCards.Count() - 1;
+            var card = MainDeckCards[index];
             card.Location = Yugioh.CardLocation.Hand;
             hand.Add(card);
-            Cards.RemoveAt(index);
+            MainDeckCards.RemoveAt(index);
         }
 
         public List<Card> DrawStartingHand(Hand hand, int startingHandSize)
@@ -48,11 +50,11 @@ namespace SDO.Models
 
         public Card AddCardToHand(Hand hand, string cardName)
         {
-            var cardToAdd = Cards.FirstOrDefault(c => c.Name == cardName);
+            var cardToAdd = MainDeckCards.FirstOrDefault(c => c.Name == cardName);
             if (cardToAdd == null)
                 throw new Exception("Cannot find card by name " + cardName);
             cardToAdd.Location = Yugioh.CardLocation.Hand;
-            Cards.Remove(cardToAdd);
+            MainDeckCards.Remove(cardToAdd);
             hand.Add(cardToAdd);
             return cardToAdd;
         }
@@ -60,14 +62,14 @@ namespace SDO.Models
         public Card AddCardToHand(Hand hand, Card card)
         {
             card.Location = Yugioh.CardLocation.Hand;
-            Cards.Remove(card);
+            MainDeckCards.Remove(card);
             hand.Add(card);
             return card;
         }
 
         public void Shuffle()
         {
-            Cards = Cards.Shuffle();
+            MainDeckCards = MainDeckCards.Shuffle();
         }
 
         public Deck Copy()
@@ -75,11 +77,11 @@ namespace SDO.Models
             var deck = new Deck()
             {
                 OwnerName = this.OwnerName,
-                Cards = new List<Card>()
+                MainDeckCards = new List<Card>()
             };
 
-            foreach (var card in Cards)
-                deck.Cards.Add(card);
+            foreach (var card in MainDeckCards)
+                deck.MainDeckCards.Add(card);
 
             return deck;
         }

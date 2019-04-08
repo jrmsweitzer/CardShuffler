@@ -32,7 +32,7 @@ namespace Tests
 
             BlueEyesDeck = new Deck()
             {
-                Cards = new List<Card>()
+                MainDeckCards = new List<Card>()
                 {
                     cardSvc.GetCardByName("Blue-Eyes White Dragon"),
                     cardSvc.GetCardByName("Blue-Eyes White Dragon"),
@@ -58,7 +58,7 @@ namespace Tests
             };
             AmazonessDeck = new Deck()
             {
-                Cards = new List<Card>()
+                MainDeckCards = new List<Card>()
                 {
                     cardSvc.GetCardByName("Amazoness Swords Woman"),
                     cardSvc.GetCardByName("Amazoness Swords Woman"),
@@ -84,7 +84,7 @@ namespace Tests
             };
             HarpieDeck = new Deck()
             {
-                Cards = new List<Card>()
+                MainDeckCards = new List<Card>()
                 {
                     cardSvc.GetCardByName("Harpie Lady 1"),
                     cardSvc.GetCardByName("Harpie Lady 1"),
@@ -110,7 +110,7 @@ namespace Tests
             };
             ToonDeck = new Deck()
             {
-                Cards = new List<Card>()
+                MainDeckCards = new List<Card>()
                 {
                     cardSvc.GetCardByName("Toon Masked Sorcerer"),
                     cardSvc.GetCardByName("Toon Masked Sorcerer"),
@@ -136,7 +136,7 @@ namespace Tests
             };
             TribalSynergyDeck = new Deck()
             {
-                Cards = new List<Card>()
+                MainDeckCards = new List<Card>()
                 {
                     cardSvc.GetCardByName("Amazoness Swords Woman"),
                     cardSvc.GetCardByName("Amazoness Swords Woman"),

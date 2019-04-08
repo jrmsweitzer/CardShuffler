@@ -16,7 +16,7 @@ namespace Tests.BattlePhaseTests
         {
             var kaibaDeck = new Deck()
             {
-                Cards = new List<Card>()
+                MainDeckCards = new List<Card>()
                 {
                     (Monster)GetCardByName("Battle Ox"),
                     (Monster)GetCardByName("Twin-Headed Behemoth"),
