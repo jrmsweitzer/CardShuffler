@@ -117,6 +117,7 @@ namespace SDO.ViewModel
                 return new Command(() => 
                 {
                     CurrentDeck.Add(SelectedCard);
+                    CurrentDeck = new ObservableCollection<YugiohGameCard>(CurrentDeck.OrderBy(c => c.Name).ToList());
                     //SelectedCard = null;
                     UpdateDeck();
                 });
@@ -133,6 +134,18 @@ namespace SDO.ViewModel
                     CurrentDeck.RemoveAt(index);
                     //SelectedCard = null;
                     UpdateDeck();
+                });
+            }
+        }
+
+        public ICommand ListView_ItemTapped
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    var card = Cards.FirstOrDefault();
+                    SelectedCard = card;
                 });
             }
         }
