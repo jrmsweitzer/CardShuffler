@@ -13,6 +13,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             ATK = 2000;
             DEF = 1500;
             SetCodes.Add("SS01-ENB10");
+            SetCodes.Add("STP1-EN016");
             CardCode = 25524823;
             Description = "You can Tribute 3 monsters or 1 \"Gravekeeper's\" monster to Tribute Summon (but not Set) this card. When this card is Tribute Summoned: You can activate any of these effects, and resolve in sequence, up to the number of \"Gravekeeper's\" monsters Tributed for its Summon;\n" +
 "● This card gains ATK equal to the combined Levels that all monsters Tributed for its Tribute Summon had on the field x 100.\n" +

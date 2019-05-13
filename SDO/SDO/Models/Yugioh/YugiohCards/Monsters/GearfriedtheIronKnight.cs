@@ -13,6 +13,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             ATK = 1800;
             DEF = 1600;
             SetCodes.Add("SS02-ENB10");
+            SetCodes.Add("STP1-EN009");
             CardCode = 00423705;
             Description = "If either player equips an Equip Card(s) to this card: Destroy that Equip Card(s).";
         }

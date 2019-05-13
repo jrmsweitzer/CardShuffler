@@ -9,6 +9,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Name = "Relinquished";
             RitualSpellCardName = "Black Illusion Ritual";
             SetCodes.Add("SS01-ENC08");
+            SetCodes.Add("STP1-EN010");
             Attribute = MonsterAttribute.Dark;
             Type = MonsterType.Spellcaster;
             ATK = 0;

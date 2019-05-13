@@ -19,6 +19,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             DEF = 1400;
             Level = 4;
             SetCodes.Add("SS02-ENC01");
+            SetCodes.Add("STP1-EN014");
             CardCode = 91932350;
             Description = "(This card's name is always treated as \"Harpie Lady\".) All WIND monsters gain 300 ATK.";
 

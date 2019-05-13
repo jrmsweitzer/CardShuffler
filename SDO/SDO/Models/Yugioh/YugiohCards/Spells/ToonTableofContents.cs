@@ -12,6 +12,7 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
         {
             Name = "Toon Table of Contents";
             SetCodes.Add("SS01-ENC10");
+            SetCodes.Add("STP1-EN012");
             CardCode = 89997728;
             Description = "Add 1 \"Toon\" card from your Deck to your hand.";
         }
