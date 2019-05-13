@@ -1,5 +1,7 @@
 ﻿using SDO.Models.Yugioh;
 using SDO.Models.Yugioh.YugiohCardTypes;
+using System;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -24,9 +26,30 @@ namespace SDO.View
                 Content = GetContentForMonsterCard(monster);
         }
 
-        private StackLayout GetContentForSkillCard(Skill card)
+        //private ScrollView DisplayCardImages(YugiohGameCard card)
+        //{
+        //    var layout = new StackLayout();
+        //    foreach (var image in card.Images)
+        //    {
+        //        layout.Children.Add(new Image
+        //        {
+        //            Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(image))),
+        //            HeightRequest = 600
+        //        });
+        //    }
+
+        //    var scrollView = new ScrollView()
+        //    {
+        //        VerticalOptions = LayoutOptions.CenterAndExpand,
+        //        Content = layout
+        //    };
+
+        //    return scrollView;
+        //}
+
+        private ScrollView GetContentForSkillCard(Skill card)
         {
-            return new StackLayout
+            var layout = new StackLayout
             {
                 Children = {
                     new Label { Text = $"Skill - {card.Character}" },
@@ -37,33 +60,59 @@ namespace SDO.View
                     new Label { Text = "Effect:" },
                     new Label { Text = $"{card.Description}", Margin = new Thickness(10, 0, 0, 0) },
                     new Label { Text = string.Empty },
-                    new Label { Text = $"{string.Join(", ", card.SetCodes)}" },
-                }
+                    new Label { Text = $"{string.Join(", ", card.SetCodes)}" }
+                },
+                HeightRequest = 1500
             };
+
+            var scrollView = new ScrollView()
+            {
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Content = layout
+            };
+
+            return scrollView;
         }
 
-        private StackLayout GetContentForSpellCard(Spell card)
+        private ScrollView GetContentForSpellCard(Spell card)
         {
-            string cardType;
-            if (card is ContinuousSpell) cardType = "Continuous Spell";
-            else if (card is EquipSpell) cardType = "Equip Spell";
-            else if (card is RitualSpell) cardType = "Ritual Spell";
-            else if (card is FieldSpell) cardType = "Field Spell";
-            else if (card is QuickplaySpell) cardType = "Quickplay Spell";
-            else cardType = "Spell";
+            //string cardType;
+            //if (card is ContinuousSpell) cardType = "Continuous Spell";
+            //else if (card is EquipSpell) cardType = "Equip Spell";
+            //else if (card is RitualSpell) cardType = "Ritual Spell";
+            //else if (card is FieldSpell) cardType = "Field Spell";
+            //else if (card is QuickplaySpell) cardType = "Quickplay Spell";
+            //else cardType = "Spell";
 
-            return new StackLayout
+            var layout = new StackLayout
             {
-                Children = {
-                    new Label { Text = $"{cardType}" },
-                    new Label { Text = $"{card.Name}" },
-                    new Label { Text = string.Empty },
-                    new Label { Text = $"{card.Description}", Margin = new Thickness(10, 0, 0, 0) },
-                    new Label { Text = string.Empty },
-                    new Label { Text = card.CardCode.ToString() },
-                    new Label { Text = $"{string.Join(", ", card.SetCodes)}" },
-                }
+                //Children = {
+                //    new Label { Text = $"{cardType}" },
+                //    new Label { Text = $"{card.Name}" },
+                //    new Label { Text = string.Empty },
+                //    new Label { Text = $"{card.Description}", Margin = new Thickness(10, 0, 0, 0) },
+                //    new Label { Text = string.Empty },
+                //    new Label { Text = card.CardCode.ToString() },
+                //    new Label { Text = $"{string.Join(", ", card.SetCodes)}" },
+                //}
             };
+
+            foreach (var setcode in card.SetCodes)
+            {
+                var image = new Image
+                {
+                    Source = $"{setcode.Replace("-", "").ToLower()}.png"
+                };
+                layout.Children.Add(image);
+            }
+
+            var scrollView = new ScrollView()
+            {
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                Content = layout
+            };
+
+            return scrollView;
         }
 
         private StackLayout GetContentForTrapCard(Trap card)
