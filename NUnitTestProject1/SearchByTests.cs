@@ -113,6 +113,13 @@ namespace Tests
         }
 
         [Test]
+        public void STP1_18()
+        {
+            var tp1Cards = AllCardsInGame.Where(c => c.SetCodes.Any(sc => sc.StartsWith("STP1-EN"))).ToList();
+            Assert.AreEqual(18, tp1Cards.Count);
+        }
+
+        [Test]
         public void AllCardsHaveSetCodes()
         {
             var cardsWithoutSetCodes = AllCardsInGame.Where(c => c.SetCodes == null);

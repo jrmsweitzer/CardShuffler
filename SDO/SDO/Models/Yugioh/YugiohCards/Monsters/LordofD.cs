@@ -22,6 +22,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             ATK = 1200;
             DEF = 1100;
             SetCodes.Add("SS02-ENA05");
+            SetCodes.Add("STP1-EN005");
             CardCode = 17985575;
             OnFieldEnter = () =>
             {

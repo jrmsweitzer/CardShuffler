@@ -13,6 +13,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             ATK = 2400;
             DEF = 2000;
             SetCodes.Add("SS02-ENB01");
+            SetCodes.Add("STP1-EN007");
             CardCode = 74677422;
             Description = "A ferocious dragon with a deadly attack.";
         }

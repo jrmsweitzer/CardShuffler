@@ -13,6 +13,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             ATK = 1950;
             DEF = 2100;
             SetCodes.Add("SS02-ENC04");
+            SetCodes.Add("STP1-EN013");
             CardCode = 12206212;
             Description = "Cannot be Normal Summoned/Set. Must first be Special Summoned with \"Elegant Egotist\".";
         }
