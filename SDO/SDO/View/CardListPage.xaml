@@ -22,9 +22,10 @@
             <ListView ItemsSource="{Binding FilteredCards}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell Height="32">
+                        <ViewCell Height="100">
 
                             <StackLayout Orientation="Horizontal" BackgroundColor="{Binding BackgroundColor}">
+                                <Image Source="{Binding DefaultImage}"/>
                                 <Label Text="{Binding Card.Name}"/>
                                 <Label Text="{Binding ShortDetailsString}" XAlign="End"/>
                             </StackLayout>
@@ -33,6 +34,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -28,5 +28,11 @@ namespace SDO.View
             var card = (YugiohGameCard)e.Item;
             ((DeckEditorPageViewModel)BindingContext).SelectedCard = card;
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var card = ((DeckEditorPageViewModel)BindingContext).SelectedCard;
+            Navigation.PushModalAsync(new ViewIndividualCardPage(card));
+        }
     }
 }

@@ -74,5 +74,14 @@ namespace SDO.ViewModel
                     return Color.FromRgb(0, 0, 0);
             }
         }
+
+        public string DefaultImage
+        {
+            get
+            {
+                var file = $"{Card.SetCodes[0].Replace("-", "").ToLower()}.png";
+                return file;
+            }
+        }
     }
 }

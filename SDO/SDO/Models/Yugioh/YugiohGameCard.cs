@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SDO.Models.Yugioh
 {
@@ -16,5 +17,6 @@ namespace SDO.Models.Yugioh
         public string Description { get; set; } = "Description not yet set";
         public List<string> SetCodes { get; set; } = new List<string>();
         public int CardCode { get; set; }
+        public string Image => SetCodes.Last().Replace("-", "").ToLower() + ".png";
     }
 }
