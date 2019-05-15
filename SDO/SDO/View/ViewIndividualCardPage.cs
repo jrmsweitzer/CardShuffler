@@ -1,8 +1,10 @@
-﻿using SDO.Models.Yugioh;
+﻿using PCLStorage;
+using SDO.Models.Yugioh;
 using SDO.Models.Yugioh.YugiohCardTypes;
+using System.IO;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace SDO.View
@@ -14,19 +16,45 @@ namespace SDO.View
         }
         public ViewIndividualCardPage(YugiohGameCard card)
         {
-            if (card is Skill skill)
-                Content = GetContentForSkillCard(skill);
-            else if (card is Spell spell)
-                Content = GetContentForSpellCard(spell);
-            else if (card is Trap trap)
-                Content = GetContentForTrapCard(trap);
-            else if (card is Monster monster)
-                Content = GetContentForMonsterCard(monster);
+            Content = DisplayCardImages(card);
+
+            //if (card is Skill skill)
+            //    Content = GetContentForSkillCard(skill);
+            //else if (card is Spell spell)
+            //    Content = GetContentForSpellCard(spell);
+            //else if (card is Trap trap)
+            //    Content = GetContentForTrapCard(trap);
+            //else if (card is Monster monster)
+            //    Content = GetContentForMonsterCard(monster);
         }
 
-        private StackLayout GetContentForSkillCard(Skill card)
+        private ScrollView DisplayCardImages(YugiohGameCard card)
         {
-            return new StackLayout
+            var layout = new StackLayout();
+
+            foreach (var setCode in card.SetCodes)
+            {
+                var fileName = $"{setCode.Replace("-", "").ToLower()}.png";
+                var image = new Image
+                {
+                    Source = ImageSource.FromFile(fileName),
+                    HeightRequest = 600
+                };
+
+
+                layout.Children.Add(image);
+            }
+
+            var scrollView = new ScrollView
+            {
+                Content = layout
+            };
+            return scrollView;
+        }
+
+        private ScrollView GetContentForSkillCard(Skill card)
+        {
+            var layout = new StackLayout
             {
                 Children = {
                     new Label { Text = $"Skill - {card.Character}" },
@@ -38,11 +66,18 @@ namespace SDO.View
                     new Label { Text = $"{card.Description}", Margin = new Thickness(10, 0, 0, 0) },
                     new Label { Text = string.Empty },
                     new Label { Text = $"{string.Join(", ", card.SetCodes)}" },
+                    new Image { Source = ImageSource.FromFile($"{card.SetCodes[0].Replace("-","").ToLower()}.png"), HeightRequest = 600, }
                 }
             };
+
+            var scrollView = new ScrollView
+            {
+                Content = layout
+            };
+            return scrollView;
         }
 
-        private StackLayout GetContentForSpellCard(Spell card)
+        private ScrollView GetContentForSpellCard(Spell card)
         {
             string cardType;
             if (card is ContinuousSpell) cardType = "Continuous Spell";
@@ -52,7 +87,7 @@ namespace SDO.View
             else if (card is QuickplaySpell) cardType = "Quickplay Spell";
             else cardType = "Spell";
 
-            return new StackLayout
+            var layout = new StackLayout
             {
                 Children = {
                     new Label { Text = $"{cardType}" },
@@ -62,8 +97,15 @@ namespace SDO.View
                     new Label { Text = string.Empty },
                     new Label { Text = card.CardCode.ToString() },
                     new Label { Text = $"{string.Join(", ", card.SetCodes)}" },
+                    new Image { Source = ImageSource.FromFile($"{card.SetCodes[0].Replace("-","").ToLower()}.png"), HeightRequest = 600, }
                 }
             };
+
+            var scrollView = new ScrollView
+            {
+                Content = layout
+            };
+            return scrollView;
         }
 
         private StackLayout GetContentForTrapCard(Trap card)

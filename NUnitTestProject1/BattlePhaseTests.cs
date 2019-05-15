@@ -155,7 +155,7 @@ namespace Tests.BattlePhaseTests
         }
 
         [Test]
-        public void LowerDefenseAgainstHigherDefenseShouldOnlyDealDamage()
+        public void LowerAttackAgainstHigherDefenseShouldOnlyDealDamage()
         {
             Game.TurnPlayer = Kaiba;
             new MainPhase1(Game).NormalSummonWithoutTribute(TwinHeadedBehemoth);
