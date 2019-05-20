@@ -21,7 +21,6 @@ namespace SDO.Models.Yugioh.YugiohCards
             ATK = 4500;
             DEF = 3800;
             SetCodes.Add("SBLS-EN012");
-            SetCodes.Add("STP1-EN004");
         }
     }
 }

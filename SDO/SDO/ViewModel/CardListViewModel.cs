@@ -24,7 +24,7 @@ namespace SDO.ViewModel
             foreach (var card in cards)
             {
                 var cardVm = new CardViewModel { Card = card };
-                
+
 
                 list.Add(cardVm);
             }
@@ -44,6 +44,12 @@ namespace SDO.ViewModel
             get
             {
                 var filteredCards = cards;
+
+                if (_selectedPack != "All")
+                {
+                    var packCode = PackListWithAbbr.FirstOrDefault(p => p.Key == _selectedPack).Value;
+                    filteredCards = filteredCards.Where(vm => vm.Card.SetCodes.Any(sc => sc.StartsWith(packCode))).ToList();
+                }
 
                 if (!string.IsNullOrEmpty(_cardSearchFilterName))
                     filteredCards = filteredCards.Where(vm => vm.Card.Name.ToLower().Contains(_cardSearchFilterName.ToLower())).ToList();
@@ -112,7 +118,17 @@ namespace SDO.ViewModel
                         break;
                 }
 
-                return filteredCards.OrderBy(vm => vm.Card.Name).ToList();
+                switch (_sortBy)
+                {
+                    case "Alphabetical":
+                        filteredCards = filteredCards.OrderBy(vm => vm.Card.Name).ToList();
+                        break;
+                    case "Setlist #":
+                        
+                        filteredCards = filteredCards.OrderBy(vm => vm.Card.SetCodes[0]).ToList();
+                        break;
+                }
+                return filteredCards;
             }
         }
 
@@ -121,7 +137,7 @@ namespace SDO.ViewModel
         public string SelectedCardCategory
         {
             get { return _selectedCardCategory; }
-            set => OnCategoryChanged(value);            
+            set => OnCategoryChanged(value);
         }
         public List<string> SelectCardCategory
         {
@@ -145,6 +161,25 @@ namespace SDO.ViewModel
             set
             {
                 SetProperty(ref _selectedCardType, value);
+                OnPropertyChanged(nameof(FilteredCards));
+            }
+        }
+
+        public List<string> SortByDropdownOptions =>
+            new List<string>()
+            {
+                "Alphabetical",
+                "Setlist #",
+                "ATK",
+                "DEF"
+            };
+        private string _sortBy = "Alphabetical";
+        public string SortBy
+        {
+            get { return _sortBy; }
+            set
+            {
+                _sortBy = value;
                 OnPropertyChanged(nameof(FilteredCards));
             }
         }
@@ -260,8 +295,45 @@ namespace SDO.ViewModel
             }
         }
 
+        private List<string> _packList =>
+            new List<string>
+            {
+                "All",
+                "Starter Deck Destiny Masters",
+                "Starter Deck Duelists of Tomorrow",
+                "Yu-Gi-Oh! Day Promo",
+                "Booster Pack Arena of Lost Souls",
+                "Booster Pack Attack from the Deep",
+                "Tournament Pack 1",
+            };
+        public List<string> PackList => _packList;
+        public Dictionary<string, string> PackListWithAbbr
+        {
+            get
+            {
+                return new Dictionary<string, string>()
+                {
+                    { "All",                               "All"},
+                    { "Starter Deck Destiny Masters",      "SS01"},
+                    { "Starter Deck Duelists of Tomorrow", "SS02"},
+                    { "Yu-Gi-Oh! Day Promo",               "YDPR"},
+                    { "Booster Pack Arena of Lost Souls",  "SBLS"},
+                    { "Booster Pack Attack from the Deep", "SBAD"},
+                    { "Tournament Pack 1",                 "STP1"},
+                };
+            }
+        }
 
-
+        private string _selectedPack = "All";
+        public string SelectedPack
+        {
+            get { return _selectedPack; }
+            set
+            {
+                SetProperty(ref _selectedPack, value);
+                OnPropertyChanged(nameof(FilteredCards));
+            }
+        }
 
         public bool DisplayAttributeDropdown { get; set; } = false;
 
@@ -271,7 +343,7 @@ namespace SDO.ViewModel
             OnPropertyChanged(nameof(SelectCardType));
             OnPropertyChanged(nameof(FilteredCards));
 
-            switch(category)
+            switch (category)
             {
                 case "Monsters":
                     DisplayAttributeDropdown = true;
@@ -286,6 +358,8 @@ namespace SDO.ViewModel
                     DisplayAttributeDropdown = false;
                     break;
             }
+
+            OnPropertyChanged(nameof(DisplayAttributeDropdown));
         }
     }
 }

@@ -4,36 +4,66 @@
              x:Class="SDO.View.CardListPage">
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                <Entry Text="{Binding CardSearchFilterName}" Placeholder="Name" HorizontalOptions="FillAndExpand"/>
-                <Entry Text="{Binding CardSearchFilterDescription}" Placeholder="Description" HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                <Picker ItemsSource="{Binding SelectCardCategory}" 
-                        SelectedItem="{Binding SelectedCardCategory}"
-                        HorizontalOptions="FillAndExpand"/>
-                <Picker ItemsSource="{Binding SelectCardType}" 
-                        SelectedItem="{Binding SelectedCardType}"
-                        HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
-            <Picker ItemsSource="{Binding SelectCardAttribute}" SelectedItem="{Binding SelectedCardAttribute}" IsVisible="{Binding DisplayAttributeDropdown}"/>
 
+            <Picker ItemsSource="{Binding SortByDropdownOptions}"
+                                SelectedItem="{Binding SortBy}"
+                                HorizontalOptions="FillAndExpand"/>
+
+            <Picker ItemsSource="{Binding PackList}"
+                                SelectedItem="{Binding SelectedPack}"
+                                HorizontalOptions="FillAndExpand"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <StackLayout Orientation="Vertical">
+                        <Entry Text="{Binding CardSearchFilterName}" 
+                                            Placeholder="Name" 
+                                            HorizontalOptions="FillAndExpand"/>
+                        <Picker ItemsSource="{Binding SelectCardCategory}" 
+                                            SelectedItem="{Binding SelectedCardCategory}"
+                                            HorizontalOptions="FillAndExpand"/>
+                        <Picker ItemsSource="{Binding SelectCardAttribute}" 
+                                            SelectedItem="{Binding SelectedCardAttribute}" 
+                                            IsVisible="{Binding DisplayAttributeDropdown}"/>
+                    </StackLayout>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <StackLayout Orientation="Vertical">
+                        <Entry Text="{Binding CardSearchFilterDescription}" 
+                                            Placeholder="Description" 
+                                            HorizontalOptions="FillAndExpand"/>
+                        <Picker ItemsSource="{Binding SelectCardType}" 
+                                            SelectedItem="{Binding SelectedCardType}"
+                                            HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
 
             <ListView ItemsSource="{Binding FilteredCards}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="100">
 
-                            <StackLayout Orientation="Horizontal" BackgroundColor="{Binding BackgroundColor}">
+                            <StackLayout Orientation="Horizontal">
                                 <Image Source="{Binding DefaultImage}"/>
-                                <Label Text="{Binding Card.Name}"/>
-                                <Label Text="{Binding ShortDetailsString}" XAlign="End"/>
+                                <StackLayout>
+                                    <Label FontSize="Medium" Text="{Binding Card.Name}"/>
+                                    <Label FontSize="Micro" Text="{Binding ShortDetailsString}"/>
+                                    <Label FontSize="Micro" Text="{Binding Card.Description}"/>
+                                </StackLayout>
                             </StackLayout>
 
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
 
 
         </StackLayout>

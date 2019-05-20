@@ -2344,8 +2344,26 @@ namespace SDO.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
+			// aapt resource value: 0x7f0201e7
+			public const int avd_hide_password_1 = 2130837991;
+			
+			// aapt resource value: 0x7f0201e8
+			public const int avd_hide_password_2 = 2130837992;
+			
+			// aapt resource value: 0x7f0201e9
+			public const int avd_hide_password_3 = 2130837993;
+			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
+			
+			// aapt resource value: 0x7f0201ea
+			public const int avd_show_password_1 = 2130837994;
+			
+			// aapt resource value: 0x7f0201eb
+			public const int avd_show_password_2 = 2130837995;
+			
+			// aapt resource value: 0x7f0201ec
+			public const int avd_show_password_3 = 2130837996;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;

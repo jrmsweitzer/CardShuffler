@@ -10,6 +10,7 @@ namespace SDO.ViewModel
     public class CardViewModel
     {
         public YugiohGameCard Card { get; set; }
+        public string Description => Card.Description;
         public string ShortDetailsString
         {
             get
@@ -18,35 +19,55 @@ namespace SDO.ViewModel
                 {
                     var attr = m.Attribute.ToString().ToUpper();
                     var ty = m.Type.ToString();
-                    return $"{attr} {ty} {m.Level} - {m.ATK}/{m.DEF}";
+
+                    var builder = new StringBuilder();
+                    builder.Append($"{attr.ToUpper()} | * Level {m.Level} | [{ty} / ");
+
+                    if (m is NormalMonster)
+                        builder.Append("Normal ]");
+                    else if (m is EffectMonster effmon)
+                    {
+                        if (effmon.HasFlipEffect)
+                            builder.Append("Flip / ");
+                        builder.Append("Effect ]");
+                    }
+                    else if (m is EffectFusionMonster)
+                        builder.Append("Fusion / Effect ]");
+                    else if (m is NormalFusionMonster)
+                        builder.Append("Fusion / Normal ]");
+                    else if (m is RitualMonster)
+                        builder.Append("Ritual / Effect ]");
+
+                    builder.Append($" | ATK {m.ATK} | DEF {m.DEF} |");
+                    return builder.ToString();
                 }
                 else if (Card is Spell)
                 {
                     if (Card is ContinuousSpell)
-                        return "Continuous Spell";
+                        return "SPELL | Continuous |";
                     else if (Card is EquipSpell)
-                        return "Equip Spell";
+                        return "SPELL | Equip |";
                     else if (Card is FieldSpell)
-                        return "Field Spell";
+                        return "SPELL | Field |";
                     else if (Card is RitualSpell)
-                        return "Ritual Spell";
+                        return "SPELL | Ritual |";
                     else if (Card is QuickplaySpell)
-                        return "Quickplay Spell";
+                        return "SPELL | Quickplay |";
                     else
-                        return "Normal Spell";
+                        return "SPELL";
                 }
                 else if (Card is Trap)
                 {
                     if (Card is ContinuousTrap)
-                        return "Continuous Trap";
+                        return "TRAP | Continuous |";
                     else if (Card is CounterTrap)
-                        return "Counter Trap";
+                        return "TRAP | Counter |";
                     else
-                        return "Normal Trap";
+                        return "TRAP";
                 }
                 else if (Card is Skill s)
                 {
-                    return $"{s.Character} Skill";
+                    return $"SKILL | {s.Character} |";
                 }
                 else
                     return string.Empty;
