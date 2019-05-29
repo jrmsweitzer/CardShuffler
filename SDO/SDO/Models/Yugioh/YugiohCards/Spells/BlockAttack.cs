@@ -14,10 +14,10 @@ namespace SDO.Models.Yugioh.YugiohCards
             Description = "Target 1 face-up Attack Position monster your opponent controls; change that target to face-up Defense Position.";
         }
 
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override bool CanActivate() => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
+        
+        
+        
+        
+        
     }
 }

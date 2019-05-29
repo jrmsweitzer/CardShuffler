@@ -2,7 +2,7 @@
 
 namespace SDO.Models.Yugioh.YugiohCardTypes
 {
-    public abstract class FieldSpell: Spell
+    public class FieldSpell: Spell
     {
 
         public FieldSpell(YugiohGame game) : base(game)
@@ -15,6 +15,6 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
             return $"{Name} - Field Spell";
         }
 
-        public abstract void WhenRemoved();
+        //public abstract void WhenRemoved();
     }
 }

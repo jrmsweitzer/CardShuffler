@@ -32,7 +32,8 @@ namespace SDO.Models.Yugioh.Phases
 
         public bool ActivateSpell(Spell spell, params object[] targets)
         {
-            if (spell.CanActivate())
+            //return true;
+            if (spell.CanActivate)
             {
                 if (spell.Activate(targets))
                 {

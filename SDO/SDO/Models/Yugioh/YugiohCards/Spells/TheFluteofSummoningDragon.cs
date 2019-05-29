@@ -42,11 +42,11 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
             TurnPlayer.DiscardPile.Add(this);
             return true;
         }
-        public override bool CanActivate() =>
+        public override bool CanActivate =>
             TurnPlayer.Field.GetMonsters().Any(m => m.Name == "Lord of D.") &&
             TurnPlayer.Field.HasFreeMonsterZone() ||
             TurnPlayer.Field.HasFreeSpellTrapZone();
-        public override List<Card> GetLegalTargets() => TurnPlayer.Hand.Cards.Where(c => c is Monster m && m.Type == MonsterType.Dragon).ToList();
-        public override bool NeedsTarget() => true;
+        public List<Card> GetLegalTargets() => TurnPlayer.Hand.Cards.Where(c => c is Monster m && m.Type == MonsterType.Dragon).ToList();
+        public bool NeedsTarget() => true;
     }
 }

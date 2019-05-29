@@ -13,10 +13,5 @@ namespace SDO.Models.Yugioh.YugiohCards
             CardCode = 45939741;
             Description = "Pay 500 LP, then target 1 face-up Spell/Trap on the field; destroy that target.";
         }
-
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
     }
 }

@@ -13,11 +13,5 @@ namespace SDO.Models.Yugioh.YugiohCards
             CardCode = 61405855;
             Description = "Equip only to a Warrior monster. It gains 700 ATK. After damage calculation, if the equipped monster battled a Dragon monster: Destroy that monster at the end of that Battle Phase.";
         }
-
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override bool CanActivate() => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
     }
 }

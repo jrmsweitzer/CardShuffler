@@ -33,10 +33,10 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
         {
             return true;
         }
-        public override bool CanActivate() =>
+        public override bool CanActivate =>
             TurnPlayer.Field.HasFreeSpellTrapZone() &&
             TurnPlayer.LifePoints > 1000;
-        public override List<Card> GetLegalTargets() => throw new System.NotImplementedException();
-        public override bool NeedsTarget() => false;
+        public List<Card> GetLegalTargets() => throw new System.NotImplementedException();
+        public bool NeedsTarget() => false;
     }
 }

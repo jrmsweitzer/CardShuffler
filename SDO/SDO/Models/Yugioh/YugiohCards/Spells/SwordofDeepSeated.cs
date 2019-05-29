@@ -13,11 +13,6 @@ namespace SDO.Models.Yugioh.YugiohCards
             CardCode = 98495314;
             Description = "Increase the ATK and DEF of a monster equipped with this card by 500 points. When this card is sent to the GY, place it on top of your Deck.";
         }
-
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override bool CanActivate() => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
+        
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SDO.Models.Yugioh.YugiohCardTypes
 {
-    public abstract class EquipSpell: Spell
+    public class EquipSpell: Spell
     {
         public EquipSpell(YugiohGame game) : base(game)
         {

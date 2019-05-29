@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SDO.Models.Yugioh.YugiohCardTypes
 {
-    public abstract class RitualSpell: Spell
+    public class RitualSpell: Spell
     {
         public RitualSpell(YugiohGame game) : base(game)
         {

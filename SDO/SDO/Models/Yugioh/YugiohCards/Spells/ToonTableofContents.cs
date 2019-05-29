@@ -17,12 +17,12 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
             Description = "Add 1 \"Toon\" card from your Deck to your hand.";
         }
 
-        public override List<Card> GetLegalTargets()
+        public List<Card> GetLegalTargets()
         {
             return Game.TurnPlayer.Deck.MainDeckCards.Where(c => c.Name.Contains("Toon")).ToList();
         }
 
-        public override bool CanActivate() =>
+        public override bool CanActivate =>
             GetLegalTargets().Count >= 1 &&
             TurnPlayer.Field.HasFreeSpellTrapZone();
         public override bool Activate(params object[] targets)
@@ -32,12 +32,12 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
 
             if (targets[0] is string cardName)
             {
-                var success = CanActivate() && GetLegalTargets().Any(lt => lt.Name == cardName);
+                var success = CanActivate && GetLegalTargets().Any(lt => lt.Name == cardName);
                 if (!success) return false;
             }
             else if (targets[0] is YugiohGameCard card)
             {
-                var success = CanActivate() && GetLegalTargets().Contains(card);
+                var success = CanActivate && GetLegalTargets().Contains(card);
                 if (!success) return false;
             }
 
@@ -78,6 +78,6 @@ namespace SDO.Models.Yugioh.YugiohCards.Spells
                 return false;
             }
         }
-        public override bool NeedsTarget() => true;
+        public bool NeedsTarget() => true;
     }
 }

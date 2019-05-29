@@ -7,6 +7,6 @@
             TrapType = TrapType.Continuous;
         }
 
-        public override bool CanActivate() => throw new System.NotImplementedException();
+        
     }
 }

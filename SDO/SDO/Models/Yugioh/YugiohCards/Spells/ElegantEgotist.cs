@@ -15,11 +15,5 @@ namespace SDO.Models.Yugioh.YugiohCards
             CardCode = 90219263;
             Description = "If \"Harpie Lady\" is on the field: Special Summon 1 \"Harpie Lady\" or \"Harpie Lady Sisters\" from your hand or Deck.";
         }
-
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override bool CanActivate() => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
     }
 }

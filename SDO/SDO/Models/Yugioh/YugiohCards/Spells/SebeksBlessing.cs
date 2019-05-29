@@ -13,10 +13,5 @@ namespace SDO.Models.Yugioh.YugiohCards
             CardCode = 22537443;
             Description = "Activate only when a monster you control has attacked your opponent directly. Gain Life Points equal to the Battle Damage that the monster inflicted to your opponent.";
         }
-
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
     }
 }

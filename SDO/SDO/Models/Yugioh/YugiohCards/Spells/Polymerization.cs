@@ -13,11 +13,5 @@ namespace SDO.Models.Yugioh.YugiohCards
             CardCode = 24094653;
             Description = "Fusion Summon 1 Fusion Monster from your Extra Deck, using monsters from your hand or field as Fusion Material.";
         }
-
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override bool CanActivate() => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
     }
 }

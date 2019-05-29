@@ -16,7 +16,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Description = "Change the battle positions of all face-up monsters your opponent controls.";
         }
 
-        public override bool CanActivate()
+        public bool CanActivate()
         {
             if (TurnSet == Game.Turn)
                 return false;

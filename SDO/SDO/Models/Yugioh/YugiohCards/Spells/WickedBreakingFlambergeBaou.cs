@@ -13,11 +13,5 @@ namespace SDO.Models.Yugioh.YugiohCards
             CardCode = 68427465;
             Description = "Send 1 card from your hand to the GY, then target 1 monster on the field; equip this card to that target. It gains 500 ATK. Negate the effects of opponent's monsters destroyed by battle with the equipped monster.";
         }
-
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override bool CanActivate() => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
     }
 }

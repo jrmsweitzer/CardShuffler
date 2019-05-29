@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SDO.Models.Yugioh.YugiohCardTypes
 {
-    public abstract class QuickplaySpell: Spell
+    public class QuickplaySpell: Spell
     {
         public QuickplaySpell(YugiohGame game) : base(game)
         {
@@ -18,7 +18,7 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
 
         public int TurnSet { get; set; } = -1;
 
-        public override bool CanActivate()
+        public bool CanActivate()
         {
             if (TurnSet < Game.Turn)
                 return true;

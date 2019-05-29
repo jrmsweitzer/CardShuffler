@@ -21,21 +21,21 @@ namespace SDO.Models.Yugioh.YugiohCards
             Description = "All Winged Beast monsters gain 200 ATK/DEF. If any \"Harpie Lady\" or \"Harpie Lady Sisters\" is Normal or Special Summoned: The player who conducted the Summon targets 1 Spell/Trap on the field; that player destroys that target.";
         }        
 
-        public override bool Activate(params object[] targets)
+        public bool Activate(params object[] targets)
         {
             if (TurnPlayer.Field.FieldZone.FieldSpell != null)
             {
                 var oldFieldSpell = TurnPlayer.Field.FieldZone.FieldSpell;
-                oldFieldSpell.WhenRemoved();
+                //oldFieldSpell.WhenRemoved();
                 TurnPlayer.DiscardPile.Add(oldFieldSpell);
             }
             TurnPlayer.Hand.Cards.Remove(this);
             return true;
         }
-        public override bool CanActivate() => true;
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => false;
-        public override bool Resolve(params object[] targets)
+        public bool CanActivate() => true;
+        
+        public bool NeedsTarget() => false;
+        public bool Resolve(params object[] targets)
         {
             TurnPlayer.Field.FieldZone = new FieldZone()
             {
@@ -47,7 +47,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             Game.FieldBuffs.Add(WingedBeastBoost);
             return true;
         }
-        public override void WhenRemoved()
+        public void WhenRemoved()
         {
             Game.FieldBuffs.Remove(WingedBeastBoost);
         }

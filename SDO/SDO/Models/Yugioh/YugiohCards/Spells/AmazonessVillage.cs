@@ -14,6 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards
             SetCodes.Add("SS02-ENV03");
             CardCode = 00712559;
             Description = "All \"Amazoness\" monsters gain 200 ATK. Once per turn, when an \"Amazoness\" monster is destroyed by battle or card effect and sent to the GY: You can Special Summon 1 \"Amazoness\" monster from your Deck with a Level less than or equal to that \"Amazoness\" monster in the GY.";
+            CanActivate = true;
         }
 
         YugiohFieldBuff AmazonessBoost = new YugiohNamedBuff()
@@ -27,15 +28,13 @@ namespace SDO.Models.Yugioh.YugiohCards
             if (TurnPlayer.Field.FieldZone.FieldSpell != null)
             {
                 var oldFieldSpell = TurnPlayer.Field.FieldZone.FieldSpell;
-                oldFieldSpell.WhenRemoved();
+                //oldFieldSpell.WhenRemoved();
                 TurnPlayer.DiscardPile.Add(oldFieldSpell);
             }
             TurnPlayer.Hand.Cards.Remove(this);
             return true;
         }
-        public override bool CanActivate() => true;
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => false;
+        
         public override bool Resolve(params object[] targets)
         {
             TurnPlayer.Field.FieldZone = new FieldZone()
@@ -49,7 +48,12 @@ namespace SDO.Models.Yugioh.YugiohCards
             return true;
         }
 
-        public override void WhenRemoved()
+
+
+
+
+        public bool NeedsTarget() => false;
+        public void WhenRemoved()
         {
             Game.FieldBuffs.Remove(AmazonessBoost);
         }

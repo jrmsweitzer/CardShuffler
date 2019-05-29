@@ -12,6 +12,6 @@
             return $"{Name} - Counter Trap";
         }
 
-        public override bool CanActivate() => throw new System.NotImplementedException();
+        
     }
 }

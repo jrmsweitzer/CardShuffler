@@ -14,7 +14,7 @@ namespace SDO.Models.Yugioh.YugiohCards.Traps
             Description = "Select 1 face-up card in the Spell & Trap Card Zones and destroy it. The controller of the destroyed card can then Set 1 Spell or Trap Card from their hand. If this Set card is destroyed and sent to the GY, select and destroy 1 face-up card on the field.";
         }
 
-        public override bool CanActivate()
+        public bool CanActivate()
         {
             if (TurnSet == Game.Turn) return false;
             return Opponent.Field.SpellTrapZones.Any(zone => zone.SpellTrapCard != null && zone.SpellTrapCard.Position == CardPosition.FaceUp);

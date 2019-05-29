@@ -16,6 +16,6 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
             return $"{Name} - Normal Trap";
         }
 
-        public override bool CanActivate() => throw new NotImplementedException();
+        
     }
 }

@@ -2,7 +2,7 @@
 
 namespace SDO.Models.Yugioh.YugiohCardTypes
 {
-    public abstract class NormalSpell: Spell
+    public class NormalSpell: Spell
     {
         public NormalSpell(YugiohGame game) : base(game)
         {

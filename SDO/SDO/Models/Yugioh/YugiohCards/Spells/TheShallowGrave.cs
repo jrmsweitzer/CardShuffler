@@ -13,11 +13,5 @@ namespace SDO.Models.Yugioh.YugiohCards
             CardCode = 43434803;
             Description = "Each player targets 1 monster in their own GY; each player Special Summons the target from their GY in face-down Defense Position.";
         }
-
-        public override bool Activate(params object[] targets) => throw new NotImplementedException();
-        public override bool CanActivate() => throw new NotImplementedException();
-        public override List<Card> GetLegalTargets() => throw new NotImplementedException();
-        public override bool NeedsTarget() => throw new NotImplementedException();
-        public override bool Resolve(params object[] targets) => throw new NotImplementedException();
     }
 }
