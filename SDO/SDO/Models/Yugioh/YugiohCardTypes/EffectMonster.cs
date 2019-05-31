@@ -43,5 +43,11 @@ namespace SDO.Models.Yugioh.YugiohCardTypes
                 OnFieldLeave = OnFieldLeave,                
             };
         }
+
+        public void EnableReviveLimit()
+        {
+            CanBeNormalSummoned = false;
+            CanBeSpecialSummoned = false;
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace SDO.Models.Yugioh
         protected YugiohGamePlayer TurnPlayer => (YugiohGamePlayer)Game?.TurnPlayer ?? null;
         protected YugiohGamePlayer DefendingPlayer => (YugiohGamePlayer)Game?.TurnPlayer ?? null;
         protected YugiohGamePlayer Opponent => TurnPlayer == Owner ? DefendingPlayer : TurnPlayer;
+        protected List<Effect> Effects { get; set; } = new List<Effect>();
 
         public string Description { get; set; } = "Description not yet set";
         public List<string> SetCodes { get; set; } = new List<string>();
